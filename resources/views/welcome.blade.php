@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -149,8 +147,65 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row gy-4">
+
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                        <div class="card-custom-image rounded-4">
+                            <img class="rounded-4" src="assets/imagens/Criar-site-para-empresa.png" alt="">
+                        </div>
+                        <div class="card-custom-content p-4">
+                            <h5 class="mb-4">Controle financeiro</h5>
+                            <p class="text-brand mb-2">Lorem ipsum dolor sit amet consectetur adipisicing itel.</p>
+                            <a href="#" class="link-custom">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                        <div class="card-custom-image rounded-4">
+                            <img class="rounded-4" src="assets/imagens/images.png" alt="">
+                        </div>
+                        <div class="card-custom-content p-4">
+                            <h5 class="mb-4">Acompanhamento online</h5>
+                            <p class="text-brand mb-2">Lorem ipsum dolor sit amet consectetur adipisicing itel.</p>
+                            <a href="#" class="link-custom">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                        <div class="card-custom-image rounded-4">
+                            <img class="rounded-4" src="assets/imagens/images.png" alt="">
+                        </div>
+                        <div class="card-custom-content p-4">
+                            <h5 class="mb-4">Automação de processos</h5>
+                            <p class="text-brand mb-2">Lorem ipsum dolor sit amet consectetur adipisicing itel.</p>
+                            <a href="#" class="link-custom">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-custom rounded-4 bg-base shadow-effect">
+                        <div class="card-custom-image rounded-4">
+                            <img class="rounded-4" src="assets/imagens/images.jpg" alt="">
+                        </div>
+                        <div class="card-custom-content p-4">
+                            <h5 class="mb-4">Controle financeiro</h5>
+                            <p class="text-brand mb-2">Lorem ipsum dolor sit amet consectetur adipisicing itel.</p>
+                            <a href="#" class="link-custom">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-        <!-- Background image -->
+        <<<<<<< HEAD <!-- Background image -->
     </header>
 
     <br>
@@ -220,6 +275,8 @@
             </div>
 
         </div>
+        =======
+        >>>>>>> 85595878fc82ae6575969780c28a4157305755bb
     </section>
 </body>
 
