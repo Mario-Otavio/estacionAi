@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -50,46 +49,55 @@
             box-shadow: 0 0 11px rgba(34, 34, 34, .4);
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
-<body>
+<body class="antialiased">
     <section class="vh-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
-                            <div class="col-lg-7">
+                            <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
 
                                     <div class="text-center">
                                         <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                        <h4 class="mt-1 mb-4 pb-1">Nós somos a EstacionAi</h4>
+                                        <h4 class="mt-1 mb-5 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
                                     <form>
-                                        <p class="text-center"><strong>Cadastre-se!</strong></p>
+                                        <p><strong>Por favor, faça seu login!</strong></p>
 
-                                        <div class="form-outline mb-1">
-                                            <label class="form-label">Nome completo</label>
-                                            <input type="text" id="form2Example11" class="form-control" placeholder="username" />
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="form2Example11" class="form-control" placeholder="Nome de usuário" />
                                         </div>
 
-                                        <div class="mb-1">
-                                            <label class="form-label">Endereço de email</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form2Example22" class="form-control" placeholder="Senha" />
                                         </div>
 
-                                        <div class="form-outline">
-                                            <label class="form-label">Senha</label>
-                                            <input type="password" id="form2Example22" class="form-control" placeholder="password" />
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Conecte-se</button>
+                                            <a class="text-muted" href="#!">Esqueceu sua senha?</a>
                                         </div>
 
-                                        <div class="text-center pt-4 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Registrar</button>
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2 mr-2"><strong>Não tem uma conta?</strong></p>
+                                            <a type="button" class="btn btn-outline-danger" href="cadastrar_usuario">Registrar</a>
                                         </div>
                                     </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">Somos mais que uma empresa!</h4>
+                                    <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
                             </div>
                         </div>
@@ -98,21 +106,6 @@
             </div>
         </div>
     </section>
-
-    <!-- <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <h1 class="h1"> Cadastrar </h1>
-                    <form action="{{ route('veiculo.salvar') }}" method="POST">
-                        <label class=""> Nome </label>
-                        <input type="text" name="placa" class="form-control" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
-                    </form>
-
-                </div>
-        </div> -->
-
-
 </body>
 
 </html>

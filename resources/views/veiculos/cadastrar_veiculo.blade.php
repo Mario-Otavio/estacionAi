@@ -45,10 +45,17 @@
                     </svg>
                 </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <h1 class="h1"> Cadastrar </h1>
-                        <form action="{{ route('veiculo.salvar') }}" method="POST">
+<div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+            @if ($message = Session::get('success'))                   
+            <div class="alert alert-success">
+                <p> {{  $message }} </p>
+            </div>
+            @endif
+                
+                
+                
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <form action="{{ route('veiculo.salvar') }}" method="POST">
                         <label class=""> Nome </label>
     <input type="text" name="placa" class="form-control" />
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
