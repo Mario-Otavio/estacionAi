@@ -26,6 +26,7 @@ class UsuarioController extends BaseController
     public function listar()
     {
         $Usuarios = Usuario::all();
+        
         return view('Usuarios/usuario_listar', ['Usuarios' => $Usuarios]);
     }
 }
