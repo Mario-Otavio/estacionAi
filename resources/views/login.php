@@ -54,7 +54,7 @@
 </head>
 
 <body class="antialiased">
-    <<<<<<< HEAD <section class="vh-100 gradient-form" style="background-color: #eee;">
+    <section class="vh-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
@@ -105,40 +105,7 @@
                 </div>
             </div>
         </div>
-        </section>
-        =======
-
-
-
-
-
-        <div class="container">
-            <div class="row justify-content-center align-items-center vh-100">
-                <div class="flex justify-center mb-3">
-                    <a href="{{ route('welcome') }}"> <img src="img/estacionai.png" class="m-3" width="300"> </a>
-                    <div class="row justify-content-center align-items-center">
-                        <div class="shadow">
-                            <div class="container">
-                                <form action="POST">
-                                    <div class="form">
-                                        <label for="username" class="form-label">Nome de usuário</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Digite o nome do usuário " />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputPassword5" class="form-label">Senha</label>
-                                        <input type="password" class="form-control" id="senha" placeholder="Digite sua senha " />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mb-3">Entrar</button>
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            >>>>>>> 85595878fc82ae6575969780c28a4157305755bb
+    </section>
 </body>
 
 </html>
