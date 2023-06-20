@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeiculoController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,37 +14,29 @@ use App\Http\Controllers\VeiculoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//Rotas Veiculo
-Route::get('/veiculo_listar', [
-    VeiculoController::class,
-    'listar'
-])
-    ->name('veiculo.listar');
+// Cria um filtro por grupo de autenticação
+// aqueles que tiverem liberados acessa direto
+// o que estiver dentro de @auth vai precisar autenticar.
+Route::group(['middleware' => ['web']], function () {
 
-Route::get('/cadastrar_veiculo', function () {
-    return view('veiculos/cadastrar_veiculo');
-})->name('veiculo.cadastrar');
+    //grupo autenticado
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/listar_veiculo', [VeiculoController::class, 'listar'])->name('veiculo.listar');
 
-Route::post('/cadastrar_veiculo', [
-    VeiculoController::class,
-    'salvar'
-])
-    ->name('veiculo.salvar');
+        Route::get('/edit_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
+        Route::get('/listar_veiculo', [VeiculoController::class, 'delete'])->name('veiculo.destroy');
 
-//Rotas Usuario
-Route::get('/cadastrar_usuario', function () {
-    return view('usuario/cadastrar_usuario');
-})->name('usuario.cadastro');
+        Route::get('/cadastrar_veiculo', function () {
+            return view('veiculos/cadastrar_veiculo');
+        })->name("veiculos.cadastrar");
 
-Route::post('/cadastrar_usuario', [
-    UsuarioController::class,
-    'Registrar'
-])
-    ->name('usuario.salvar');
+        Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
+    });
 
-Route::get('/formulario', function () {
-    return view('formulario');
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get('/login_usuario', [LoginController::class, 'show'])->name('login');
 });
