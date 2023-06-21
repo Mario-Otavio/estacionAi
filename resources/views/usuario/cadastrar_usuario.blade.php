@@ -25,7 +25,7 @@
             background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+            background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
         }
 
         @media (min-width: 768px) {
@@ -56,19 +56,18 @@
     <section class="vh-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-xl-10">
+                <div class="col-xl-6">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
-                            <div class="col-lg-7">
+                            <div class="col-lg-12">
                                 <div class="card-body p-md-5 mx-md-4">
 
                                     <div class="text-center">
                                         <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                        <h4 class="mt-1 mb-4 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
                                     <form>
-                                        <p class="text-center"><strong>Cadastre-se!</strong></p>
+                                        <p class="text-center pt-4"><strong>Cadastre-se!</strong></p>
 
                                         <div class="form-outline mb-1">
                                             <label class="form-label">Nome completo</label>
@@ -86,7 +85,7 @@
                                             <input type="password" id="form2Example22" class="form-control" placeholder="password" />
                                         </div>
 
-                                        <div class="text-center pt-4 mb-5 pb-1">
+                                        <div class="text-center pt-5 mb-5 pb-1">
                                             <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Registrar</button>
                                         </div>
                                     </form>

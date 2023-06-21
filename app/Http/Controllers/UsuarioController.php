@@ -20,13 +20,12 @@ class UsuarioController extends BaseController
     {
         Usuario::create($request->all());
         return redirect()->route('usuario.cadastro')
-            ->with('success', 'sucesso...');
+            ->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     public function listar()
     {
-        $Usuarios = Usuario::all();
-        
+        $Usuarios = Usuario::all(); //vem do banco
         return view('Usuarios/usuario_listar', ['Usuarios' => $Usuarios]);
     }
 }

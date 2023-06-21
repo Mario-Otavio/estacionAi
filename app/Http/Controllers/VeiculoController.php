@@ -20,7 +20,7 @@ class VeiculoController extends BaseController
     {
         Veiculo::create($request->all());
         return redirect()->route('veiculos.cadastrar')
-            ->with('success', 'Veículo Cadastro com Sucesso');
+            ->with('success', 'Veículo cadastrado com sucesso!');
     }
 
     public function listar()
