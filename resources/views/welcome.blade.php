@@ -166,7 +166,6 @@
                             <a class="nav-link text-white" id="btnEntrar" href="{{ route('login') }}">Entrar</a>
                         </li>
                         <li class="nav-item">
-<<<<<<< HEAD
                             <a class="nav-link" href="#">Features</a>
                         </li>
                         <li class="nav-item">
@@ -174,9 +173,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('cadastrar.usuario') }}">Registrar-se</a>
-=======
-                            <a class="nav-link text-white" id="btnRegistrar" href="cadastrar_usuario">Registrar-se</a>
->>>>>>> df2eaafdb9e2667c288479b47501fffc76d789d8
                         </li>
                     </ul>
                 </div>

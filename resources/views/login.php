@@ -66,7 +66,7 @@
                                         <h4 class="mt-1 mb-5 pt-31 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
-                                    <form action="{{ route('login.usuario') }}" method="GET">
+                                    <form action="{{ route('login.usuario') }}" method="POST">
                                         <p><strong>Por favor, faça seu login!</strong></p>
 
                                         <div class="form-outline mb-4">

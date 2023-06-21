@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
   
     
 
-    
+    Route::get('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 
     // Route::get('/login', [LoginController::class, 'authenticated'])->name('login.usuario');

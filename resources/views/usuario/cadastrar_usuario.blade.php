@@ -61,18 +61,19 @@
                         <div class="row g-0">
                             <div class="col-lg-12">
                                 <div class="card-body p-md-5 mx-md-4">
+                                    
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <p> {{ $message }} </p>
+                                    </div>
+                                    @endif
 
                                     <div class="text-center">
                                         <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
                                     </div>
 
-<<<<<<< HEAD
                                     <form action="{{ route('usuario.salvar') }}" method="POST">
                                         <p class="text-center"><strong>Cadastre-se!</strong></p>
-=======
-                                    <form>
-                                        <p class="text-center pt-4"><strong>Cadastre-se!</strong></p>
->>>>>>> df2eaafdb9e2667c288479b47501fffc76d789d8
 
                                         <div class="form-outline mb-1">
                                             <label class="form-label">Nome completo</label>
@@ -89,15 +90,9 @@
                                             <label class="form-label">Senha</label>
                                             <input type="password" name="password" class="form-control" placeholder="password" />
                                         </div>
-<<<<<<< HEAD
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="text-center pt-4 mb-5 pb-1">
                                             <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="salvar">
-=======
-
-                                        <div class="text-center pt-5 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Registrar</button>
->>>>>>> df2eaafdb9e2667c288479b47501fffc76d789d8
                                         </div>
                                     </form>
                                 </div>
