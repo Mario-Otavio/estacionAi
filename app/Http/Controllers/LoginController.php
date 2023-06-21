@@ -13,12 +13,11 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(LoginRequest $request)
-    {
+    public function login(LoginRequest $request){
         $credenciais = $request->getCredentials();
 
         if (!Auth::validate($credenciais)) {
-            return redirect()->to('login')->withErrors('auth.failed', 'Login deu errado preto');
+            return redirect()->to('login')->withErrors(['field' => 'Usuário ou senha inválido']);
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credenciais);
@@ -30,5 +29,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         return redirect()->intended();
+    }
+    protected function logout(){
+        Auth::logout();
+        return redirect("/");
     }
 }
