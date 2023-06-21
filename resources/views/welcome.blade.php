@@ -82,6 +82,46 @@
                 height: 600px;
             }
         }
+
+        #btnEntrar {
+            border-radius: 0.25rem;
+            border-color: #f1f3f4;
+            border: 1px solid;
+        }
+
+        .gradient-custom-2 {
+            /* fallback for old browsers */
+            background: #ff0007;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
+        }
+
+        #btnRegistrar {
+            border-radius: 0.25rem;
+            color: #ef3b2d !important;
+            border: 1px solid #ef3b2d;
+            margin-left: 6px;
+        }
+
+        #btnRegistrar:hover {
+            border-radius: 0.25rem;
+            color: white !important;
+            border: 1px solid transparent;
+            margin-left: 6px;
+            background-image: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
+        }
+
+        span {
+            color: #ff0007 !important;
+        }
+
+        #txtCentral {
+            margin-left: 25rem;
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -109,19 +149,24 @@
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <div class="container-fluid">
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
-                <div class="collapse navbar-collapse container" id="navbarExample01">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/estacionai.png" alt="Logo" width="170" height="">
-                    </a>
+                <a class="navbar-brand" href="#">
+                    <img src="img/estacionai.png" alt="Logo" width="170" height="">
+                </a>
+                <div class="collapse navbar-collapse container align-items-center justify-content-end" id="navbarExample01">
+
                     <ul class="navbar-nav justify-content-end mb-2 mb-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" aria-current="page" href="#">Início</a>
+                        <!-- <li class="nav-item active">
+                            <a class="nav-link text-danger" aria-current="page" href="#">Início</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" id="btnEntrar" href="{{ route('login') }}">Entrar</a>
                         </li>
                         <li class="nav-item">
+<<<<<<< HEAD
                             <a class="nav-link" href="#">Features</a>
                         </li>
                         <li class="nav-item">
@@ -129,6 +174,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('cadastrar.usuario') }}">Registrar-se</a>
+=======
+                            <a class="nav-link text-white" id="btnRegistrar" href="cadastrar_usuario">Registrar-se</a>
+>>>>>>> df2eaafdb9e2667c288479b47501fffc76d789d8
                         </li>
                     </ul>
                 </div>
@@ -137,13 +185,13 @@
         <!-- Navbar -->
 
         <!-- Background image -->
-        <div class="p-5 text-center bg-image" style="background-image: url('https://img.freepik.com/fotos-gratis/conceito-de-transporte-de-veiculos-estacionados_23-2148959697.jpg?w=1380&t=st=1687215877~exp=1687216477~hmac=249b2cec1b4849862954c3e8c8c3013b115e55f3ecd870e17838150c91ecc19e'); height: 400px;">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="bg-image" style="background-image: url('https://img.freepik.com/fotos-gratis/conceito-de-transporte-de-veiculos-estacionados_23-2148959697.jpg?w=1380&t=st=1687215877~exp=1687216477~hmac=249b2cec1b4849862954c3e8c8c3013b115e55f3ecd870e17838150c91ecc19e'); background-size: cover; height: 400px;">
+            <div class="mask h-100" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex container col-4 align-items-center h-100" id="txtCentral">
                     <div class="text-white">
-                        <h1 class="mb-3">EstacionAi</h1>
+                        <h1 class="mb-3">Estacion<span>Ai</span></h1>
                         <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis deleniti repellat dolorum saepe! Incidunt doloremque molestiae doloribus odio facere obcaecati, accusamus consequatur dolores maxime amet hic voluptatem assumenda? Velit, laudantium!</p>
-                        <a class="btn btn-outline-light btn-lg" href="#!" role="button">Consulte seu veiculo</a>
+                        <a class="btn text-white gradient-custom-2 btn-lg" href="#!" role="button">Consulte seu veiculo</a>
                     </div>
                 </div>
             </div>

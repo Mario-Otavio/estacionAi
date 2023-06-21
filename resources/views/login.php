@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +22,7 @@
             background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+            background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
         }
 
         @media (min-width: 768px) {
@@ -65,7 +63,7 @@
 
                                     <div class="text-center">
                                         <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                        <h4 class="mt-1 mb-5 pb-1">Nós somos a EstacionAi</h4>
+                                        <h4 class="mt-1 mb-5 pt-31 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
                                     <form action="{{ route('login.usuario') }}" method="GET">
