@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +20,8 @@ use App\Http\Controllers\LoginController;
 // o que estiver dentro de @auth vai precisar autenticar.
 Route::group(['middleware' => ['web']], function () {
 
-    //grupo autenticado
-    //Rotas Veiculo
-    Route::group(['middleware' => ['auth']], function () {
+    //grupo autenticado precisa estar todas as rotas de
+    Route::group(['middleware' => ['auth']], function () {   });
         Route::get('/listar_veiculo', [VeiculoController::class, 'listar'])->name('veiculo.listar');
         Route::get('/edit_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
         Route::get('/listar_veiculo', [VeiculoController::class, 'delete'])->name('veiculo.destroy');
@@ -29,19 +29,24 @@ Route::group(['middleware' => ['web']], function () {
             return view('veiculos/cadastrar_veiculo');
         })->name("cadastrar.veiculo");
 
-        Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
-    });
+        Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');   
+
+        Route::get('/cadastrar_usuario', function () {
+            return view('usuario/cadastrar_usuario');
+        })->name("cadastrar.usuario");
+        Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
+    // })
 
     //Rota Index
     Route::get('/', function () {
         return view('welcome');
     });
     //Rotas Usuario
-    Route::get('/cadastrar_usuario', function () {
-        return view('usuario/cadastrar_usuario');
-    })->name("cadastrar.usuario");
+  
+    
 
-
-
+    
     Route::get('/login', [LoginController::class, 'show'])->name('login');
+
+    // Route::get('/login', [LoginController::class, 'authenticated'])->name('login.usuario');
 });

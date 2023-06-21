@@ -128,7 +128,7 @@
                             <a class="nav-link text-white" href="{{ route('login') }}">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="cadastrar_usuario">Registrar-se</a>
+                            <a class="nav-link text-white" href="{{ route('cadastrar.usuario') }}">Registrar-se</a>
                         </li>
                     </ul>
                 </div>

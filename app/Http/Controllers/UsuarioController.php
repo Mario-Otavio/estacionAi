@@ -19,14 +19,14 @@ class UsuarioController extends BaseController
     public function salvar(UsuarioRequest $request)
     {
         Usuario::create($request->all());
-        return redirect()->route('usuario.cadastro')
+        return redirect()->route('usuario.salvar')
             ->with('success', 'sucesso...');
     }
 
     public function listar()
     {
         $Usuarios = Usuario::all();
-        
-        return view('Usuarios/usuario_listar', ['Usuarios' => $Usuarios]);
+
+        return view('usuario/usuario_listar', ['Usuarios' => $Usuarios]);
     }
 }

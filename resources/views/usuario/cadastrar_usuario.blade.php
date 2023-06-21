@@ -67,27 +67,27 @@
                                         <h4 class="mt-1 mb-4 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
-                                    <form>
+                                    <form action="{{ route('usuario.salvar') }}" method="POST">
                                         <p class="text-center"><strong>Cadastre-se!</strong></p>
 
                                         <div class="form-outline mb-1">
                                             <label class="form-label">Nome completo</label>
-                                            <input type="text" id="form2Example11" class="form-control" placeholder="username" />
+                                            <input type="text" name="name" class="form-control" placeholder="username" />
                                         </div>
 
                                         <div class="mb-1">
                                             <label class="form-label">Endereço de email</label>
-                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                            <input type="email" class="form-control" name="email" placeholder="name@example.com">
 
                                         </div>
 
                                         <div class="form-outline">
                                             <label class="form-label">Senha</label>
-                                            <input type="password" id="form2Example22" class="form-control" placeholder="password" />
+                                            <input type="password" name="password" class="form-control" placeholder="password" />
                                         </div>
-
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="text-center pt-4 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Registrar</button>
+                                            <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="salvar">
                                         </div>
                                     </form>
                                 </div>

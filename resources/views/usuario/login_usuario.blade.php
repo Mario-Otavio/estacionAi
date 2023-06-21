@@ -28,7 +28,7 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="container">
                        
-                        <form action="{{ route('veiculos.cadastrar') }}" method="post">
+                        <form action="{{ route('login') }}" method="post">
                             <div class="form-group">
                                 <label for="username">Nome de usuário</label>
                                 <input type="text" class="form-control" id="username" placeholder="Digite o nome do usuário "/>

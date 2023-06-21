@@ -68,7 +68,7 @@
                                         <h4 class="mt-1 mb-5 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
-                                    <form>
+                                    <form action="{{ route('login.usuario') }}" method="GET">
                                         <p><strong>Por favor, faça seu login!</strong></p>
 
                                         <div class="form-outline mb-4">
@@ -80,7 +80,7 @@
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Conecte-se</button>
+                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Conecte-se</button>
                                             <a class="text-muted" href="#!">Esqueceu sua senha?</a>
                                         </div>
 
