@@ -63,7 +63,7 @@
 
                                     <div class="text-center">
                                         <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                        <h4 class="mt-1 mb-5 pt-31 pb-1">Nós somos a EstacionAi</h4>
+                                        <h4 class="mt-1 mb-5 pt-3 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
                                     <form>

@@ -28,4 +28,29 @@ class UsuarioController extends BaseController
         $Usuarios = Usuario::all(); //vem do banco
         return view('Usuarios/usuario_listar', ['Usuarios' => $Usuarios]);
     }
+
+    public function show(Usuario $usuario)
+    {
+        $usuarioRecuperado = Usuario::findOrFail($usuario->id);
+        return view('usuario/show_usuario', ['usuario' => $usuarioRecuperado]);
+    }
+
+    public function edit(Usuario $usuario)
+    {
+        return view('usuario/editar_usuario', []);
+    }
+
+    public function update(UsuarioRequest $request, Usuario $usuario)
+    {
+
+        $usuario->update($request->all());
+        return redirect()->route('usuario.listar')
+            ->with('success', 'Veículo atualizado com sucesso!');
+    }
+
+    public function destroy(Usuario $usuario)
+    {
+        $usuario->delete();
+        return redirect()->route('usuario.listar')->with('sucess', 'Usuario deletado com sucesso!');
+    }
 }
