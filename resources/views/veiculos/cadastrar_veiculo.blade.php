@@ -428,6 +428,8 @@
                     <form action="{{ route('veiculo.salvar') }}" method="POST">
                         <label class=""> Nome </label>
                         <input type="text" name="placa" class="form-control" />
+                        <input type="text" name="marca" class="form-control" />
+                        <input type="text" name="modelo" class="form-control" />
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <input type="submit" value="Salvar" class="btn btn-primary" />
                     </form>

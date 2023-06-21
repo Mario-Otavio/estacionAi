@@ -19,8 +19,8 @@ class VeiculoController extends BaseController
     public function salvar(VeiculoRequest $request)
     {
         Veiculo::create($request->all());
-        return redirect()->route('veiculos.cadastrar')
-            ->with('success', 'Veículo cadastrado com sucesso!');
+        return redirect()->route('veiculo.salvar')
+            ->with('success', 'Veículo Cadastro com Sucesso');
     }
 
     public function listar()
