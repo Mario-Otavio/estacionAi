@@ -60,11 +60,11 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
-                        <!-- <li><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li><a class="nav-link scrollto " href="/">Inicio</a></li>
+                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>
+                        <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
                         <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
-                        <li><a class="nav-link scrollto" href="{{ route('login') }}">Entrar</a></li>
+                        <li><a class="nav-link scrollto" id="btnLogin" href="{{ route('login') }}">Login</a></li>
                         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#">Drop Down 1</a></li>
@@ -82,7 +82,7 @@
                                 <li><a href="#">Drop Down 4</a></li>
                             </ul>
                         </li> -->
-                        <li><a class="nav-link scrollto" href="cadastrar_usuario">Registrar-se</a></li>
+                        <li><a class="nav-link scrollto" id="btnRegistrar" href="cadastrar_usuario">Registrar-se</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -111,24 +111,24 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                                <div class="icon"><i class="bx bx-dollar-circle"></i></div>
+                                <h4 class="title"><a href="">Controle financeiro</a></h4>
                                 <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                                <div class="icon"><i class="bx bx-file"></i></div>
-                                <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+                                <div class="icon"><i class="bx bx-broadcast"></i></div>
+                                <h4 class="title"><a href="">Acompanhamento online</a></h4>
                                 <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                                <div class="icon"><i class="bx bx-tachometer"></i></div>
-                                <h4 class="title"><a href="">Magni Dolores</a></h4>
+                                <div class="icon"><i class="bx bx-cog"></i></div>
+                                <h4 class="title"><a href="">Automação de processos</a></h4>
                                 <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                             </div>
                         </div>
@@ -145,7 +145,94 @@
 
                 </div>
             </section><!-- End Featured Services Section -->
+
+            <!-- ======= Pricing Section ======= -->
+            <section id="pricing" class="pricing">
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-title">
+                        <h2>Planos de assinatura</h2>
+                        <h3>Confira nossos <span>Preços</span></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus neque quasi explicabo sit non repudiandae, iusto porro tenetur.</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="box">
+                                <h3>Free</h3>
+                                <h4><sup>$</sup>0<span> / Mensal</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li class="na">Pharetra massa</li>
+                                    <li class="na">Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <div class="box featured">
+                                <h3>Business</h3>
+                                <h4><sup>$</sup>19<span> / Mensal</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li class="na">Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                            <div class="box">
+                                <h3>Developer</h3>
+                                <h4><sup>$</sup>29<span> / Mensal</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li>Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+                            <div class="box">
+                                <span class="advanced">Advanced</span>
+                                <h3>Ultimate</h3>
+                                <h4><sup>$</sup>49<span> / Mensal</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li>Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Pricing Section -->
         </main><!-- End #main -->
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

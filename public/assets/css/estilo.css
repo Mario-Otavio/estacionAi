@@ -72,7 +72,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #106eea;
+  background: #c70e14;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -86,8 +86,10 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #3284f1;
+  background: #c70e14;
   color: #fff;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.05);
 }
 
 .back-to-top.active {
@@ -178,8 +180,41 @@ h6 {
   color: #222222;
 }
 
+#btnLogin{
+  color: #c70e14;
+  border: 2px solid #c70e14;
+  border-radius: 4px;
+  padding: 5px 14px;
+}
+#btnLogin:hover{
+  color: #c70e14;
+  border: 2px solid #c70e14;
+  border-radius: 4px;
+  padding: 5px 14px;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.05);
+  text-decoration: none;
+}
+
+#btnRegistrar{
+  border: 2px solid #c70e14;
+  background-color: #c70e14;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 14px;
+}
+#btnRegistrar:hover{
+  border: 2px solid #c70e14;
+  background-color: #c70e14;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 14px;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.05);
+}
+
 #header .logo a span {
-  color: #e91016;
+  color: #c70e14;
 }
 
 #header .logo img {
@@ -214,7 +249,7 @@ h6 {
 
 .navbar>ul>li {
   white-space: nowrap;
-  padding: 10px 0 10px 28px;
+  padding: 10px 0 10px 18px;
 }
 
 .navbar a,
@@ -245,7 +280,7 @@ h6 {
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: #e91016;
+  background-color: #c70e14;
   visibility: hidden;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
@@ -262,7 +297,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #e91016;
+  color: #c70e14;
 }
 
 .navbar .dropdown ul {
@@ -296,7 +331,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #e91016;
+  color: #c70e14;
 }
 
 .navbar .dropdown:hover>ul {
@@ -440,7 +475,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #e91016;
+  color: #c70e14;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -482,7 +517,7 @@ h6 {
 }
 
 #hero h1 span {
-  color: #e91016;
+  color: #c70e14;
 }
 
 #hero h2 {
@@ -503,12 +538,14 @@ h6 {
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
-  background: #e91016;
+  background: #c70e14;
 }
 
 #hero .btn-get-started:hover {
   background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
   text-decoration: none;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.07);
   
 }
 
@@ -523,7 +560,7 @@ h6 {
 }
 
 #hero .btn-watch-video i {
-  color: #106eea;
+  color: #c70e14;
   font-size: 32px;
   transition: 0.3s;
   line-height: 0;
@@ -531,7 +568,7 @@ h6 {
 }
 
 #hero .btn-watch-video:hover {
-  color: #106eea;
+  color: #c70e14;
 }
 
 #hero .btn-watch-video:hover i {
@@ -595,8 +632,8 @@ section {
   font-weight: 700;
   padding: 8px 20px;
   margin: 0;
-  background: #e7f1fd;
-  color: #106eea;
+  background: #fae4e5;
+  color: #c70e14;
   display: inline-block;
   text-transform: uppercase;
   border-radius: 50px;
@@ -1340,12 +1377,12 @@ section {
   font-size: 16px;
   font-weight: 600;
   color: #777777;
-  background: #f8f8f8;
+  background: #faefef;
 }
 
 .pricing .box h4 {
   font-size: 36px;
-  color: #106eea;
+  color: #c70e14;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   margin-bottom: 20px;
@@ -1377,7 +1414,7 @@ section {
 }
 
 .pricing .box ul i {
-  color: #106eea;
+  color: #c70e14;
   font-size: 18px;
   padding-right: 4px;
 }
@@ -1395,7 +1432,7 @@ section {
 }
 
 .pricing .btn-buy {
-  background: #ff0007;
+  background: #c70e14;
   display: inline-block;
   padding: 8px 35px 10px 35px;
   border-radius: 4px;
@@ -1409,12 +1446,15 @@ section {
 }
 
 .pricing .btn-buy:hover {
-  background: #ff0007;
+  background: #c70e14;
+  text-decoration: none;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.1);
 }
 
 .pricing .featured h3 {
   color: #fff;
-  background: #106eea;
+  background: #c70e14;  
 }
 
 .pricing .advanced {
@@ -1426,7 +1466,7 @@ section {
   z-index: 1;
   font-size: 14px;
   padding: 1px 0 3px 0;
-  background: #106eea;
+  background: #c70e14;
   color: #fff;
 }
 
