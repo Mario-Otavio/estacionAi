@@ -14,11 +14,11 @@
      <td>    {{ $veiculo->placa }}</td>
      <td>
         <form action="POST">
-            <a class="btn btn-info" href="{{ route('veiculos.show', $veiculo->id) }}"> Detalhes </a>
-            <a class="btn btn-primary" href="{{ route('veiculos.edit', $veiculo->id) }}"> Editar </a>
+            <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
+            <a class="btn btn-primary" href="{{ route('veiculo.edit', $veiculo->id) }}"> Editar </a>
             <button type="submit" class="btn btn-danger">
                 @csrf 
-                @method('DELETE')
+                @method('destroy')
                 Delete
             </button>
         </form>

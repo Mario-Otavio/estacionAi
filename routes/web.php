@@ -22,9 +22,9 @@ Route::group(['middleware' => ['web']], function () {
 
     //grupo autenticado precisa estar todas as rotas de
     Route::group(['middleware' => ['auth']], function () {   });
-        Route::get('/listar_veiculo', [VeiculoController::class, 'listar'])->name('veiculo.listar');
+        Route::get('/veiculos', [VeiculoController::class, 'listar'])->name('veiculo.listar');
         Route::get('/edit_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
-        Route::get('/listar_veiculo', [VeiculoController::class, 'delete'])->name('veiculo.destroy');
+        Route::get('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
         Route::get('/cadastrar_veiculo', function () {
             return view('veiculos/cadastrar_veiculo');
         })->name("cadastrar.veiculo");
@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
   
     
 
-    Route::get('/login', [LoginController::class, 'login'])->name('login.usuario');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 
     // Route::get('/login', [LoginController::class, 'authenticated'])->name('login.usuario');
