@@ -182,16 +182,17 @@ h6 {
 
 #btnLogin{
   color: #c70e14;
-  border: 2px solid #c70e14;
+  border: 1px solid #c70e14;
   border-radius: 4px;
   padding: 5px 14px;
+  margin-left: 18px;
 }
 #btnLogin:hover{
   color: #c70e14;
   border: 2px solid #c70e14;
   border-radius: 4px;
   padding: 5px 14px;
-  -webkit-transform: scale(1.5);
+  -webkit-transform: scale(1.8);
     transform: scale(1.05);
   text-decoration: none;
 }
@@ -202,6 +203,7 @@ h6 {
   color: white;
   border-radius: 4px;
   padding: 5px 14px;
+  margin-left: 18px;
 }
 #btnRegistrar:hover{
   border: 2px solid #c70e14;
@@ -1370,6 +1372,9 @@ section {
   overflow: hidden;
 }
 
+#pricing{
+  background: #f5f5f5;
+}
 .pricing .box h3 {
   font-weight: 400;
   margin: -20px -20px 20px -20px;
@@ -1665,10 +1670,10 @@ section {
 --------------------------------------------------------------*/
 #footer {
   background: #fff;
-  padding: 0 0 30px 0;
+  padding: 0 0 0px 0;
   color: #444444;
   font-size: 14px;
-  background: #f1f6fe;
+  background: #f5f5f5;
 }
 
 #footer .footer-newsletter {
@@ -1771,7 +1776,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #106eea;
+  color: #c70e14;
   font-size: 18px;
   line-height: 1;
 }
@@ -1795,13 +1800,13 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #106eea;
+  color: #c70e14;
 }
 
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #106eea;
+  background: #c70e14;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -1814,14 +1819,16 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #3b8af2;
+  background: #c70e14;
   color: #fff;
   text-decoration: none;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.05);
 }
 
 #footer .copyright {
   text-align: center;
-  float: left;
+  float: center;
 }
 
 #footer .credits {
