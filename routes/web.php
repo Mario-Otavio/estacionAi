@@ -21,29 +21,33 @@ use App\Http\Controllers\UsuarioController;
 Route::group(['middleware' => ['web']], function () {
 
     //grupo autenticado precisa estar todas as rotas de
-    Route::group(['middleware' => ['auth']], function () {   });
-        Route::get('/veiculos', [VeiculoController::class, 'listar'])->name('veiculo.listar');
-        Route::get('/edit_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
-        Route::get('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
-        Route::get('/cadastrar_veiculo', function () {
-            return view('veiculos/cadastrar_veiculo');
-        })->name("cadastrar.veiculo");
+    Route::group(['middleware' => ['auth']], function () {
+    });
+    Route::get('/veiculos', [VeiculoController::class, 'listar'])->name('veiculo.listar');
+    Route::get('/edit_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
+    Route::get('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+    Route::get('/cadastrar_veiculo', function () {
+        return view('veiculos/cadastrar_veiculo');
+    })->name("cadastrar.veiculo");
 
-        Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');   
+    Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
-        Route::get('/cadastrar_usuario', function () {
-            return view('usuario/cadastrar_usuario');
-        })->name("cadastrar.usuario");
-        Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
+    Route::get('/cadastrar_usuario', function () {
+        return view('usuario/cadastrar_usuario');
+    })->name("cadastrar.usuario");
+    Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     // })
 
     //Rota Index
     Route::get('/', function () {
         return view('welcome');
     });
-    //Rotas Usuario
-  
-    
+
+    //Rota Dashboard
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    });
+
 
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');

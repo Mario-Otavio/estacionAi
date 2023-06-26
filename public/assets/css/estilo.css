@@ -541,6 +541,7 @@ h6 {
   transition: 0.5s;
   color: #fff;
   background: #c70e14;
+  text-decoration: none;
 }
 
 #hero .btn-get-started:hover {
@@ -768,6 +769,7 @@ section {
 
 .featured-services .title a {
   color: #111;
+  text-decoration: none;
 }
 
 .featured-services .description {
@@ -1448,6 +1450,7 @@ section {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .pricing .btn-buy:hover {
@@ -1796,6 +1799,7 @@ section {
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
+  text-decoration: none;
 }
 
 #footer .footer-top .footer-links ul a:hover {
