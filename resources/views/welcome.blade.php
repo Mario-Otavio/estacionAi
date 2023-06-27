@@ -7,7 +7,7 @@
 
         <title>EstacionAi</title>
         <!-- Main CSS  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/estilo.css') }}">
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 
 
         <!-- Favicons -->
@@ -25,8 +25,7 @@
         <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        <!-- Main CSS  -->
-        <link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     </head>
 
     <body>
@@ -60,11 +59,11 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
-                        <!-- <li><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li><a class="nav-link scrollto " href="/">Inicio</a></li>
+                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>
+                        <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
                         <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
-                        <li><a class="nav-link scrollto" href="{{ route('login') }}">Entrar</a></li>
+                        <a class="nav-link scrollto" id="btnLogin" href="{{ route('login') }}">Login</a>
                         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="#">Drop Down 1</a></li>
@@ -82,7 +81,7 @@
                                 <li><a href="#">Drop Down 4</a></li>
                             </ul>
                         </li> -->
-                        <li><a class="nav-link scrollto" href="cadastrar_usuario">Registrar-se</a></li>
+                        <a class="nav-link scrollto" id="btnRegistrar" href="cadastrar_usuario">Registrar-se</a>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -111,24 +110,24 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                                <div class="icon"><i class="bx bx-dollar-circle"></i></div>
+                                <h4 class="title"><a href="">Controle financeiro</a></h4>
                                 <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                                <div class="icon"><i class="bx bx-file"></i></div>
-                                <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+                                <div class="icon"><i class="bx bx-broadcast"></i></div>
+                                <h4 class="title"><a href="">Acompanhamento online</a></h4>
                                 <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                                <div class="icon"><i class="bx bx-tachometer"></i></div>
-                                <h4 class="title"><a href="">Magni Dolores</a></h4>
+                                <div class="icon"><i class="bx bx-cog"></i></div>
+                                <h4 class="title"><a href="">Automação de processos</a></h4>
                                 <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                             </div>
                         </div>
@@ -145,7 +144,156 @@
 
                 </div>
             </section><!-- End Featured Services Section -->
+
+            <!-- ======= Pricing Section ======= -->
+            <section id="pricing" class="pricing">
+                <div class="container" data-aos="fade-up">
+
+                    <div class="section-title">
+                        <h2>Planos de assinatura</h2>
+                        <h3>Confira nossos <span>Preços</span></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum delectus neque quasi explicabo sit non repudiandae, iusto porro tenetur.</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="box">
+                                <h3>Gratuíto</h3>
+                                <h4><sup>$</sup>0<span> /Grátis</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li class="na">Pharetra massa</li>
+                                    <li class="na">Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                            <div class="box featured">
+                                <h3>Básico</h3>
+                                <h4><sup>$</sup>19<span> / Mensal</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li class="na">Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                            <div class="box">
+                                <h3>Intermediário</h3>
+                                <h4><sup>$</sup>29<span> / Semestral</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li>Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+                            <div class="box">
+                                <span class="advanced">Exclusivo</span>
+                                <h3>Premium</h3>
+                                <h4><sup>$</sup>49<span> / Anual</span></h4>
+                                <ul>
+                                    <li>Aida dere</li>
+                                    <li>Nec feugiat nisl</li>
+                                    <li>Nulla at volutpat dola</li>
+                                    <li>Pharetra massa</li>
+                                    <li>Massa ultricies mi</li>
+                                </ul>
+                                <div class="btn-wrap">
+                                    <a href="#" class="btn-buy">Assinar plano</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- End Pricing Section -->
         </main><!-- End #main -->
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h3>Estacion<span>Ai</span></h3>
+                            <p>
+                                A108 Adam Street <br>
+                                New York, NY 535022<br>
+                                United States <br><br>
+                                <strong>Phone:</strong> (65) 99999-9999<br>
+                                <strong>Email:</strong> info@example.com<br>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Links Úteis</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre nós</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Serviços</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Termos de serviço</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Política de Privacidade</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Nossos Serviços</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i href="#">Web Design</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Web Development</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Product Management</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Marketing</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Graphic Design</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Redes Sociais</h4>
+                            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                            <div class="social-links mt-3">
+                                <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
+                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
+                                <!-- <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-3">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>EstacionAi</span></strong> Todos os direitos reservados
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
