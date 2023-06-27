@@ -11,9 +11,15 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
+    public function getCredentials(){
+
+        $username = $this->input("email");
+        $password = $this->input("password");
+        return ["email" => $username, "password" => $password];
+    }
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
