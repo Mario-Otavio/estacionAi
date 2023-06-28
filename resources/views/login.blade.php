@@ -117,7 +117,7 @@
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">Conecte-se</button>
+                                            <input type="submit" class="btn btn-primary btn-block fa-lg mb-3" value="Conecte-se" />
                                             <a class="text-muted" href="#!">Esqueceu sua senha?</a>
                                         </div>
 
@@ -143,7 +143,6 @@
             </div>
         </div>
     </section>
-
 </body>
 
 </html>
