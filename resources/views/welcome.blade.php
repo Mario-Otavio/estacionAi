@@ -91,12 +91,36 @@
 
         <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex align-items-center">
-            <div class="container" data-aos="zoom-out" data-aos-delay="100">
+            <div class="container" data-aos-delay="100">
                 <h1>Bem-Vindo ao Estacion<span>Ai</span></h1>
                 <h2 class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis deleniti repellat dolorum saepe! Incidunt doloremque molestiae doloribus odio facere obcaecati, accusamus consequatur dolores maxime amet hic voluptatem assumenda? Velit, laudantium!</h2>
                 <div class="d-flex">
-                    <a href="#" class="btn-get-started scrollto">Consulte seu Veículo</a>
-                    <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
+                    <a href="#" class="btn-get-started scrollto" data-bs-toggle="modal" data-bs-target="#verticalycentered">Consulte seu Veículo</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="verticalycentered" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"><strong>Consulte seu Veículo</strong></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body col-11 ms-3 p-xs-5 p-md-5 mx-md-4">
+                                    <form action="{{ route('login.usuario') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-4">
+                                            <input type="text" id="username" class="form-control" placeholder="Placa" />
+                                        </div>
+                                        <div class="text-center pt-1 pb-1">
+                                            <a href="#" class="btn" id="btnConsultarModal" data-bs-toggle="modal" data-bs-target="#verticalycentered">consultar</a>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Modal-->
+
                 </div>
             </div>
         </section><!-- End Hero -->
@@ -241,9 +265,9 @@
                         <div class="col-lg-3 col-md-6 footer-contact">
                             <h3>Estacion<span>Ai</span></h3>
                             <p>
-                                A108 Adam Street <br>
-                                New York, NY 535022<br>
-                                United States <br><br>
+                                Av. XV de Novembro, 303 - Porto <br>
+                                Cuiabá - MT, 78020-300 <br>
+                                <br><br>
                                 <strong>Phone:</strong> (65) 99999-9999<br>
                                 <strong>Email:</strong> info@example.com<br>
                             </p>
@@ -263,11 +287,9 @@
                         <div class="col-lg-3 col-md-6 footer-links">
                             <h4>Nossos Serviços</h4>
                             <ul>
-                                <li><i class="bx bx-chevron-right"></i href="#">Web Design</li>
-                                <li><i class="bx bx-chevron-right"></i href="#">Web Development</li>
-                                <li><i class="bx bx-chevron-right"></i href="#">Product Management</li>
-                                <li><i class="bx bx-chevron-right"></i href="#">Marketing</li>
-                                <li><i class="bx bx-chevron-right"></i href="#">Graphic Design</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Controle financeiro</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Acompanhamento online</li>
+                                <li><i class="bx bx-chevron-right"></i href="#">Automação de processos</li>
                             </ul>
                         </div>
 

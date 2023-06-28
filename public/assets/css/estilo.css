@@ -215,6 +215,23 @@ h6 {
     transform: scale(1.05);
 }
 
+#btnConsultarModal{
+  border: 2px solid #c70e14;
+  background-color: #c70e14;
+  color: white;
+  border-radius: 4px;
+  padding: 7px 50px;
+}
+#btnConsultarModal:hover{
+  border: 2px solid #c70e14;
+  background-color: #c70e14;
+  color: white;
+  border-radius: 4px;
+  padding: 7px 50px;
+  -webkit-transform: scale(1.5);
+    transform: scale(1.05);
+}
+
 #header .logo a span {
   color: #c70e14;
 }
