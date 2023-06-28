@@ -74,7 +74,7 @@
 
 </head>
 
-<body class="antialiased">
+<body>
     <section class="vh-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -93,6 +93,16 @@
                                     <div class="text-center">
                                         <h4 class="mt-1 mb-5 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
+
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="msg">
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
 
                                     <form action="{{ route('login.usuario') }}" method="POST">
                                         @csrf
@@ -134,43 +144,6 @@
         </div>
     </section>
 
-    <!-- @if (Route::has('login'))
-    @auth
-        <h1>Bem-Vindo</h1>
-    @else
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        <div class="flex justify-center">
-            <img src="{{ url('img/icone.png') }}" alt="" width="150" />
-        </div>
-        
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="container">
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul class="msg">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    <form method="POST" action="{{ route('login.usuario') }}">
-                        @csrf
-                        <div class="form-group">
-                            <label for="username">E-mail</label>
-                            <input type="text" class="form-control" id="email" placeholder="Digite o e-mail" name="email" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                    </form>
-                </div>
-        </div>
-    </div>
-    @endauth
-    @endif -->
 </body>
 
 </html>
