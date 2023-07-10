@@ -109,11 +109,11 @@
                                         <p>Por favor, faça seu login!</p>
 
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="email" class="form-control" placeholder="Nome de usuário" />
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="Nome de usuário" />
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control" placeholder="Senha" />
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Senha" />
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">

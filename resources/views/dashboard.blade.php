@@ -314,9 +314,9 @@
                                                 <h6>Filter</h6>
                                             </li>
 
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            <li><a class="dropdown-item" href="#">Hoje</a></li>
+                                            <li><a class="dropdown-item" href="#">Esse mês</a></li>
+                                            <li><a class="dropdown-item" href="#">Esse ano</a></li>
                                         </ul>
                                     </div>
 
@@ -349,9 +349,9 @@
                                                 <h6>Filter</h6>
                                             </li>
 
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            <li><a class="dropdown-item" href="#">Hoje</a></li>
+                                            <li><a class="dropdown-item" href="#">Esse mês</a></li>
+                                            <li><a class="dropdown-item" href="#">Esse ano</a></li>
                                         </ul>
                                     </div>
 
