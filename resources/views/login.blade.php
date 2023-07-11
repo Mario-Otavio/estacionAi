@@ -3,12 +3,31 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Laravel</title>
+    <title>Cadastrar veículo</title>
+    <!-- CSS -->
+    <link href="assets/css/estilo2.css" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -23,6 +42,10 @@
 
             /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
+
+            background-image: url("img/carro-estacionamento.jpg");
+            background-size: cover;
+            ;
         }
 
         @media (min-width: 768px) {
@@ -47,12 +70,12 @@
             box-shadow: 0 0 11px rgba(34, 34, 34, .4);
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
 </head>
 
-<body class="antialiased">
-    <!-- <section class="vh-100 gradient-form" style="background-color: #eee;">
+<body>
+    <section class="vh-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
@@ -61,31 +84,46 @@
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
 
+                                    <div class="d-flex justify-content-center py-4">
+                                        <a href="/" class="logo d-flex align-items-center w-auto">
+                                            <!-- <img src="assets/img/logo.png" alt="logo"> -->
+                                            <h1 class="d-none d-lg-block">Estacion<span>Ai</span></h1>
+                                        </a>
+                                    </div>
                                     <div class="text-center">
-                                        <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                        <h4 class="mt-1 mb-5 pt-3 pb-1">Nós somos a EstacionAi</h4>
+                                        <h4 class="mt-1 mb-5 pb-1">Nós somos a EstacionAi</h4>
                                     </div>
 
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="msg">
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+
                                     <form action="{{ route('login.usuario') }}" method="POST">
-                                    @csrf
-                                        <p><strong>Por favor, faça seu login!</strong></p>
+                                        @csrf
+                                        <p>Por favor, faça seu login!</p>
 
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="email" class="form-control" placeholder="Nome de usuário" />
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="Nome de usuário" />
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control" placeholder="Senha" />
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Senha" />
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" value="Conecte-se" />
+                                            <input type="submit" class="btn btn-primary btn-block fa-lg mb-3" value="Conecte-se" />
                                             <a class="text-muted" href="#!">Esqueceu sua senha?</a>
                                         </div>
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
-                                            <p class="mb-0 me-2 mr-2"><strong>Não tem uma conta?</strong></p>
-                                            <a type="button" class="btn btn-outline-danger" href="cadastrar_usuario">Registrar</a>
+                                            <p class="mb-0 me-2 mr-2">Não possui conta?</p>
+                                            <a type="button" class="btn btn-outline-danger" href="cadastrar_usuario">Registre-se!</a>
                                         </div>
                                     </form>
 

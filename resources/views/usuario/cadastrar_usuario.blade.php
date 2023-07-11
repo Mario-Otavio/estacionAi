@@ -3,120 +3,118 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Laravel</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Cadastrar veículo</title>
+    <!-- CSS -->
+    <link href="assets/css/estilo2.css" rel="stylesheet">
 
-    <!-- Styles -->
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        .gradient-custom-2 {
-            /* fallback for old browsers */
-            background: #fccb90;
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
-        }
 
-        @media (min-width: 768px) {
-            .gradient-form {
-                height: 100vh !important;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .gradient-custom-2 {
-                border-top-right-radius: .3rem;
-                border-bottom-right-radius: .3rem;
-            }
-        }
-
-        .btn-primary {
-            border-color: transparent !important;
-        }
-
-        .btn-primary:hover {
-            border-color: transparent !important;
-            box-shadow: 0 0 11px rgba(34, 34, 34, .4);
-        }
-    </style>
 </head>
 
 <body>
-    <section class="vh-100 gradient-form" style="background-color: #eee;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-xl-6">
-                    <div class="card rounded-3 text-black">
-                        <div class="row g-0">
-                            <div class="col-lg-12">
-                                <div class="card-body p-md-5 mx-md-4">
-                                    
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p> {{ $message }} </p>
-                                    </div>
-                                    @endif
 
-                                    <div class="text-center">
-                                        <a href="/"> <img src="img/estacionai2.png" style="width: 200px;" alt="logo"> </a>
-                                    </div>
+    <main>
+        <div class="container">
 
-                                    <form action="{{ route('usuario.salvar') }}" method="POST">
-                                        <p class="text-center"><strong>Cadastre-se!</strong></p>
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                                        <div class="form-outline mb-1">
-                                            <label class="form-label">Nome completo</label>
-                                            <input type="text" name="name" class="form-control" placeholder="username" />
-                                        </div>
-
-                                        <div class="mb-1">
-                                            <label class="form-label">Endereço de email</label>
-                                            <input type="email" class="form-control" name="email" placeholder="name@example.com">
-
-                                        </div>
-
-                                        <div class="form-outline">
-                                            <label class="form-label">Senha</label>
-                                            <input type="password" name="password" class="form-control" placeholder="password" />
-                                        </div>
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                        <div class="text-center pt-4 mb-5 pb-1">
-                                            <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="salvar">
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="/" class="logo d-flex align-items-center w-auto">
+                                    <!-- <img src="assets/img/logo.png" alt="logo"> -->
+                                    <h1 class="d-none d-lg-block">Estacion<span>Ai</span></h1>
+                                </a>
                             </div>
+
+                            <div class="card mb-3">
+
+                                <div class="card-body">
+
+                                    <div class="pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Cadastre-se!</h5>
+                                        <p class="text-center small">Insira seus dados</p>
+                                    </div>
+
+                                    <form action="{{ route('usuario.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
+                                        <div class="col-12">
+                                            <label for="nome" class="form-label">Nome</label>
+                                            <input type="text" name="name" class="form-control" required>
+                                            <div class="invalid-feedback">Por favor,insira um nome!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="email" class="form-label">Endereço de email</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input type="email" name="email" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="senha" class="form-label">Senha</label>
+                                            <input type="password" name="senha" class="form-control" required>
+                                            <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
+                                        </div>
+
+                                        <div class="col-12 pb-2">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                            <button class="btn btn-primary w-100" type="submit">Cadastrar</button>
+                                        </div>
+                                        @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p> {{ $message }} </p>
+                                        </div>
+                                        @endif
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </section>
+
         </div>
-    </section>
+    </main><!-- End #main -->
 
-    <!-- <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <h1 class="h1"> Cadastrar </h1>
-                    <form action="{{ route('veiculo.salvar') }}" method="POST">
-                        <label class=""> Nome </label>
-                        <input type="text" name="placa" class="form-control" />
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
-                    </form>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-                </div>
-        </div> -->
-
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 

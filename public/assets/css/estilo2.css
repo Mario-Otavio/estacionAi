@@ -13,12 +13,12 @@ body {
 
 a {
   color: #4154f1;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover {
   color: #717ff5;
-  text-decoration: none;
+  text-decoration: none ;
 }
 
 h1,
@@ -115,7 +115,7 @@ h6 {
 
 .dropdown-menu .dropdown-footer a {
   color: #444444;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .dropdown-menu .dropdown-footer a:hover {
@@ -361,13 +361,33 @@ h6 {
   margin-right: 6px;
 }
 
-.logo span {
-  font-size: 26px;
+.logo h1 {
+  font-size: 40px;
   font-weight: 700;
-  color: #012970;
+  color: #000000;
   font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
 }
 
+.btn-primary{
+  background-color: #c70e14 !important;
+  border-color: #c70e14 !important;
+  -btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+}
+.btn-primary:hover{
+  background-color: #a70c11 !important;
+  border-color: #a70c11 !important;
+  
+}
+
+.logo span {
+  font-size: 40px;
+  font-weight: 700;
+  color: #c70e14;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
+}
 .header {
   transition: all 0.5s;
   z-index: 997;
