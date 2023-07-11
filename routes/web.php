@@ -44,9 +44,9 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     //Rota Dashboard
-    Route::get('dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/dashboard', function () {
+        return view('/dashboard');
+    })->name('dashboard');
 
 
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');

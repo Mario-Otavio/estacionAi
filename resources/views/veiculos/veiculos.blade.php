@@ -6,7 +6,7 @@
 
 </head>
 <body>
-@include('layouts.menu')
+@include('layouts.navbar')
 <table class="table">
     @foreach ($veiculos as $veiculo)
     <tr> 

@@ -146,7 +146,7 @@
                             <label for="password">Senha</label>
                             <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
+                        <input type="submit" class="btn btn-primary" value="Entrar">
                     </form>
                 </div>
         </div>
