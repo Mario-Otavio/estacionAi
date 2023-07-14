@@ -74,7 +74,7 @@
 
                                         <div class="col-12">
                                             <label for="senha" class="form-label">Senha</label>
-                                            <input type="password" name="senha" class="form-control" required>
+                                            <input type="password" name="password" class="form-control" required>
                                             <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
                                         </div>
 

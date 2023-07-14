@@ -7,12 +7,20 @@
 </head>
 <body>
 @include('layouts.navbar')
-<table class="table">
+<div class="container">
+<table class="table table-borderless">
+    <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Opções</th>
+            </tr>
+    </thead>
     @foreach ($veiculos as $veiculo)
     <tr> 
-    <td>{{ $veiculo->id }} </td>
+    <th scope="row">{{ $veiculo->id }} </th>
      <td>    {{ $veiculo->placa }}</td>
-     <td>
+     <td colspan="2">
         <form action="POST">
             <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
             <a class="btn btn-primary" href="{{ route('veiculo.edit', $veiculo->id) }}"> Editar </a>
@@ -26,6 +34,7 @@
     </tr>
     @endforeach
     </table>
+</div>
 </body>
 
 </html>
