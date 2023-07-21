@@ -25,18 +25,19 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('/veiculos', [VeiculoController::class, 'listar'])->name('veiculo.listar');
     Route::get('/editar_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
-    Route::post('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+    Route::get('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
 
+    Route::post('/editar_veiculo', [VeiculoController::class, 'update'])->name('veiculo.editar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
     Route::get('/cadastrar_usuario', function () {
         return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
-    
+    // })
 
     //Rota Index
     Route::get('/', function () {
@@ -47,9 +48,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/dashboard', function () {
         return view('/dashboard');
     })->name('dashboard');
-
-    //Rota Listar veiculo
-    Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
 
 
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');

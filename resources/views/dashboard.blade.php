@@ -335,7 +335,7 @@
                                                 <i class="bi bi-car-front-fill"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>64</h6>
+                                                <h6>{{route('veiculo.listar')}}</h6>
                                                 <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
