@@ -7,7 +7,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
+  background: #f6f9ff !important;
   color: #444444;
 }
 
@@ -211,9 +211,9 @@ h6 {
 /* Card */
 .card {
   margin-bottom: 30px;
-  border: none;
+  border: none !important;
   border-radius: 5px;
-  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  box-shadow: 1px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-header,
@@ -357,8 +357,8 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
-  margin-right: 6px;
+  max-height: 35px ;
+  margin-right: 3px;
 }
 
 .logo h1 {
@@ -382,11 +382,21 @@ h6 {
 }
 
 .logo span {
-  font-size: 40px;
+  font-size: 27px;
   font-weight: 700;
   color: #c70e14;
   font-family: "Nunito", sans-serif;
   text-decoration: none !important;
+}
+
+.letraLogo{
+  font-size: 27px;
+  font-weight: 700;
+  color: #000000;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
+  align-items: center !important;
+  margin-bottom: 0;
 }
 .header {
   transition: all 0.5s;
@@ -823,6 +833,14 @@ h6 {
   padding: 0;
 }
 
+.dashboard .info-card p {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
 .dashboard .card-icon {
   font-size: 32px;
   line-height: 0;
@@ -837,14 +855,14 @@ h6 {
   background: #f6f6fe;
 }
 
-.dashboard .revenue-card .card-icon {
-  color: #2eca6a;
-  background: #e0f8e9;
+.dashboard .revenue-card .card-icon {  
+  color: #ff771d;
+  background: #ffecdf;
 }
 
 .dashboard .customers-card .card-icon {
-  color: #ff771d;
-  background: #ffecdf;
+  color: #2eca6a;  
+  background: #e0f8e9;
 }
 
 /* Activity */

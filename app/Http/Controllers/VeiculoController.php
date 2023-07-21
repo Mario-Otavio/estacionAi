@@ -16,6 +16,7 @@ class VeiculoController extends BaseController
     {
         return view("veiculos/cadastrar_veiculo");
     }
+
     public function salvar(VeiculoRequest $request)
     {
         Veiculo::create($request->all());
@@ -26,7 +27,7 @@ class VeiculoController extends BaseController
     public function listar()
     {
         $veiculos = Veiculo::all(); //vem do banco
-        return view('veiculos/veiculos', ['veiculos' => $veiculos]);
+        return view('veiculos/veiculo.listar', ['veiculos' => $veiculos]);
     }
 
     public function show(Veiculo $veiculo)

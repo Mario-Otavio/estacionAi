@@ -35,8 +35,8 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <a href="dashboard" class="logo d-flex align-items-center">
-                    <img src="assets/img/logo.png" alt="">
-                    <span class="d-none d-lg-block">EstacionAi</span>
+                    <img src="img/icone.png" alt="">
+                    <p class="letraLogo">Estacion</p><span class="d-none d-lg-block">Ai</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->
@@ -267,7 +267,7 @@
                 <li class="nav-item">
                     <a class="nav-link " href="index.html">
                         <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
+                        <span>Painel</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
 
@@ -276,7 +276,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="users-profile.html">
                         <i class="bi bi-person"></i>
-                        <span>Profile</span>
+                        <span>Perfil</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
@@ -287,11 +287,11 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Dashboard</h1>
+                <h1>Painel</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="dashboard">Inicio</a></li>
+                        <li class="breadcrumb-item active">Painel</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
@@ -306,20 +306,6 @@
                             <!-- Sales Card -->
                             <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card sales-card">
-
-                                    <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-
-                                            <li><a class="dropdown-item" href="#">Hoje</a></li>
-                                            <li><a class="dropdown-item" href="#">Esse mês</a></li>
-                                            <li><a class="dropdown-item" href="#">Esse ano</a></li>
-                                        </ul>
-                                    </div>
-
                                     <div class="card-body">
                                         <h5 class="card-title">Total mensalistas</h5>
 
@@ -329,7 +315,7 @@
                                             </div>
                                             <div class="ps-3">
                                                 <h6>145</h6>
-                                                <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                                <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
                                         </div>
@@ -341,30 +327,16 @@
                             <!-- Revenue Card -->
                             <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card revenue-card">
-
-                                    <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-
-                                            <li><a class="dropdown-item" href="#">Hoje</a></li>
-                                            <li><a class="dropdown-item" href="#">Esse mês</a></li>
-                                            <li><a class="dropdown-item" href="#">Esse ano</a></li>
-                                        </ul>
-                                    </div>
-
                                     <div class="card-body">
                                         <h5 class="card-title">Veículos</h5>
 
                                         <div class="d-flex align-items-center">
                                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-cart"></i>
+                                                <i class="bi bi-car-front-fill"></i>
                                             </div>
                                             <div class="ps-3">
                                                 <h6>64</h6>
-                                                <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                                <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
                                         </div>
@@ -376,22 +348,7 @@
                             <!-- Customers Card -->
                             <div class="col-xxl-4 col-xl-12">
 
-                                <div class="card info-card customers-card">
-
-                                    <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="card-body">
+                                <div class="card info-card customers-card"><div class="card-body">
                                         <h5 class="card-title">Valores</h5>
 
                                         <div class="d-flex align-items-center">
@@ -399,9 +356,8 @@
                                                 <i class="bi bi-currency-dollar"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>R$20,00</h6>
-                                                <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
+                                                <p class="bi bi-car-front-fill"> R$20,00</p>
+                                                <p class="bi bi-bicycle"> R$10,00</p>
                                             </div>
                                         </div>
 
@@ -418,25 +374,26 @@
                                         <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                             <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
+                                                <h6>Filtro</h6>
                                             </li>
 
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
+                                            <li><a class="dropdown-item" href="#">Hoje</a></li>
+                                            <li><a class="dropdown-item" href="#">Este mês</a></li>
+                                            <li><a class="dropdown-item" href="#">Este ano</a></li>
                                         </ul>
                                     </div>
 
                                     <div class="card-body">
-                                        <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                                        <h5 class="card-title">Últimos Veículos <span>| Hoje</span></h5>
 
                                         <table class="table table-borderless datatable">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Customer</th>
-                                                    <th scope="col">Product</th>
-                                                    <th scope="col">Price</th>
+                                                    <th scope="col">#</th>                                                    
+                                                    <th scope="col">Cliente</th>
+                                                    <th scope="col">Placa</th>
+                                                    <th scope="col">Veículo</th>
+                                                    <th scope="col">Preço</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
@@ -444,37 +401,42 @@
                                                 <tr>
                                                     <th scope="row"><a href="#">#2457</a></th>
                                                     <td>Brandon Jacob</td>
-                                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                                    <td>$64</td>
-                                                    <td><span class="badge bg-success">Approved</span></td>
+                                                    <td class="text-primary">QCQ-2301</td>
+                                                    <td>Carro</td>
+                                                    <td>R$20</td>
+                                                    <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row"><a href="#">#2147</a></th>
                                                     <td>Bridie Kessler</td>
-                                                    <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                                    <td>$47</td>
-                                                    <td><span class="badge bg-warning">Pending</span></td>
+                                                    <td class="text-primary">QCQ-2301</td>
+                                                    <td>Moto</td>
+                                                    <td>R$10</td>
+                                                    <td><span class="badge bg-warning">Pendente</span></td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row"><a href="#">#2049</a></th>
                                                     <td>Ashleigh Langosh</td>
-                                                    <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                                    <td>$147</td>
-                                                    <td><span class="badge bg-success">Approved</span></td>
+                                                    <td class="text-primary">QCQ-2301</td>
+                                                    <td>Carro</td>
+                                                    <td>R$20</td>
+                                                    <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row"><a href="#">#2644</a></th>
                                                     <td>Angus Grady</td>
-                                                    <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                                    <td>$67</td>
-                                                    <td><span class="badge bg-danger">Rejected</span></td>
+                                                    <td class="text-primary">QCQ-2301</td>
+                                                    <td>Carro</td>
+                                                    <td>R$20</td>
+                                                    <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row"><a href="#">#2644</a></th>
+                                                    <th scope="row"><a href="#">#2644</a></th>                                                    
                                                     <td>Raheem Lehner</td>
-                                                    <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                                    <td>$165</td>
-                                                    <td><span class="badge bg-success">Approved</span></td>
+                                                    <td class="text-primary">QCQ-2301</td>
+                                                    <td>Carro</td>
+                                                    <td>R$20</td>
+                                                    <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
