@@ -43,6 +43,42 @@
         @endif -->
 
     <!-- Vendor JS Files -->
+
+    
+                        <form action="{{ route('veiculo.edit') }}" method="POST" class="row g-3 needs-validation" novalidate>
+                                        <div class="col-12">
+                                            <label for="placa" class="form-label">Placa</label>
+                                            <input type="text" name="placa" class="form-control" required>
+                                            <div class="invalid-feedback">Por favor,insira a placa do carro!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="marca" class="form-label">Marca</label>
+                                            <input type="text" name="marca" class="form-control" required>
+                                            <div class="invalid-feedback">Por favor, insira a marca do carro!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="modelo" class="form-label">Modelo</label>
+                                            <input type="text" name="modelo" class="form-control" required>
+                                            <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
+                                        </div>
+
+                                        <div class="col-12 pb-2">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                            <button class="btn btn-primary w-100" type="submit">Cadastrar</button>
+                                        </div>
+                                        @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p> {{ $message }} </p>
+                                        </div>
+                                        @endif
+
+                                    </form>
+
+  
+
+
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
