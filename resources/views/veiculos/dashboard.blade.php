@@ -407,13 +407,12 @@
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
-                                                    <form action="POST">
+                                                    <form action="/veiculos/{{ $veiculo->id }}" method="POST">
                                                         <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
-                                                        <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo.edit', $veiculo->id) }}"></a>
-                                                        <button type="submit" class="btn btn-primary bi bi-trash">
+                                                        <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo.edit', $veiculo->id) }}"></a>                                                        
                                                             @csrf
-                                                            @method('destroy')                                                            
-                                                        </button>
+                                                            @method('delete')                                                            
+                                                            <button type="submit" class="btn btn-primary bi bi-trash"></button>
                                                     </form>
                                                     </td>
                                                 </tr>
