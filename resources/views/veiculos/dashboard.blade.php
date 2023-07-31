@@ -339,9 +339,7 @@
                                                 <i class="bi bi-car-front-fill"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>@foreach ($veiculos as $veiculo)
-                                                        {{$veiculo->count()}}
-                                                    @endforeach</h6>
+                                                <h6>{{$veiculos->count()}}</h6>
                                                 <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
@@ -423,13 +421,12 @@
                                                     </form>
                                                     </td>
                                                 </tr>
-                                                @endforeach
-                                                                 
+                                                @endforeach                 
                                                 @if ($message = Session::get('success'))
-                                                            <div class="alert alert-success">
-                                                                <p> {{ $message }} </p>
-                                                            </div>
-                                                            @endif
+                                                 <div class="alert alert-success">
+                                                    <p> {{ $message }} </p>
+                                                 </div>
+                                                @endif
                                             </tbody>
                                             
                                         </table>
