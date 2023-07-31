@@ -19,14 +19,6 @@ class DashboardController extends BaseController
     {
         return view('dashboard');
     }
-
-    //public function listar()
-    //{
-    //    $veiculos = Veiculo::all(); //vem do banco
-    //    return view('/dashboard', ['dashboard' => $veiculos]);
-    //}
-
-
 }
 
 

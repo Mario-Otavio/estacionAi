@@ -21,6 +21,7 @@ class Veiculo extends Authenticatable
         'placa',
         'marca',
         'modelo',
+        'preco',
     ];
 
     
