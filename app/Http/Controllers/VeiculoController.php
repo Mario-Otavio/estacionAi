@@ -27,7 +27,7 @@ class VeiculoController extends BaseController
     public function listar()
     {
         $veiculos = Veiculo::all(); //vem do banco
-        return view('veiculos/veiculos', ['veiculos' => $veiculos]);
+        return view('veiculos/dashboard', ['veiculos' => $veiculos]);
     }
 
     public function show(Veiculo $veiculo)

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeiculoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
+use APP\Http\Controllers\DashboardController;
 
 
 // Cria um filtro por grupo de autenticação
