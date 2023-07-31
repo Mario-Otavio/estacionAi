@@ -87,7 +87,7 @@
                                     <div class="d-flex justify-content-center py-4">
                                         <a href="/" class="logo d-flex align-items-center w-auto">
                                             <!-- <img src="assets/img/logo.png" alt="logo"> -->
-                                            <h1 class="d-none d-lg-block">Estacion<span>Ai</span></h1>
+                                            <h1 class="d-none d-lg-block">Estacion<span class="ai">Ai</span></h1>
                                         </a>
                                     </div>
                                     <div class="text-center">

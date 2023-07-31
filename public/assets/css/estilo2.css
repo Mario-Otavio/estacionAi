@@ -380,6 +380,13 @@ h6 {
   border-color: #a70c11 !important;
   
 }
+.ai {
+  font-size: 40px !important;
+  font-weight: 700;
+  color: #c70e14;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
+}
 
 .logo span {
   font-size: 27px;
