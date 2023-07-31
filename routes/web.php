@@ -15,8 +15,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
-    Route::get('/editar_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
     Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy']);
+    Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('veiculo_edit');
+    Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('veiculo.editar');
+
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
@@ -27,19 +29,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/editar_veiculo', [VeiculoController::class, 'update'])->name('veiculo.editar');
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
-    
-    
+
+
     //Rota Index
     Route::get('/', function () {
         return view('welcome');
     });
-
-    
-    //Rota Dashboard
-    //Route::get('/dashboard', function () {
-    //    return view('/dashboard');
-    //})->name('dashboard');
-
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 

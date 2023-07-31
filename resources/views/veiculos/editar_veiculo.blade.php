@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Cadastrar veículo</title>
+    <title>Editar veículo</title>
     <!-- CSS -->
     <link href="assets/css/estilo2.css" rel="stylesheet">
 
@@ -32,47 +32,36 @@
 
 <body class="antialiased">
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-       
+        <form action="/veiculos/update/{{ $veiculo->id }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
+            @csrf
+            @method('PUT')
+            <div class="col-12">
+                <label for="placa" class="form-label">Placa</label>
+                <input type="text" name="placa" class="form-control" value="{{ $veiculo->placa }}">
+            </div>
 
-    <!-- Vendor JS Files -->
+            <div class="col-12">
+                <label for="marca" class="form-label">Marca</label>
+                <input type="text" name="marca" class="form-control" value="{{ $veiculo->marca }}">
+            </div>
 
-    
-                        <form action="{{ route('veiculo.editar') }}" method="POST" class="row g-3 needs-validation" novalidate>
-                        
-                                        <div class="col-12">
-                                            <label for="placa" class="form-label">Placa</label>
-                                            <input type="text" name="placa" class="form-control" required>
-                                            <div class="invalid-feedback">Por favor,insira a placa do carro!</div>
-                                        </div>
+            <div class="col-12">
+                <label for="modelo" class="form-label">Modelo</label>
+                <input type="text" name="modelo" class="form-control" value="{{ $veiculo->modelo }}">
+            </div>
 
-                                        <div class="col-12">
-                                            <label for="marca" class="form-label">Marca</label>
-                                            <input type="text" name="marca" class="form-control" required>
-                                            <div class="invalid-feedback">Por favor, insira a marca do carro!</div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label for="modelo" class="form-label">Modelo</label>
-                                            <input type="text" name="modelo" class="form-control" required>
-                                            <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
-                                        </div>
-
-                                        <div class="col-12 pb-2">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                                            <button class="btn btn-primary w-100" type="submit">Cadastrar</button>
-                                        </div>
-                                        @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <p> {{ $message }} </p>
-                                        </div>
-                                        @endif
-
-                                    </form>
-
-  
+            <div class="col-12 pb-2">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                <button class="btn btn-primary w-100" type="submit">Editar veículo</button>
+            </div>
+        </form>
+    </div>
 
 
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+
+
+    <script src="assets/vendor/apexcharts/apexcharts.min.js">
+    </script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/chart.js/chart.umd.js"></script>
     <script src="assets/vendor/echarts/echarts.min.js"></script>

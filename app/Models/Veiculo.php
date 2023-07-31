@@ -23,8 +23,9 @@ class Veiculo extends Authenticatable
         'modelo',
         'preco',
     ];
+    //Tudo que for enviado pelo post vai ser atualizado
+    protected $guarded = [];
 
-    
     /**
      * The attributes that should be cast.
      *
