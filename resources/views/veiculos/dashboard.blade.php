@@ -278,6 +278,10 @@
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
+                    <a class="nav-link collapsed" href="{{ route('cadastrar.veiculo')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Cadastrar</span>
+                    </a>
                 </li><!-- End Profile Page Nav -->
 
             </ul>
@@ -336,9 +340,8 @@
                                             </div>
                                             <div class="ps-3">
                                                 <h6>@foreach ($veiculos as $veiculo)
-	{{$veiculo->id}}
-
-@endforeach</h6>
+                                                        {{$veiculo->count()}}
+                                                    @endforeach</h6>
                                                 <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
