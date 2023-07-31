@@ -419,16 +419,17 @@
                                                             @csrf
                                                             @method('delete')                                                            
                                                             <button type="submit" class="btn btn-primary bi bi-trash"></button>
-                                                            @if ($message = Session::get('success'))
-                                                            <div class="alert alert-success">
-                                                                <p> {{ $message }} </p>
-                                                            </div>
-                                                            @endif
+                                                           
                                                     </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                                                                
+                                                                 
+                                                @if ($message = Session::get('success'))
+                                                            <div class="alert alert-success">
+                                                                <p> {{ $message }} </p>
+                                                            </div>
+                                                            @endif
                                             </tbody>
                                             
                                         </table>
