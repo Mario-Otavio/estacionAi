@@ -562,7 +562,7 @@ h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: linear-gradient(to right, #ff0007, #d8363a, #dd3675, #b44593);
+  background: #c70e14;
   text-decoration: none;
   -webkit-transform: scale(1.5);
     transform: scale(1.07);

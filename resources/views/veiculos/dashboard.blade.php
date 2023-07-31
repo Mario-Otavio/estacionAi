@@ -29,7 +29,7 @@
     </head>
 
     <body>
-
+  
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -385,36 +385,39 @@
                                             <li><a class="dropdown-item" href="#">Este ano</a></li>
                                         </ul>
                                     </div>
-
+                                    
                                     <div class="card-body">
                                         <h5 class="card-title">Últimos Veículos <span>| Hoje</span></h5>
-
+                                        
                                         <table class="table table-borderless datatable">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">#</th>                                                    
+                                                    <th scope="col">ID</th>                                                    
                                                     <th scope="col">Cliente</th>
                                                     <th scope="col">Placa</th>
-                                                    <th scope="col">Veículo</th>
+                                                    <th scope="col">Modelo</th>
                                                     <th scope="col">Preço</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
+                                            
                                             <tbody>
+                                            @foreach($veiculos as $veiculo)
                                                 <tr>
-                                                    <th scope="row"><a href="#">#2457</a></th>
+                                                   <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
+                                                    <th scope="row"> {{ $veiculo->id }} </th>
                                                     <td>Brandon Jacob</td>
-                                                    <td class="text-primary">QCQ-2301</td>
-                                                    <td>Carro</td>
+                                                    <td class="text-primary"> {{ $veiculo->placa }} </td>
+                                                    <td> {{ $veiculo->modelo }} </td>
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
+                                                @endforeach
                                                 <tr>
                                                     <th scope="row"><a href="#">#2147</a></th>
                                                     <td>Bridie Kessler</td>
                                                     <td class="text-primary">QCQ-2301</td>
                                                     <td>Moto</td>
-                                                    <td>R$10</td>
                                                     <td><span class="badge bg-warning">Pendente</span></td>
                                                 </tr>
                                                 <tr>
@@ -441,7 +444,9 @@
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                 </tr>
+                                                
                                             </tbody>
+                                            
                                         </table>
 
                                     </div>
