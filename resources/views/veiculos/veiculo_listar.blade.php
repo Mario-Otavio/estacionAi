@@ -33,68 +33,7 @@
      </td>
     </tr>
     @endforeach
-    </table>
-
-    <table class="table table-borderless datatable">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">ID</th>                                                    
-                                                    <th scope="col">Cliente</th>
-                                                    <th scope="col">Placa</th>
-                                                    <th scope="col">Modelo</th>
-                                                    <th scope="col">Preço</th>
-                                                    <th scope="col">Status</th>
-                                                </tr>
-                                            </thead>
-                                            
-                                            <tbody>
-                                            @foreach($veiculos as $veiculo)
-                                                <tr>
-                                                   <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
-                                                    <th scope="row"> {{ $veiculo->id }} </th>
-                                                    <td>Brandon Jacob</td>
-                                                    <td class="text-primary"> {{ $veiculo->placa }} </td>
-                                                    <td> {{ $veiculo->modelo }} </td>
-                                                    <td>R$20</td>
-                                                    <td><span class="badge bg-success">Aprovado</span></td>
-                                                </tr>
-                                                @endforeach
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2147</a></th>
-                                                    <td>Bridie Kessler</td>
-                                                    <td class="text-primary">QCQ-2301</td>
-                                                    <td>Moto</td>
-                                                    <td>R$10</td>
-                                                    <td><span class="badge bg-warning">Pendente</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2049</a></th>
-                                                    <td>Ashleigh Langosh</td>
-                                                    <td class="text-primary">QCQ-2301</td>
-                                                    <td>Carro</td>
-                                                    <td>R$20</td>
-                                                    <td><span class="badge bg-success">Aprovado</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2644</a></th>
-                                                    <td>Angus Grady</td>
-                                                    <td class="text-primary">QCQ-2301</td>
-                                                    <td>Carro</td>
-                                                    <td>R$20</td>
-                                                    <td><span class="badge bg-success">Aprovado</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"><a href="#">#2644</a></th>                                                    
-                                                    <td>Raheem Lehner</td>
-                                                    <td class="text-primary">QCQ-2301</td>
-                                                    <td>Carro</td>
-                                                    <td>R$20</td>
-                                                    <td><span class="badge bg-success">Aprovado</span></td>
-                                                </tr>
-                                                
-                                            </tbody>
-                                            
-                                        </table>
+    </table>   
 </div>
 </body>
 

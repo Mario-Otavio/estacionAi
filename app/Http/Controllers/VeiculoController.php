@@ -27,7 +27,7 @@ class VeiculoController extends BaseController
     public function listar()
     {
         $veiculos = Veiculo::all(); //vem do banco
-        return view('veiculos/dashboard', ['veiculos' => $veiculos]);
+        return view('veiculos/dashboard', ['veiculos' => $veiculos]);        
     }
 
     public function show(Veiculo $veiculo)
@@ -52,6 +52,6 @@ class VeiculoController extends BaseController
     public function destroy(Veiculo $veiculo)
     {
         $veiculo->delete();
-        return redirect()->route('veiculo_listar')->with('sucess', 'Veículo deletado com sucesso!');
+        return redirect('/dashboard')->with('success', 'Veículo deletado com sucesso!');
     }
 }

@@ -16,7 +16,7 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
     Route::get('/editar_veiculo', [VeiculoController::class, 'edit'])->name('veiculo.edit');
-    Route::post('/veiculo_listar', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+    Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy']);
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
