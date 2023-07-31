@@ -45,7 +45,7 @@ class VeiculoController extends BaseController
     {
 
         $veiculo->update($request->all());
-        return redirect()->route('veiculo_listar')
+        return redirect()->route('veiculo.listar')
             ->with('success', 'Veículo atualizado com Sucesso!');
     }
 

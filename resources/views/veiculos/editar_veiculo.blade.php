@@ -38,12 +38,6 @@
 
     
                         <form action="{{ route('veiculo.editar') }}" method="POST" class="row g-3 needs-validation" novalidate>
-                                       
-                                        <div class="col-12">
-                                            <label for="id" class="form-label">Placa</label>
-                                            <input type="text" name="id" class="form-control" required>
-                                            <div class="invalid-feedback">Por favor, o id do veiculo!</div>
-                                        </div>
                         
                                         <div class="col-12">
                                             <label for="placa" class="form-label">Placa</label>

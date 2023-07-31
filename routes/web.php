@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web']], function () {
         return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
     Route::get('/dashboard', [VeiculoController::class, 'listar']);
+    Route::post('/editar_veiculo', [VeiculoController::class, 'update'])->name('veiculo.editar');
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
     
