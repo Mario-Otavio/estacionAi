@@ -207,7 +207,7 @@
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6>Kevin Anderson</h6>
+                                <h6></h6>
                                 <span>Web Designer</span>
                             </li>
                             <li>
@@ -416,35 +416,11 @@
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
                                                         <form action="/veiculos/{{ $veiculo->id }}" method="POST">
-                                                            <!-- Detalhes do veiculo -->
                                                             <a class="btn btn-info" href="{{ route('veiculo.show', $veiculo->id) }}"> Detalhes </a>
-                                                            <!-- Editar -->
-                                                            <a class="btn btn-secondary bi bi-pencil-square" href="/veiculos/editar_veiculo/{{ ($veiculo->id) }}"></a>
-                                                            <!-- Deletar -->
-                                                            <button  type="button" class="btn btn-primary bi bi-trash" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></button>
-                                                            <!-- MODAL DELETAR-->
-                                                            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                 </div>
-                                                                    <div class="modal-body">
-                                                                        Tem certeza que deseja excluir este registro?
-                                                                    </div>
-                                                                     <div class="modal-footer">
-                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                      <!-- Botão para efetuar a exclusão -->
-                                                                       <form action="{{ route('veiculo.destroy', ['veiculo' => $veiculo->id]) }}" method="POST" style="display: inline;">
-                                                                       @csrf
-                                                                       @method('DELETE')
-                                                                     <button type="submit" class="btn btn-primary">Excluir</button>
-                                                                         </form>
-                                                                           </div>
-                                                                       </div>
-                                                                      </div>
-                                                                      </div>
+                                                            <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></a>
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-primary bi bi-trash"></button> 
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -489,7 +465,6 @@
         <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
         <script src="assets/vendor/tinymce/tinymce.min.js"></script>
         <script src="assets/vendor/php-email-form/validate.js"></script>
-        
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
