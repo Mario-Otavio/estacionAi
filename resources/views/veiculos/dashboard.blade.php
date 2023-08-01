@@ -419,7 +419,7 @@
                                                             <!-- Detalhes do veiculo -->
                                                             <a class="btn btn-info" href="{{ route('veiculo.show', $veiculo->id) }}"> Detalhes </a>
                                                             <!-- Editar -->
-                                                            <button class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></button>
+                                                            <a class="btn btn-secondary bi bi-pencil-square" href="/veiculos/editar_veiculo/{{ ($veiculo->id) }}"></a>
                                                             <!-- Deletar -->
                                                             <button  type="button" class="btn btn-primary bi bi-trash" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></button>
                                                             <!-- MODAL DELETAR-->
@@ -436,7 +436,7 @@
                                                                      <div class="modal-footer">
                                                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                       <!-- Botão para efetuar a exclusão -->
-                                                                       <form action="/veiculos/{{ $veiculo->id }}" method="POST" style="display: inline;">
+                                                                       <form action="{{ route('veiculo.destroy', ['veiculo' => $veiculo->id]) }}" method="POST" style="display: inline;">
                                                                        @csrf
                                                                        @method('DELETE')
                                                                      <button type="submit" class="btn btn-primary">Excluir</button>
