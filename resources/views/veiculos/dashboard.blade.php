@@ -5,7 +5,7 @@
         <meta charset=" utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>EstacionAi</title>
+        <title>Dashboard</title>
         <!-- Main CSS  -->
         <link rel="stylesheet" type="text/css" href="assets/css/estilo2.css">
 
@@ -29,7 +29,7 @@
     </head>
 
     <body>
-  
+
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -339,7 +339,10 @@
                                                 <i class="bi bi-car-front-fill"></i>
                                             </div>
                                             <div class="ps-3">
-                                                <h6>{{$veiculos->count()}}</h6>
+                                                <h6>
+                                                    {{$veiculos->count()}}
+
+                                                </h6>
                                                 <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
                                             </div>
@@ -352,7 +355,8 @@
                             <!-- Customers Card -->
                             <div class="col-xxl-4 col-xl-12">
 
-                                <div class="card info-card customers-card"><div class="card-body">
+                                <div class="card info-card customers-card">
+                                    <div class="card-body">
                                         <h5 class="card-title">Valores</h5>
 
                                         <div class="d-flex align-items-center">
@@ -386,49 +390,49 @@
                                             <li><a class="dropdown-item" href="#">Este ano</a></li>
                                         </ul>
                                     </div>
-                                    
+
                                     <div class="card-body">
                                         <h5 class="card-title">Últimos Veículos <span>| Hoje</span></h5>
-                                        
+
                                         <table class="table table-borderless datatable">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">ID</th>                                                    
+                                                    <th scope="col">ID</th>
                                                     <th scope="col">Placa</th>
                                                     <th scope="col">Modelo</th>
                                                     <th scope="col">Preço</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
-                                            
+
                                             <tbody>
-                                            @foreach($veiculos as $veiculo)
+                                                @foreach($veiculos as $veiculo)
                                                 <tr>
-                                                   <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
+                                                    <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
                                                     <th scope="row"> {{ $veiculo->id }} </th>
                                                     <td class="text-primary"> {{ $veiculo->placa }} </td>
                                                     <td> {{ $veiculo->modelo }} </td>
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
-                                                    <form action="/veiculos/{{ $veiculo->id }}" method="POST">
-                                                        <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
-                                                        <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo.edit', $veiculo->id) }}"></a>                                                        
+                                                        <form action="/veiculos/{{ $veiculo->id }}" method="POST">
+                                                            <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
+                                                            <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></a>
                                                             @csrf
-                                                            @method('delete')                                                            
+                                                            @method('delete')
                                                             <button type="submit" class="btn btn-primary bi bi-trash"></button>
                                                            
-                                                    </form>
+                                                        </form>
                                                     </td>
                                                 </tr>
-                                                @endforeach                 
+                                                @endforeach
                                                 @if ($message = Session::get('success'))
-                                                 <div class="alert alert-success">
-                                                    <p> {{ $message }} </p>
-                                                 </div>
+                                                    <div class="alert alert-success">
+                                                        <p> {{ $message }} </p>
+                                                    </div>
                                                 @endif
                                             </tbody>
-                                            
+
                                         </table>
 
                                     </div>
@@ -436,11 +440,8 @@
                                 </div>
                             </div><!-- End Recent Sales -->
 
-
-
                         </div>
                     </div><!-- End Left side columns -->
-
 
                 </div>
             </section>
@@ -452,9 +453,7 @@
             <div class="copyright">
                 &copy; Copyright <strong><span>EstacionAi</span></strong>. Todos os direitos reservados
             </div>
-
         </footer><!-- End Footer -->
-
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

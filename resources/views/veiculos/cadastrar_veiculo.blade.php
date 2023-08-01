@@ -87,7 +87,7 @@
 
             </section>
         </div>
-        
+    </main><!-- End #main -->
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
