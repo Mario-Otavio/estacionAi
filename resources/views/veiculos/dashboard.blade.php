@@ -416,7 +416,7 @@
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
                                                         <form action="/veiculos/{{ $veiculo->id }}" method="POST">
-                                                            <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
+                                                            <a class="btn btn-info" href="{{ route('veiculo.show', $veiculo->id) }}"> Detalhes </a>
                                                             <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></a>
                                                             @csrf
                                                             @method('delete')

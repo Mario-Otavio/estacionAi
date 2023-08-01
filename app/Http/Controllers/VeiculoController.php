@@ -33,7 +33,7 @@ class VeiculoController extends BaseController
     public function show(Veiculo $veiculo)
     {
         $veiculoRecuperado = Veiculo::findOrFail($veiculo->id);
-        return view('veiculos/show_veiculo', ['veiculo' => $veiculoRecuperado]);
+        return view('veiculos/veiculo_show', ['veiculo' => $veiculoRecuperado]);
     }
 
     public function edit(Veiculo $veiculo)
