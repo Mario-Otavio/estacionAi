@@ -278,6 +278,10 @@
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
+                    <a class="nav-link collapsed" href="{{ route('cadastrar.veiculo')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Cadastrar</span>
+                    </a>
                 </li><!-- End Profile Page Nav -->
 
             </ul>
@@ -412,12 +416,11 @@
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
                                                         <form action="/veiculos/{{ $veiculo->id }}" method="POST">
-                                                            <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
-                                                            
-                                                            <button action="/veiculos/editar_veiculo/{{ $veiculo->id }}" type="button" class="btn btn-secondary bi bi-pencil-square" ></button>
-                                                              
-
-                                                            <!-- BOTAO MODAL DELETAR-->
+                                                            <!-- Detalhes do veiculo -->
+                                                            <a class="btn btn-info" href="{{ route('veiculo.show', $veiculo->id) }}"> Detalhes </a>
+                                                            <!-- Editar -->
+                                                            <button class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></button>
+                                                            <!-- Deletar -->
                                                             <button  type="button" class="btn btn-primary bi bi-trash" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"></button>
                                                             <!-- MODAL DELETAR-->
                                                             <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
@@ -441,7 +444,7 @@
                                                                            </div>
                                                                        </div>
                                                                       </div>
-                                                                      </div>                                                           
+                                                                      </div>
                                                         </form>
                                                     </td>
                                                 </tr>
