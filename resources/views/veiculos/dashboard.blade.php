@@ -5,7 +5,7 @@
         <meta charset=" utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>EstacionAi</title>
+        <title>Dashboard</title>
         <!-- Main CSS  -->
         <link rel="stylesheet" type="text/css" href="assets/css/estilo2.css">
 
@@ -417,16 +417,16 @@
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn btn-primary bi bi-trash"></button>
-                                                            @if ($message = Session::get('success'))
-                                                            <div class="alert alert-success">
-                                                                <p> {{ $message }} </p>
-                                                            </div>
-                                                            @endif
+                                                           
                                                         </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach
-
+                                                @if ($message = Session::get('success'))
+                                                    <div class="alert alert-success">
+                                                        <p> {{ $message }} </p>
+                                                    </div>
+                                                @endif
                                             </tbody>
 
                                         </table>
@@ -436,11 +436,8 @@
                                 </div>
                             </div><!-- End Recent Sales -->
 
-
-
                         </div>
                     </div><!-- End Left side columns -->
-
 
                 </div>
             </section>
@@ -452,9 +449,7 @@
             <div class="copyright">
                 &copy; Copyright <strong><span>EstacionAi</span></strong>. Todos os direitos reservados
             </div>
-
         </footer><!-- End Footer -->
-
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
