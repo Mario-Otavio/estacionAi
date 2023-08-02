@@ -33,25 +33,25 @@ class VeiculoController extends BaseController
     public function show(Veiculo $veiculo)
     {
         $veiculoRecuperado = Veiculo::findOrFail($veiculo->id);
-        return view('veiculos/show_veiculo', ['veiculo' => $veiculoRecuperado]);
+        return view('veiculos/veiculo_show', ['veiculo' => $veiculoRecuperado]);
     }
 
-    public function edit(Veiculo $veiculo)
+    public function edit(Veiculo $Veiculo)
     {
-        return view('veiculos/editar_veiculo', ['veiculo' => $veiculo]);
+        return view('veiculos/editar_veiculo', ['veiculo' => $Veiculo]);
     }
 
-    public function update(VeiculoRequest $request, Veiculo $veiculo)
+    public function update(VeiculoRequest $request, Veiculo $Veiculo)
     {
 
-        $veiculo->update($request->all());
+        $Veiculo->update($request->all());
         return redirect('/dashboard')
             ->with('success', 'Veículo editado com Sucesso!');
     }
 
-    public function destroy(Veiculo $veiculo)
+    public function destroy(Veiculo $Veiculo)
     {
-        $veiculo->delete();
+        $Veiculo->delete();
         return redirect('/dashboard')
             ->with('success', 'Veículo deletado com Sucesso!');
     }

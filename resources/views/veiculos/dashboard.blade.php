@@ -5,7 +5,7 @@
         <meta charset=" utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>EstacionAi</title>
+        <title>Dashboard</title>
         <!-- Main CSS  -->
         <link rel="stylesheet" type="text/css" href="assets/css/estilo2.css">
 
@@ -207,7 +207,7 @@
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6>Kevin Anderson</h6>
+                                <h6></h6>
                                 <span>Web Designer</span>
                             </li>
                             <li>
@@ -277,6 +277,10 @@
                     <a class="nav-link collapsed" href="users-profile.html">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
+                    </a>
+                    <a class="nav-link collapsed" href="{{ route('cadastrar.veiculo')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Cadastrar</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
@@ -419,7 +423,7 @@
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="2">
                                                         <form action="/veiculos/{{ $veiculo->id }}" method="POST">
-                                                            <a class="btn btn-info" href="{{ route('veiculo.listar', $veiculo->id) }}"> Detalhes </a>
+                                                            <a class="btn btn-info" href="{{ route('veiculo.show', $veiculo->id) }}"> Detalhes </a>
                                                             <a class="btn btn-secondary bi bi-pencil-square" href="{{ route('veiculo_edit', $veiculo->id) }}"></a>
                                                             @csrf
                                                             @method('delete')
@@ -428,11 +432,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                @if ($message = Session::get('success'))
-                                                <div class="alert alert-success">
-                                                    <p> {{ $message }} </p>
-                                                </div>
-                                                @endif
+
                                             </tbody>
 
                                         </table>
@@ -442,11 +442,8 @@
                                 </div>
                             </div><!-- End Recent Sales -->
 
-
-
                         </div>
                     </div><!-- End Left side columns -->
-
 
                 </div>
             </section>
@@ -458,9 +455,7 @@
             <div class="copyright">
                 &copy; Copyright <strong><span>EstacionAi</span></strong>. Todos os direitos reservados
             </div>
-
         </footer><!-- End Footer -->
-
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

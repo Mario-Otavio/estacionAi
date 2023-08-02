@@ -19,4 +19,11 @@ class DashboardController extends BaseController
     {
         return view('dashboard');
     }
+
+    public function listar()
+    {
+        $usuario = User::all();
+
+        return view('dashboard', ['usuario' => $usuario]);
+    }
 }

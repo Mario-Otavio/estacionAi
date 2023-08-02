@@ -15,10 +15,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
-    Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy']);
+    Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
     Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('veiculo_edit');
     Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('veiculo.editar');
-
+    Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
+    Route::get('/dashboard', [DashboardController::class, 'listar']);
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
@@ -26,7 +27,6 @@ Route::group(['middleware' => ['web']], function () {
         return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
     Route::get('/dashboard', [VeiculoController::class, 'listar']);
-    Route::post('/editar_veiculo', [VeiculoController::class, 'update'])->name('veiculo.editar');
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
@@ -39,5 +39,4 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 
-    // Route::get('/login', [LoginController::class, 'authenticated'])->name('login.usuario');
 });
