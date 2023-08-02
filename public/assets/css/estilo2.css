@@ -380,8 +380,8 @@ h6 {
   border-color: #a70c11 !important;
   
 }
-.ai span{
-  font-size: 40px !important;
+#ai-logo{
+  font-size: 27px !important;
   font-weight: 700;
   color: #c70e14;
   font-family: "Nunito", sans-serif;
@@ -389,7 +389,7 @@ h6 {
 }
 
 .logo span {
-  font-size: 27px;
+  font-size: 40px;
   font-weight: 700;
   color: #c70e14;
   font-family: "Nunito", sans-serif;

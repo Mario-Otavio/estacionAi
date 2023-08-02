@@ -15,9 +15,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
-    Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('veiculo.destroy');
-    Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('veiculo_edit');
-    Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('veiculo.editar');
+    Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('modal.delete');
+    Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('modal.edit');
+    Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('modal.editar');
     Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
     Route::get('/dashboard', [DashboardController::class, 'listar']);
     Route::get('/cadastrar_veiculo', function () {
