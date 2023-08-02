@@ -114,7 +114,6 @@
                                             <a href="#" class="btn" id="btnConsultarModal" data-bs-toggle="modal" data-bs-target="#verticalycentered">consultar</a>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>

@@ -25,12 +25,9 @@
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-
-
 </head>
 
-<body class="antialiased">
+<body>
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         <form action="/veiculos/update/{{ $veiculo->id }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
             @csrf

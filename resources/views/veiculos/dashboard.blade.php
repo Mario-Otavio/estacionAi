@@ -265,7 +265,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="index.html">
+                    <a class="nav-link " href="">
                         <i class="bi bi-grid"></i>
                         <span>Painel</span>
                     </a>
@@ -279,6 +279,13 @@
                         <span>Perfil</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="cadastrar_veiculo">
+                        <i class="bi bi-card-list"></i>
+                        <span>Registrar Veículo</span>
+                    </a>
+                </li><!-- End Register Page Nav -->
 
             </ul>
 
@@ -417,16 +424,15 @@
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn btn-primary bi bi-trash"></button>
-                                                            @if ($message = Session::get('success'))
-                                                            <div class="alert alert-success">
-                                                                <p> {{ $message }} </p>
-                                                            </div>
-                                                            @endif
                                                         </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach
-
+                                                @if ($message = Session::get('success'))
+                                                <div class="alert alert-success">
+                                                    <p> {{ $message }} </p>
+                                                </div>
+                                                @endif
                                             </tbody>
 
                                         </table>
