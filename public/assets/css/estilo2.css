@@ -965,6 +965,27 @@ h6 {
   border: 0;
 }
 
+#btn-grid{
+  padding: 10px;
+  text-align: center !important;
+  border-radius: 50%;
+  
+} 
+#btn-grid-info{
+  padding: 6px;
+  text-align: center !important;
+  color: #ffffff;
+  background-color: #0a58ca;
+  border-color: #ffffff;
+} 
+#btn-grid-info:hover{
+  padding: 6px;
+  text-align: center !important;
+  color: #ffffff;
+  background-color: #0945a0;
+  border-color: #ffffff;
+} 
+
 .dashboard .recent-sales .dataTable-top {
   padding: 0 0 10px 0;
 }

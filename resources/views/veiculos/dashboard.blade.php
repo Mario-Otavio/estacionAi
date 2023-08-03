@@ -108,7 +108,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Últimos Veículos <span>| Hoje</span></h5>
 
-                                        <table class="table table-borderless datatable">
+                                        <table class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">ID</th>
@@ -121,19 +121,19 @@
 
                                             <tbody>
                                                 @foreach($veiculos as $veiculo)
-                                                <tr>
+                                                <tr class="align-middle">
                                                     <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
-                                                    <th scope="row"> {{ $veiculo->id }} </th>
+                                                    <td scope="row"> {{ $veiculo->id }} </td>
                                                     <td class="text-primary"> {{ $veiculo->placa }} </td>
                                                     <td> {{ $veiculo->modelo }} </td>
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
-                                                    <td colspan="2"> 
-                                                            <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info" data-bs-toggle="modal"> Detalhes </a>
+                                                    <td colspan="3"> 
+                                                            <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info" id="btn-grid-info" data-bs-toggle="modal"> Detalhes </a>
                                                             @include('modals.veiculosModal.show')
-                                                            <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" data-bs-toggle="modal"></a>
+                                                            <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.update')                                                           
-                                                            <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" data-bs-toggle="modal"></a>
+                                                            <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.delete')                                                        
                                                     </td>
                                                 </tr>
@@ -145,14 +145,11 @@
                                                 @endif
 
                                             </tbody>
-
                                         </table>
-
                                     </div>
 
                                 </div>
-                            </div><!-- End Recent Sales -->
-
+                            </div><!-- End Recent Sales -->  
                         </div>
                     </div><!-- End Left side columns -->
 
@@ -161,13 +158,6 @@
 
         </main><!-- End #main -->
 <br><br><br>
-
-<script>
-    document.getElementById('confirmDeleteModal').addEventListener('shown.bs.modal', function () {
-        // Quando o modal é aberto, definimos o foco para o botão "Cancelar"
-        document.getElementById('btnCancelar').focus();
-    });
-</script>
 
 </body>
 

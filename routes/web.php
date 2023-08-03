@@ -36,6 +36,12 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     });
 
+    //Rota Perfil
+    Route::get('/perfil', function () {
+        return view('usuario/perfil');
+    });
+
+
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 

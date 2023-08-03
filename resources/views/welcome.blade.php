@@ -53,16 +53,17 @@
         <header id="header" class="d-flex align-items-center">
             <div class=" container d-flex align-items-center justify-content-between">
 
-                <h1 class="logo"><a href="/"><img src="img/estacionai2.png" alt="Logo" width="" height=""></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="/" class="logo d-flex align-items-center">
+                        <img src="img/icone.png" alt="">
+                        <p class="letraLogo" id="letraLogo">Estacion</p><span class="d-none d-lg-block" id="ai-logo">Ai</span>
+                    </a>
+                </div><!-- End Logo -->
 
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto " href="/">Inicio</a></li>
-                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>
-                        <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                        <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
+                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>                        
                         <a class="nav-link scrollto" id="btnLogin" href="{{ route('login') }}">Login</a>
                         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>

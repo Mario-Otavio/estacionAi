@@ -166,6 +166,24 @@ h6 {
   height: 70px;
 }
 
+#ai-logo{
+  font-size: 27px !important;
+  font-weight: 700;
+  color: #c70e14;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
+}
+
+#letraLogo{
+  font-size: 27px;
+  font-weight: 700;
+  color: #000000;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none !important;
+  align-items: center !important;
+  margin-bottom: 0;
+}
+
 #header .logo {
   font-size: 30px;
   margin: 0;
@@ -176,8 +194,8 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
-#header .logo a {
-  color: #222222;
+#header a {
+  text-decoration: none !important;
 }
 
 #btnLogin{
