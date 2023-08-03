@@ -25,23 +25,23 @@ class UsuarioController extends BaseController
 
     public function listar()
     {
-        $Usuario = Usuario::all();
+        $usuario = User::all();
 
-        return view('usuario/usuario_listar', ['Usuario' => $Usuario]);
+        return view('usuario/listar_usuario', ['usuario' => $usuario]);
     }
 
-    public function show(Usuario $usuario)
+    public function show(User $usuario)
     {
-        $usuarioRecuperado = Usuario::findOrFail($usuario->id);
+        $usuarioRecuperado = User::findOrFail($usuario->id);
         return view('usuario/show_usuario', ['usuario' => $usuarioRecuperado]);
     }
 
-    public function edit(Usuario $usuario)
+    public function edit(User $usuario)
     {
         return view('usuario/editar_usuario', []);
     }
 
-    public function update(UsuarioRequest $request, Usuario $usuario)
+    public function update(UsuarioRequest $request, User $usuario)
     {
 
         $usuario->update($request->all());
@@ -49,7 +49,7 @@ class UsuarioController extends BaseController
             ->with('success', 'Veículo atualizado com sucesso!');
     }
 
-    public function destroy(Usuario $usuario)
+    public function destroy(User $usuario)
     {
         $usuario->delete();
         return redirect()->route('usuario.listar')->with('sucess', 'Usuario deletado com sucesso!');
