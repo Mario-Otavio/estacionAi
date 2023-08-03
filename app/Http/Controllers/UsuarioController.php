@@ -25,7 +25,7 @@ class UsuarioController extends BaseController
 
     public function listar()
     {
-        $usuario = User::all();
+        $usuario = User::all();//vem do banco
 
         return view('usuario/listar_usuario', ['usuario' => $usuario]);
     }
