@@ -208,7 +208,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>{{ $usuario->name}}</h6>
+                            <h6>K. Anderson</h6>
                             <span>Web Designer</span>
                         </li>
                         <li>
@@ -259,38 +259,7 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link " href="dashboard">
-                    <i class="bi bi-grid"></i>
-                    <span>Painel</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-heading">Paginas</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="perfil">
-                    <i class="bi bi-person"></i>
-                    <span>Perfil</span>
-                </a>
-            </li><!-- End Perfil Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="cadastrar_veiculo">
-                    <i class="bi bi-card-list"></i>
-                    <span>Cadastrar Veículo</span>
-                </a>
-            </li><!-- End Registrar Veículo Nav -->
-
-        </ul>
-
-    </aside><!-- End Sidebar-->
+    
 
 
 
@@ -298,7 +267,7 @@
 
 
 
-
+    
     <!-- CONTEÚDO -->
 
 

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
+
 
 class Veiculo extends Authenticatable
 {
@@ -18,13 +20,13 @@ class Veiculo extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'categoria',
         'placa',
         'marca',
-        'modelo',
-        'preco',
+        'modelo',        
     ];
     //Tudo que for enviado pelo post vai ser atualizado
-    protected $guarded = [];
+    protected $guarded = [];    
 
     /**
      * The attributes that should be cast.
