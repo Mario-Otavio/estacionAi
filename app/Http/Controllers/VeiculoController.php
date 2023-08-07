@@ -15,7 +15,19 @@ class VeiculoController extends BaseController
 
     public function index()
     {
-        return view("veiculos/cadastrar_veiculo");
+        $veiculos = Veiculo::latest()->take(8)->get(); // busca 8 registros do banco
+        $totalVeiculos = Veiculo::count();
+        
+        
+        return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos'));
+    }
+
+    public function listar()
+    {
+        $veiculosTotal = Veiculo::paginate(7); // busca todos os registros do banco
+        $totalVeiculosGaragem = Veiculo::count();
+        
+        return view('veiculos.garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem]);
     }
 
     public function salvar(VeiculoRequest $request)
@@ -23,13 +35,7 @@ class VeiculoController extends BaseController
         Veiculo::create($request->all());
         return redirect()->route('veiculo.salvar')
             ->with('success', 'Veículo Cadastro com Sucesso!');
-    }
-
-    public function listar()
-    {
-        $veiculos = Veiculo::all(); //vem do banco
-        return view('veiculos/dashboard', ['veiculos' => $veiculos]);
-    }
+    }    
 
     public function show(Veiculo $veiculo)
     {        
@@ -46,14 +52,14 @@ class VeiculoController extends BaseController
     {
 
         $Veiculo->update($request->all());
-        return redirect('/dashboard')
+        return redirect('/garagem')
             ->with('success', 'Veículo editado com Sucesso!');
     }
 
     public function destroy(Veiculo $Veiculo)
     {
         $Veiculo->delete();
-        return redirect('/dashboard')
+        return redirect('/garagem')
             ->with('success', 'Veículo deletado com Sucesso!');
     }
 }

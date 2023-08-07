@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Dashboard')
+@section('title', 'Garagem')
 @section('content')
 
  <!-- ======= Sidebar ======= -->
@@ -8,7 +8,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-        <a class="nav-link" href="dashboard">
+        <a class="nav-link collapsed" href="dashboard">
             <i class="bi bi-grid"></i>
             <span>Painel</span>
         </a>
@@ -31,11 +31,12 @@
     </li><!-- End Registrar Veículo Nav -->
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="garagem">
+        <a class="nav-link" href="garagem">
             <i class="bi bi-car-front"></i>
             <span>Garagem</span>
         </a>
     </li><!-- End Garagem Nav -->
+
 </ul>
 
 </aside><!-- End Sidebar-->
@@ -43,11 +44,11 @@
 <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Painel</h1>
+                <h1>Garagem</h1>
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="dashboard">Inicio</a></li>
-                        <li class="breadcrumb-item active">Painel</li>
+                        <li class="breadcrumb-item active">Veículos</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
@@ -58,28 +59,7 @@
                     <!-- Left side columns -->
                     <div class="col-lg-8">
                         <div class="row">
-
-                            <!-- Sales Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card sales-card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total mensalistas</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-people"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>145</h6>
-                                                <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Sales Card -->
-
+                            
                             <!-- Revenue Card -->
                             <div class="col-xxl-4 col-md-6">
                                 <div class="card info-card revenue-card">
@@ -92,7 +72,7 @@
                                             </div>
                                             <div class="ps-3">
                                                 <h6>
-                                                    {{ $totalVeiculos }}
+                                                {{ $totalVeiculosGaragem }}
                                                 </h6>
                                                 <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
 
@@ -158,7 +138,7 @@
                                             </thead>
 
                                             <tbody>
-                                                @foreach($veiculos as $veiculo)
+                                                @foreach($veiculosTotal as $veiculo)
                                                 <tr class="align-middle">
                                                     <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
                                                     <td scope="row"> {{ $veiculo->id }} </td>
@@ -167,13 +147,13 @@
                                                     <td> {{ $veiculo->modelo }} </td>
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
-                                                    <td colspan="3"> 
+                                                    <td colspan="3">
                                                             <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.show')
                                                             <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.update')                                                           
                                                             <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
-                                                            @include('modals.veiculosModal.delete')                                                        
+                                                            @include('modals.veiculosModal.delete')
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -181,12 +161,13 @@
                                                 <div class="alert alert-success">
                                                     <p> {{ $message }} </p>
                                                 </div>
-                                                @endif
-
+                                                @endif                                                
                                             </tbody>
+                                            
                                         </table>
+                                        {{ $veiculosTotal->links('pagination::bootstrap-5') }}
                                     </div>
-
+                                                                        
                                 </div>
                             </div><!-- End Recent Sales -->  
                         </div>

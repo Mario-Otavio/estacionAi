@@ -30,6 +30,13 @@
         </a>
     </li><!-- End Registrar Veículo Nav -->
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="garagem">
+            <i class="bi bi-car-front"></i>
+            <span>Garagem</span>
+        </a>
+    </li><!-- End Garagem Nav -->
+
 </ul>
 
 </aside><!-- End Sidebar-->

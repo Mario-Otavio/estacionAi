@@ -12,22 +12,21 @@ use App\Http\Controllers\UsuarioController;
 Route::group(['middleware' => ['web']], function () {
 
     //grupo autenticado precisa estar todas as rotas de
-    Route::group(['middleware' => ['auth']], function () {
-    });
-    Route::get('/veiculo_listar', [VeiculoController::class, 'listar'])->name('veiculo.listar');
+    Route::group(['middleware' => ['auth']], function () {});    
     Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('modal.delete');
     Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('modal.edit');
     Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('modal.editar');
     Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
     Route::get('/listar_usuario', [UsuarioController::class, 'listar'])->name('usuario.listar');
-    Route::get('/dashboard', [DashboardController::class, 'listar']);
+    Route::get('/dashboard', [VeiculoController::class, 'index']);
+    Route::get('/garagem', [VeiculoController::class, 'listar']);
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
     Route::get('/cadastrar_usuario', function () {
         return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
-    Route::get('/dashboard', [VeiculoController::class, 'listar']);
+    
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
@@ -42,7 +41,8 @@ Route::group(['middleware' => ['web']], function () {
         return view('usuario/perfil');
     });
 
-
+    //Rota Garagem
+    
     Route::post('/login', [LoginController::class, 'login'])->name('login.usuario');
     Route::get('/login', [LoginController::class, 'show'])->name('login');
 

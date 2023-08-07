@@ -5,10 +5,10 @@
     <meta charset=" utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('content')</title>
+    
     <!-- Main CSS  -->
-    <link rel="stylesheet" type="text/css" href="assets/css/estilo2.css">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/estilo2.css') }}">
+    <title>@yield('content')</title>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
