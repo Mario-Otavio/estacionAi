@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/listar_usuario', [UsuarioController::class, 'listar'])->name('usuario.listar');
     Route::get('/dashboard', [VeiculoController::class, 'index']);
     Route::get('/garagem', [VeiculoController::class, 'listar']);
+    Route::get('/usuario/perfil', [UsuarioController::class, 'listar']);
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
