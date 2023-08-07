@@ -2,6 +2,38 @@
 @section('title', 'Dashboard')
 @section('content')
 
+ <!-- ======= Sidebar ======= -->
+ <aside id="sidebar" class="sidebar">
+
+<ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+        <a class="nav-link" href="dashboard">
+            <i class="bi bi-grid"></i>
+            <span>Painel</span>
+        </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-heading">Paginas</li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="perfil">
+            <i class="bi bi-person"></i>
+            <span>Perfil</span>
+        </a>
+    </li><!-- End Perfil Nav -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="cadastrar_veiculo">
+            <i class="bi bi-card-list"></i>
+            <span>Cadastrar Veículo</span>
+        </a>
+    </li><!-- End Registrar Veículo Nav -->
+
+</ul>
+
+</aside><!-- End Sidebar-->
+
 <main id="main" class="main">
 
             <div class="pagetitle">
@@ -112,6 +144,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">ID</th>
+                                                    <th scope="col">Categoria</th>
                                                     <th scope="col">Placa</th>
                                                     <th scope="col">Modelo</th>
                                                     <th scope="col">Preço</th>
@@ -124,12 +157,13 @@
                                                 <tr class="align-middle">
                                                     <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
                                                     <td scope="row"> {{ $veiculo->id }} </td>
+                                                    <td> {{ $veiculo->categoria }} </td>
                                                     <td class="text-primary"> {{ $veiculo->placa }} </td>
                                                     <td> {{ $veiculo->modelo }} </td>
                                                     <td>R$20</td>
                                                     <td><span class="badge bg-success">Aprovado</span></td>
                                                     <td colspan="3"> 
-                                                            <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info" id="btn-grid-info" data-bs-toggle="modal"> Detalhes </a>
+                                                            <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.show')
                                                             <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
                                                             @include('modals.veiculosModal.update')                                                           

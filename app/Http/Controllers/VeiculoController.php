@@ -7,6 +7,7 @@ use App\Models\Veiculo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Carbon\Carbon;
 
 class VeiculoController extends BaseController
 {
@@ -31,7 +32,7 @@ class VeiculoController extends BaseController
     }
 
     public function show(Veiculo $veiculo)
-    {
+    {        
         $veiculoRecuperado = Veiculo::findOrFail($veiculo->id);
         return view('veiculos/veiculo_show', ['veiculo' => $veiculoRecuperado]);
     }

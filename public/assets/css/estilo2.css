@@ -328,19 +328,19 @@ h6 {
 
 .nav-tabs-bordered .nav-link {
   margin-bottom: -2px;
-  border: none;
+  border: none !important;
   color: #2c384e;
 }
 
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
-  color: #4154f1;
+  color: #4154f1 !important;
 }
 
 .nav-tabs-bordered .nav-link.active {
   background-color: #fff;
-  color: #4154f1;
-  border-bottom: 2px solid #4154f1;
+  color: #4154f1 !important;
+  border-bottom: 2px solid #4154f1 !important;
 }
 
 /*--------------------------------------------------------------
@@ -703,7 +703,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #899bbd !important;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
@@ -713,9 +713,9 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #4154f1 !important;
   transition: 0.3;
-  background: #f6f9ff;
+  background: #f6f9ff !important;
   padding: 10px 15px;
   border-radius: 4px;
 }
@@ -723,25 +723,25 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #4154f1 !important;
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
-  background: #fff;
+  color: #012970 !important;
+  background: #fff !important;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-  color: #899bbd;
+  color: #899bbd !important;
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
-  background: #f6f9ff;
+  color: #4154f1 !important;
+  background: #f6f9ff !important;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: #4154f1 !important;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -764,10 +764,10 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #012970 !important;
   transition: 0.3;
   padding: 10px 0 10px 40px;
-  transition: 0.3s;
+  transition: 0.3s !important;
 }
 
 .sidebar-nav .nav-content a i {
@@ -779,11 +779,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #4154f1;
+  color: #4154f1 !important;
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: #4154f1;
+  background-color: #4154f1 !important;
 }
 
 /*--------------------------------------------------------------
@@ -972,18 +972,19 @@ h6 {
   
 } 
 #btn-grid-info{
-  padding: 6px;
+  padding:  10px;
   text-align: center !important;
   color: #ffffff;
   background-color: #0a58ca;
-  border-color: #ffffff;
+  border-color: #0a58ca;
+  border-radius: 50%;
 } 
 #btn-grid-info:hover{
-  padding: 6px;
+  padding: 10px;
   text-align: center !important;
   color: #ffffff;
   background-color: #0945a0;
-  border-color: #ffffff;
+  border-color: #0945a0;
 } 
 
 .dashboard .recent-sales .dataTable-top {
