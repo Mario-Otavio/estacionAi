@@ -19,7 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('modal.edit');
     Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('modal.editar');
     Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
-    Route::get('/listar_usuario', [UsuarioController::class, 'listar'])->name('usuario.listar');
+    Route::get('/perfil/{usuario}', [UsuarioController::class, 'listar'])->name('usuario.listar');
     Route::get('/dashboard', [DashboardController::class, 'listar']);
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
