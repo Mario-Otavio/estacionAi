@@ -13,6 +13,10 @@ class VeiculoController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
+    public function dash(){
+        return view('veiculos.dashboard');
+    }
+
     public function index()
     {
         $veiculos = Veiculo::latest()->take(8)->get(); // busca 8 registros do banco

@@ -104,7 +104,7 @@
                                     </div>
                                     @endif
 
-                                    <form action="{{ route('login.usuario') }}" method="POST">
+                                    <form action="{{ route('login.auth') }}" method="POST">
                                         @csrf
                                         <p>Por favor, faça seu login!</p>
 
@@ -144,53 +144,6 @@
         </div>
     </section>
 
-    @if (Route::has('login'))
-    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        @auth
-        @include('layouts.menu')
-        @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-        @endauth
-    </div>
-    @endif
-
-    @if (Route::has('login'))
-    @auth
-    <h1>Bem-Vindo</h1>
-    @else
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        <div class="flex justify-center">
-            <img src="{{ url('img/icone.png') }}" alt="" width="150" />
-        </div>
-
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-            <div class="container">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="msg">
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                <form method="POST" action="{{ route('login.usuario') }}">
-                    @csrf
-                    <div class="form-group">
-                        <label for="username">E-mail</label>
-                        <input type="text" class="form-control" id="email" placeholder="Digite o e-mail" name="email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" class="form-control" id="password" placeholder="Digite sua senha" name="password" />
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Entrar">
-                </form>
-            </div>
-        </div>
-    </div>
-    @endauth
-    @endif
 </body>
 
 </html>

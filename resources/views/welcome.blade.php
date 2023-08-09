@@ -63,7 +63,7 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto " href="/">Inicio</a></li>
-                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>                        
+                        <li><a class="nav-link scrollto" href="#pricing">Planos</a></li>
                         <a class="nav-link scrollto" id="btnLogin" href="{{ route('login') }}">Login</a>
                         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
@@ -106,8 +106,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="card-body col-11 ms-3 p-xs-5 p-md-5 mx-md-4">
-                                    <form action="{{ route('login.usuario') }}" method="POST">
-                                        @csrf
+                                    <form>
                                         <div class="mb-4">
                                             <input type="text" id="username" class="form-control" placeholder="Placa" />
                                         </div>
