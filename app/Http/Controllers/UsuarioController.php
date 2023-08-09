@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends BaseController
 {
@@ -18,7 +19,13 @@ class UsuarioController extends BaseController
     }
     public function salvar(UsuarioRequest $request)
     {
-        User::create($request->all());
+        $userData = [
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')), // Usando bcrypt aqui
+        ];
+
+        User::create($userData);
         return redirect()->route('login')
             ->with('success', 'Usuário cadastrado com sucesso!');
     }

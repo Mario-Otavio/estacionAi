@@ -42,6 +42,16 @@
 
 <main id="main" class="main">
 
+@if(session('success'))
+    <!-- Exibir o modal usando JavaScript -->
+    <script>
+        $(document).ready(function() {
+            $('#modalLogado').modal('show');
+        });
+    </script>
+    
+@endif
+
     <div class="pagetitle">
         <h1>Painel</h1>
         <nav>
