@@ -62,9 +62,9 @@
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            @foreach($usuario as $User)
-            <h2>{{ $User->name }}</h2>
-            @endforeach
+            
+            <h2></h2>
+            <h3><b>{{auth()->user()->name}}</b></h3>
             <h3>Web Designer</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -107,7 +107,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Nome completo</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8">{{auth()->user()->name}}</div>
                 </div>
 
                 <div class="row">
@@ -132,7 +132,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">E-mail</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8">{{auth()->user()->email}}</div>
                 </div>
 
               </div>

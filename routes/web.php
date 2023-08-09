@@ -14,7 +14,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::middleware(['auth'])->group(function () {
         
-    });
+
 
 
     Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('modal.delete');
@@ -24,7 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/dashboard', [VeiculoController::class, 'index']);
     Route::get('/garagem', [VeiculoController::class, 'listar']);
     Route::get('/perfil', [UsuarioController::class, 'listar']);
-    Route::get('/cadastrar_veiculo', function () {
+        Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
     Route::get('/cadastrar_usuario', function () {
@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
     Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
-    
+});
     //Rota Index
     Route::get('/', function () {
         return view('welcome');

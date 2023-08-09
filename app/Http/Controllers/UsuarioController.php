@@ -39,8 +39,8 @@ class UsuarioController extends BaseController
 
     public function show(User $usuario)
     {
-        $usuarioRecuperado = User::findOrFail($usuario->id);
-        return view('usuario/show_usuario', ['usuario' => $usuarioRecuperado]);
+        $usuarioRecuperado = User::findOrFail($usuario->id); //buscar registro por id
+        return view('usuario/perfil', ['usuario' => $usuarioRecuperado]);
     }
 
     public function edit(User $usuario)
