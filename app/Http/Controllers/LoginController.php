@@ -13,24 +13,24 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(LoginRequest $request){
+    public function login(LoginRequest $request)
+    {
         $credenciais = $request->getCredentials();
 
-        if (!Auth::validate($credenciais)) {
-            return redirect()->to('login')->withErrors(['field' => 'Usuário ou senha inválido']);
+        if (!Auth::attempt($credenciais)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        } else {
+            return redirect()->back()->withErrors(['field' => 'Usuário ou senha inválido']);
         }
-
-        $user = Auth::getProvider()->retrieveByCredentials($credenciais);
-        Auth::login($user);
-
-        return $this->authenticated($request, $user);
     }
 
     protected function authenticated(Request $request, $user)
     {
-        return redirect("dashboard")->intended();
+        return redirect()->intended('dashboard');
     }
-    protected function logout(){
+    protected function logout()
+    {
         Auth::logout();
         return redirect("/");
     }

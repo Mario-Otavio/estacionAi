@@ -19,13 +19,13 @@ class UsuarioController extends BaseController
     public function salvar(UsuarioRequest $request)
     {
         User::create($request->all());
-        return redirect()->route('usuario.salvar')
-            ->with('success', 'sucesso...');
+        return redirect()->route('login')
+            ->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     public function listar()
     {
-        $usuario = User::all();//vem do banco
+        $usuario = User::all(); // busca todos os registros do banco
 
         return view('usuario/perfil', ['usuario' => $usuario]);
     }
@@ -46,7 +46,7 @@ class UsuarioController extends BaseController
 
         $usuario->update($request->all());
         return redirect()->route('usuario.listar')
-            ->with('success', 'Veículo atualizado com sucesso!');
+            ->with('success', 'Usuário atualizado com sucesso!');
     }
 
     public function destroy(User $usuario)
