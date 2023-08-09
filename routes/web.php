@@ -17,10 +17,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('modal.edit');
     Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('modal.editar');
     Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
-    Route::get('/listar_usuario', [UsuarioController::class, 'listar'])->name('usuario.listar');
+    Route::get('perfil', [UsuarioController::class, 'listar']);
     Route::get('/dashboard', [VeiculoController::class, 'index']);
     Route::get('/garagem', [VeiculoController::class, 'listar']);
     Route::get('/usuario/perfil', [UsuarioController::class, 'listar']);
+    
     Route::get('/cadastrar_veiculo', function () {
         return view('veiculos/cadastrar_veiculo');
     })->name("cadastrar.veiculo");
@@ -37,10 +38,7 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     });
 
-    //Rota Perfil
-    Route::get('/perfil', function () {
-        return view('usuario/perfil');
-    });
+
 
     //Rota Garagem
     
