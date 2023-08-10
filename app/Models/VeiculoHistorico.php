@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 
 
-class Veiculo extends Authenticatable
+class VeiculoHistorico extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -23,11 +23,11 @@ class Veiculo extends Authenticatable
         'categoria',
         'placa',
         'marca',
-        'modelo',   
-        'saida',     
+        'modelo',
+        'saida',
     ];
     //Tudo que for enviado pelo post vai ser atualizado
-    protected $guarded = [];    
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast.

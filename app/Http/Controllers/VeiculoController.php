@@ -38,7 +38,7 @@ class VeiculoController extends BaseController
     {
         Veiculo::create($request->all());
         return redirect()->route('veiculo.salvar')
-            ->with('success', 'Veículo Cadastro com Sucesso!');
+            ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }    
 
     public function show(Veiculo $veiculo)
@@ -57,13 +57,12 @@ class VeiculoController extends BaseController
 
         $Veiculo->update($request->all());
         return redirect('/garagem')
-            ->with('success', 'Veículo editado com Sucesso!');
+            ->with('sucesso', 'Veículo editado com Sucesso!');
     }
 
     public function destroy(Veiculo $Veiculo)
     {
         $Veiculo->delete();
-        return redirect('/garagem')
-            ->with('success', 'Veículo deletado com Sucesso!');
+        return redirect()->to('/garagem') ->with('sucesso', 'Veículo deletado com Sucesso!');
     }
 }
