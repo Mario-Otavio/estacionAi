@@ -65,7 +65,7 @@
             
             <h2></h2>
             <h3><b>{{auth()->user()->name}}</b></h3>
-            <h3>Web Designer</h3>
+            <h3>{{auth()->user()->empresa}}</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
