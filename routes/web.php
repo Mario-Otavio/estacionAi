@@ -23,7 +23,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
         //Rotas Usuário
-        Route::get('/perfil', [UsuarioController::class, 'listar']);
+        Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
+        Route::put('/perfil/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
 
 
 
