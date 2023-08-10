@@ -109,16 +109,16 @@
                     <div class="col-xxl-4 col-xl-12">
 
                         <div class="card info-card sales-card">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Cadastrar Veículo</h5>
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
 
-                                <div class="d-flex align-items-center text-center justify-content-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center">
-                                        <i class="bi bi-plus "></i>
-                                    </div>
-
-                                </div>
-
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                    <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
+                                    @include('modals.veiculosModal.cadastro') 
+                                    </div>                                   
+                                </div>                                                                  
+                                
                             </div>
                         </div>
 

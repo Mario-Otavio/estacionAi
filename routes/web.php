@@ -20,14 +20,14 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
         Route::get('/dashboard', [VeiculoController::class, 'index']);
         Route::get('/garagem', [VeiculoController::class, 'listar']);
-        Route::post('/cadastrar_veiculo', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
+        Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
 
         //Rotas Usuário
         Route::get('/perfil', [UsuarioController::class, 'listar']);
 
 
 
-        //Rota Cadstro de veículo
+        //Rota Cadastro de veículo
         Route::get('/cadastrar_veiculo', function () {
             return view('veiculos/cadastrar_veiculo');
         })->name("cadastrar.veiculo");
@@ -39,8 +39,9 @@ Route::group(['middleware' => ['web']], function () {
 
     //Rota Cadastro de usuário
     Route::get('/cadastrar_usuario', function () {
-        return view('usuario/cadastrar_usuario');
+         return view('usuario/cadastrar_usuario'); 
     })->name("cadastrar.usuario");
+
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
 
     //Rotas Login

@@ -965,6 +965,14 @@ h6 {
 .dashboard .recent-sales .table thead th {
   border: 0;
 }
+#btnCadastrar{  
+  font-size: 64px;
+}
+#btnCadastrar:hover{  
+  font-size: 64px;
+  color: #0945a0;
+}
+
 
 #btn-grid{
   padding: 10px;

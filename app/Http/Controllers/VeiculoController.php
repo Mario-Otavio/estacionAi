@@ -31,7 +31,7 @@ class VeiculoController extends BaseController
         $veiculosTotal = Veiculo::paginate(7); // busca todos os registros do banco
         $totalVeiculosGaragem = Veiculo::count();
         
-        return view('veiculos.garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem]);
+        return view('veiculos/garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem]);
     }
 
     public function salvar(VeiculoRequest $request)
