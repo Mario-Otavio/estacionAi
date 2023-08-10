@@ -5,7 +5,7 @@
     <meta charset=" utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+
     <!-- Main CSS  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/estilo2.css') }}">
     <title>@yield('content')</title>
@@ -39,6 +39,7 @@
                 <img src="img/icone.png" alt="">
                 <p class="letraLogo">Estacion</p><span class="d-none d-lg-block" id="ai-logo">Ai</span>
             </a>
+
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
@@ -216,9 +217,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="perfil">
                                 <i class="bi bi-person"></i>
-                                <span>My Profile</span>
+                                <span>Meu perfil</span>
                             </a>
                         </li>
                         <li>
@@ -228,7 +229,7 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
+                                <span>Configurações de Conta</span>
                             </a>
                         </li>
                         <li>
@@ -236,19 +237,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="logout">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Sair</span>
                             </a>
                         </li>
 
@@ -259,7 +250,6 @@
         </nav><!-- End Icons Navigation -->
 
     </header><!-- End Header -->
-    
 
 
 
@@ -267,7 +257,8 @@
 
 
 
-    
+
+
     <!-- CONTEÚDO -->
 
 
@@ -298,10 +289,10 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
- 
+
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>    
-        
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
 </body>
 
 </html>

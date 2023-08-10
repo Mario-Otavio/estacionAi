@@ -9,35 +9,41 @@ date_default_timezone_set('America/Sao_Paulo');
 
 
 
- <!-- ======= Sidebar ======= -->
- <aside id="sidebar" class="sidebar">
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
-<ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Painel</span>
-        </a>
-    </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="dashboard">
+                <i class="bi bi-grid"></i>
+                <span>Painel</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
-    <li class="nav-heading">Paginas</li>
+        <li class="nav-heading">Paginas</li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="perfil">
-            <i class="bi bi-person"></i>
-            <span>Perfil</span>
-        </a>
-    </li><!-- End Perfil Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="perfil">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
+            </a>
+        </li><!-- End Perfil Nav -->
 
-    <li class="nav-item">
-        <a class="nav-link" href="cadastrar_veiculo">
-            <i class="bi bi-card-list"></i>
-            <span>Cadastrar Veículo</span>
-        </a>
-    </li><!-- End Registrar Veículo Nav -->
+        <li class="nav-item">
+            <a class="nav-link" href="cadastrar_veiculo">
+                <i class="bi bi-card-list"></i>
+                <span>Cadastrar Veículo</span>
+            </a>
+        </li><!-- End Registrar Veículo Nav -->
 
-</ul>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="garagem">
+                <i class="bi bi-car-front"></i>
+                <span>Garagem</span>
+            </a>
+        </li><!-- End Garagem Nav -->
+    </ul>
 
 </aside><!-- End Sidebar-->
 
@@ -57,7 +63,7 @@ date_default_timezone_set('America/Sao_Paulo');
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                       <!-- <div class="d-flex justify-content-center py-4">
+                        <!-- <div class="d-flex justify-content-center py-4">
                             <a href="" class="logo d-flex align-items-center w-auto">
                                  <img src="assets/img/logo.png" alt="logo">
                                 <h1 class="d-none d-lg-block">Estacion<span>Ai</span></h1>

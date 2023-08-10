@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Cadastrar veículo</title>
+    <title>Login</title>
     <!-- CSS -->
     <link href="assets/css/estilo2.css" rel="stylesheet">
 

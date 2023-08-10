@@ -102,7 +102,7 @@ h6 {
   animation-name: dropdown-animate;
   animation-duration: 0.2s;
   animation-fill-mode: both;
-  border: 0;
+  border: 0 !important;
   box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
 }
 
@@ -141,6 +141,7 @@ h6 {
 
 .dropdown-menu .dropdown-item:hover {
   background-color: #f6f9ff;
+  border-radius: 6px;
 }
 
 @media (min-width: 768px) {

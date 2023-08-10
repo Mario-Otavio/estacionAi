@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar collapse-horizontal">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -41,16 +41,6 @@
 </aside><!-- End Sidebar-->
 
 <main id="main" class="main">
-
-@if(session('success'))
-    <!-- Exibir o modal usando JavaScript -->
-    <script>
-        $(document).ready(function() {
-            $('#modalLogado').modal('show');
-        });
-    </script>
-    
-@endif
 
     <div class="pagetitle">
         <h1>Painel</h1>

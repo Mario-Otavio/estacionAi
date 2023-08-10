@@ -16,15 +16,15 @@ class LoginController extends Controller
     public function auth(Request $request)
     {
         $request->validate([
-            "email" =>'required|string',
-            "password"=>'required'
-        ],[        
+            "email" => 'required|string',
+            "password" => 'required'
+        ], [
             'email.required' => 'O campo email é obrigatório!',
             'password.required' => 'O campo senha é obrigatório!'
         ]);
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            session(['success' => true]);
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $request->session()->regenerate();
             return redirect()->to('dashboard');
         } else {
             return redirect()->back()->withErrors(['field' => 'Credenciais inválidas!']);
@@ -35,9 +35,11 @@ class LoginController extends Controller
     {
         return redirect()->intended('dashboard');
     }
-    protected function logout()
+    protected function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect("/");
     }
 }

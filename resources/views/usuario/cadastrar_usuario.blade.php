@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Cadastrar veículo</title>
+    <title>Cadastrar Usuário</title>
     <!-- CSS -->
     <link href="assets/css/estilo2.css" rel="stylesheet">
 
@@ -24,6 +24,7 @@
     <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
 
