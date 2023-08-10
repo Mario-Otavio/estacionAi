@@ -21,6 +21,9 @@ class UsuarioController extends BaseController
     {
         $userData = [
             'name' => $request->input('name'),
+            'empresa' => $request->input('empresa'),
+            'telefone' => $request->input('telefone'),
+            'endereco' => $request->input('endereco'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')), // Usando bcrypt aqui
         ];

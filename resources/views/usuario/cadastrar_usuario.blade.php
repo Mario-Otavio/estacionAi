@@ -63,6 +63,27 @@
                                             <input type="text" name="name" class="form-control" required>
                                             <div class="invalid-feedback">Por favor,insira um nome!</div>
                                         </div>
+                                        <div class="col-12">
+                                            <label for="empresa" class="form-label">Nome da Empresa</label>
+                                            <div class="input-group has-validation">
+                                             
+                                                <input type="empresa" name="empresa" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
+                                            </div>
+                                        </div><div class="col-12">
+                                            <label for="telefone" class="form-label">Telefone</label>
+                                            <div class="input-group has-validation">
+                                                <input type="telefone" name="telefone" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
+                                            </div>
+                                        </div><div class="col-12">
+                                            <label for="endereco" class="form-label">Endereço do estabelecimento </label>
+                                            <div class="input-group has-validation">
+            
+                                                <input type="endereco" name="endereco" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-12">
                                             <label for="email" class="form-label">Endereço de email</label>

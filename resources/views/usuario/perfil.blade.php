@@ -65,7 +65,7 @@
             
             <h2></h2>
             <h3><b>{{auth()->user()->name}}</b></h3>
-            <h3>Web Designer</h3>
+            <h3>{{auth()->user()->empresa}}</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -112,7 +112,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Empresa</div>
-                  <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                  <div class="col-lg-9 col-md-8">{{auth()->user()->empresa}}</div>
                 </div>
 
                 <div class="row">
@@ -122,12 +122,12 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Endereço</div>
-                  <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                  <div class="col-lg-9 col-md-8">{{auth()->user()->endereco}}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Telefone</div>
-                  <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  <div class="col-lg-9 col-md-8">{{auth()->user()->telefone}}</div>
                 </div>
 
                 <div class="row">
@@ -140,7 +140,9 @@
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                 <!-- Profile Edit Form -->
-                <form>
+                <form action="{{ route('usuario.update', auth()->user()->id) }}" method="POST">
+                   @csrf
+                   @method('PUT')
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto de perfil</label>
                     <div class="col-md-8 col-lg-9">
@@ -153,51 +155,37 @@
                   </div>
 
                   <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nome completo</label>
+                    <label for="name" class="col-md-4 col-lg-3 col-form-label">Nome completo</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                      <input name="name" type="text" class="form-control" value="{{auth()->user()->name}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="about" class="col-md-4 col-lg-3 col-form-label">Sobre</label>
+                    <label for="empresa" class="col-md-4 col-lg-3 col-form-label">Empresa</label>
                     <div class="col-md-8 col-lg-9">
-                      <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                      <input name="empresa" type="text" class="form-control" value="{{auth()->user()->empresa}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Empresa</label>
+                    <label for="endereco" class="col-md-4 col-lg-3 col-form-label">Endereço</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                      <input name="endereco" type="text" class="form-control" value="{{auth()->user()->endereco}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Trabalho</label>
+                    <label for="telefone" class="col-md-4 col-lg-3 col-form-label">Telefone</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                      <input name="telefone" type="text" class="form-control" value="{{auth()->user()->telefone}}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Endereço</label>
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Telefone</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                      <input name="email" type="email" class="form-control" value="{{auth()->user()->email}}">
                     </div>
                   </div>
 
