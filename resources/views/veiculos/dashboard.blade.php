@@ -143,17 +143,15 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Últimos Veículos <span>| Hoje</span></h5>
+                                <h5 class="card-title">Top 8 últimos Veículos <span>| Hoje</span></h5>
 
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Categoria</th>
-                                            <th scope="col">Placa</th>
-                                            <th scope="col">Modelo</th>
-                                            <th scope="col">Preço</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Placa</th>                                                                                  
+                                            <th scope="col">Tempo</th>
                                             <th scope="col">Informações</th>
                                         </tr>
                                     </thead>
@@ -165,9 +163,8 @@
                                             <td scope="row"> {{ $veiculo->id }} </td>
                                             <td> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary"> {{ $veiculo->placa }} </td>
-                                            <td> {{ $veiculo->modelo }} </td>
-                                            <td>R$20</td>
-                                            <td><span class="badge bg-success">Aprovado</span></td>
+                                            <td><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
+                                          <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td>
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                 @include('modals.veiculosModal.show')
@@ -175,12 +172,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                        @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <p> {{ $message }} </p>
-                                        </div>
-                                        @endif
-
                                     </tbody>
                                 </table>
                             </div>
@@ -195,6 +186,32 @@
 
 </main><!-- End #main -->
 <br><br><br>
+
+
+<script>
+function atualizarTimers() {
+    var timers = document.querySelectorAll('.timer');
+    
+    timers.forEach(function(timerElement) {
+        var horarioEntrada = timerElement.getAttribute('data-entrada');
+        var entrada = new Date(horarioEntrada);
+        var agora = new Date();
+        var diferenca = Math.floor((agora - entrada) / 1000); // Diferença em segundos
+
+        var horas = Math.floor(diferenca / 3600);
+        var minutos = Math.floor((diferenca % 3600) / 60);
+        var segundos = diferenca % 60;
+
+        timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
+                                   minutos.toString().padStart(2, '0') + ':' +
+                                   segundos.toString().padStart(2, '0');
+    });
+}
+
+atualizarTimers(); // Atualize os timers imediatamente
+setInterval(atualizarTimers, 1000); // Atualize a cada segundo
+</script>
+
 
 </body>
 
