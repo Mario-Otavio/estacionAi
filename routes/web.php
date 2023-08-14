@@ -17,10 +17,12 @@ Route::group(['middleware' => ['web']], function () {
         Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'destroy'])->name('modal.delete');
         Route::get('/veiculos/editar_veiculo/{veiculo}', [VeiculoController::class, 'edit'])->name('modal.edit');
         Route::put('/veiculos/update/{veiculo}', [VeiculoController::class, 'update'])->name('modal.editar');
-        Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('veiculo.show');
+        Route::get('/veiculo_show/{veiculo}', [VeiculoController::class, 'show'])->name('modal.show');
+        Route::put('/veiculos/confirmacao/{veiculo}', [VeiculoController::class, 'saidaVeiculo'])->name('modal.confirmacao');
         Route::get('/dashboard', [VeiculoController::class, 'index']);
         Route::get('/garagem', [VeiculoController::class, 'listar']);
-        Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
+        Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');        
+        Route::get('/historico', [VeiculoController::class, 'todosVeiculos'])->name('veiculo.historico');
 
         //Rotas Usuário
         Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
@@ -40,7 +42,7 @@ Route::group(['middleware' => ['web']], function () {
 
     //Rota Cadastro de usuário
     Route::get('/cadastrar_usuario', function () {
-         return view('usuario/cadastrar_usuario'); 
+         return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
 
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');

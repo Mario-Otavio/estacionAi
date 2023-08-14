@@ -37,6 +37,13 @@
       </a>
     </li><!-- End Garagem Nav -->
 
+    <li class="nav-item">
+            <a class="nav-link collapsed" href="historico">
+                <i class="bi bi-list-columns-reverse"></i>
+                <span>Histórico</span>
+            </a>
+        </li><!-- End Histórico Nav -->
+
   </ul>
 
 </aside><!-- End Sidebar-->

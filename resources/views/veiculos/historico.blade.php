@@ -31,14 +31,15 @@
         </li><!-- End Registrar Veículo Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="garagem">
+            <a class="nav-link collapsed" href="garagem">
                 <i class="bi bi-car-front"></i>
                 <span>Garagem</span>
             </a>
         </li><!-- End Garagem Nav -->
 
+        
         <li class="nav-item">
-            <a class="nav-link collapsed" href="historico">
+            <a class="nav-link" href="historico">
                 <i class="bi bi-list-columns-reverse"></i>
                 <span>Histórico</span>
             </a>
@@ -51,7 +52,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Garagem</h1>
+        <h1>Histórico</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard">Inicio</a></li>
@@ -71,7 +72,7 @@
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
+                                <h5 class="card-title">Total veículos <span>| Todos</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -79,7 +80,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>
-                                            {{ $totalVeiculosGaragem }}
+                                            {{ $contador }}
                                         </h6>
                                     </div>
                                 </div>
@@ -87,47 +88,7 @@
 
                         </div>
                     </div><!-- End Revenue Card -->
-
-                    <!-- Customers Card -->
-                    <div class="col-xxl-4 col-xl-12">
-
-                        <div class="card info-card customers-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Valores</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <p class="bi bi-car-front-fill"> R$20,00</p>
-                                        <p class="bi bi-bicycle"> R$10,00</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div><!-- End Customers Card -->
-
-                    <!-- Cadastrar Card -->
-                    <div class="col-xxl-4 col-xl-12">
-
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
-
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
-                                    <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
-                                    @include('modals.veiculosModal.cadastro') 
-                                    </div>                                   
-                                </div>                                                                  
-                                
-                            </div>
-                        </div>
-
-                    </div><!-- End Cadastrar Card -->
+                                      
 
                     <!-- Recent Sales -->
                     <div class="col-12">
@@ -157,33 +118,26 @@
                                             <th scope="col">Placa</th>
                                             <th scope="col">Modelo</th>
                                             <th scope="col">Tempo</th>
-                                            <th scope="col">Ações</th>
-                                            <th scope="col">Saída</th>
+                                            <th scope="col">Informações</th>
+                                            
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach($veiculosTotal as $veiculo)
+                                        @foreach($todosVeiculos as $veiculo)
                                         <tr class="align-middle">
                                             <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
                                             <td scope="row"> {{ $veiculo->id }} </td>
                                             <td> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary"> {{ $veiculo->placa }} </td>
                                             <td> {{ $veiculo->modelo }} </td>
-                                            <td><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
+                                            <td><span class="timer" data-entrada="{{ $veiculo->created_at }}" data-saida="{{ $veiculo->saida }}"></span></td>
                                           <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td>
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.show')
-                                                <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.update')
-                                                <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.delete')
+                                                @include('modals.veiculosModal.show')                                              
                                             </td>
-                                            <td>                                             
-                                                <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning bi bi-box-arrow-right text-white" data-bs-toggle="modal"> Saída</a>
-                                                @include('modals.veiculosModal.confirmacao')
-                                            </td>
+                                           
                                             
                                         </tr>
                                         @endforeach
@@ -191,7 +145,7 @@
                                     </tbody>
 
                                 </table>
-                                {{ $veiculosTotal->links('pagination::bootstrap-5') }}
+                                {{ $todosVeiculos->links('pagination::bootstrap-5') }}
                             </div>
 
                         </div>
@@ -208,26 +162,36 @@
 
 <script>
 function atualizarTimers() {
-    var timers = document.querySelectorAll('.timer');
-    
-    timers.forEach(function(timerElement) {
-        var horarioEntrada = timerElement.getAttribute('data-entrada');
-        var entrada = new Date(horarioEntrada);
-        var agora = new Date();
-        var diferenca = Math.floor((agora - entrada) / 1000); // Diferença em segundos
+        var timers = document.querySelectorAll('.timer');
 
-        var horas = Math.floor(diferenca / 3600);
-        var minutos = Math.floor((diferenca % 3600) / 60);
-        var segundos = diferenca % 60;
+        timers.forEach(function(timerElement) {
+            var horarioEntrada = timerElement.getAttribute('data-entrada');
+            var horarioSaida = timerElement.getAttribute('data-saida');
+            
+            if (horarioSaida) { // Verifica se o carro saiu
+                var entrada = new Date(horarioEntrada);
+                var saida = new Date(horarioSaida);
+                var diferenca = Math.floor((saida - entrada) / 1000); // Diferença em segundos
 
-        timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
-                                   minutos.toString().padStart(2, '0') + ':' +
-                                   segundos.toString().padStart(2, '0');
+                var horas = Math.floor(diferenca / 3600);
+                var minutos = Math.floor((diferenca % 3600) / 60);
+                var segundos = diferenca % 60;
+
+                timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
+                                        minutos.toString().padStart(2, '0') + ':' +
+                                        segundos.toString().padStart(2, '0');
+            } else {
+                // Neste caso, não atualize o timer, mantendo o valor travado.
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        atualizarTimers(); // Inicia a atualização dos timers quando a página é carregada
+        setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
     });
-}
 
-atualizarTimers(); // Atualize os timers imediatamente
-setInterval(atualizarTimers, 1000); // Atualize a cada segundo
+
 </script>
 
 

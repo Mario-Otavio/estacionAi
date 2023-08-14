@@ -36,6 +36,13 @@
                 <span>Garagem</span>
             </a>
         </li><!-- End Garagem Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="historico">
+                <i class="bi bi-list-columns-reverse"></i>
+                <span>Histórico</span>
+            </a>
+        </li><!-- End Histórico Nav -->
     </ul>
 
 </aside><!-- End Sidebar-->
@@ -71,8 +78,6 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
-
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +89,8 @@
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Total veículos</h5>
+                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
+                                
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -94,8 +100,6 @@
                                         <h6>
                                             {{ $totalVeiculos }}
                                         </h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">de aumento</span>
-
                                     </div>
                                 </div>
                             </div>
