@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Garagem')
+@section('title', 'Histórico')
 @section('content')
 
 <!-- ======= Sidebar ======= -->
@@ -108,7 +108,7 @@
                             </div>
 
                             <div class="card-body">
-                                <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
+                                <h5 class="card-title">Total Veículos <span>| Todos</span></h5>
 
                                 <table class="table table-hover">
                                     <thead>
@@ -134,8 +134,8 @@
                                             <td><span class="timer" data-entrada="{{ $veiculo->created_at }}" data-saida="{{ $veiculo->saida }}"></span></td>
                                           <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td>
-                                                <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.show')                                              
+                                                <a href="#modalShowHistorico-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
+                                                @include('modals.veiculosModal.showHistorico')                                              
                                             </td>
                                            
                                             

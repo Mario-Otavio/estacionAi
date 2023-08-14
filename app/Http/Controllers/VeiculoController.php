@@ -79,7 +79,7 @@ class VeiculoController extends Controller
 
         if (!$veiculo) {
             // O carro não foi encontrado
-            return redirect()->back()->with('error', 'Carro não encontrado.');
+            return redirect()->back()->with('error', 'Veículo não encontrado.');
         }
         
         // Registre o horário de saída do carro
