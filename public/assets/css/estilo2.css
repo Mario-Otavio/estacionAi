@@ -425,8 +425,8 @@ h6 {
 }
 
 .header .search-bar {
-  min-width: 360px;
-  padding: 0 20px;
+  min-width: 360px !important;
+  padding: 0 20px !important;
 }
 
 @media (max-width: 1199px) {

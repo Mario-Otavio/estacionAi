@@ -64,91 +64,88 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
+                    
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-3 col-md-6 col-xl-12">
+                            <div class="card info-card revenue-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
 
-                    <!-- Revenue Card -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card revenue-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-car-front-fill"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <h6>
-                                            {{ $totalVeiculosGaragem }}
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div><!-- End Revenue Card -->
-
-                    <!-- Customers Card -->
-                    <div class="col-xxl-4 col-xl-12">
-
-                        <div class="card info-card customers-card">
-                            <div class="card-body">
-                                <h5 class="card-title">Valores</h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
-                                    </div>
-                                    <div class="ps-3">
-                                        <p class="bi bi-car-front-fill"> R$20,00</p>
-                                        <p class="bi bi-bicycle"> R$10,00</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-car-front-fill"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>
+                                                {{ $totalVeiculosGaragem }}
+                                            </h6>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
-                        </div>
+                        </div><!-- End Revenue Card -->
 
-                    </div><!-- End Customers Card -->
+                        <!-- Customers Card -->
+                        <div class="col-xxl-3 col-md-6 col-xl-12">
 
-                    <!-- Cadastrar Card -->
-                    <div class="col-xxl-4 col-xl-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Valores</h5>
 
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-currency-dollar"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <p class="bi bi-car-front-fill"> R$20,00</p>
+                                            <p class="bi bi-bicycle"> R$10,00</p>
+                                        </div>
+                                    </div>
 
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
-                                    <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
-                                    @include('modals.veiculosModal.cadastro') 
-                                    </div>                                   
-                                </div>                                                                  
-                                
+                                </div>
                             </div>
-                        </div>
 
-                    </div><!-- End Cadastrar Card -->
+                        </div><!-- End Customers Card -->
 
+                        <!-- Cadastrar Card -->
+                        <div class="col-xxl-3 col-xl-12">
+
+                            <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
+
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
+                                        @include('modals.veiculosModal.cadastro') 
+                                        </div>                                   
+                                    </div>                                                                  
+                                    
+                                </div>
+                            </div>
+
+                        </div><!-- End Cadastrar Card -->
+
+                       
+                    
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filtro</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Hoje</a></li>
-                                    <li><a class="dropdown-item" href="#">Este mês</a></li>
-                                    <li><a class="dropdown-item" href="#">Este ano</a></li>
-                                </ul>
-                            </div>
-
                             <div class="card-body">
-                                <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
+                                
+                                    <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
 
+                                    <div class="search-bar d-flex justify-content-end" id="pesquisar">
+                                        <form class="search-form d-flex" id="pesquisar" method="POST" action="#">
+                                            <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
+                                            <button type="submit" title="Search"><i class="btn bi bi-search"></i></button>
+                                        </form>
+                                    </div><!-- End Search Bar -->
+                              
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>

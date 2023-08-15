@@ -89,8 +89,7 @@
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
-                                
+                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>                                
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -183,8 +182,8 @@
                         </div>
                     </div><!-- End Recent Sales -->
                 </div>
-            </div><!-- End Left side columns -->
 
+            </div><!-- End Left side columns -->
         </div>
     </section>
 
@@ -216,7 +215,3 @@ atualizarTimers(); // Atualize os timers imediatamente
 setInterval(atualizarTimers, 1000); // Atualize a cada segundo
 </script>
 
-
-</body>
-
-</html>

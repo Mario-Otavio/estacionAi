@@ -94,4 +94,5 @@ class VeiculoController extends Controller
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
     }
+
 }

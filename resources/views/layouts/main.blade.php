@@ -26,6 +26,7 @@
     <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
     <link href="{{ asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
 </head>
 
@@ -45,7 +46,7 @@
 
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
@@ -289,6 +290,7 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
