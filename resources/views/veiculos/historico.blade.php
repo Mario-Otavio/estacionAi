@@ -94,18 +94,7 @@
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filtro</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Hoje</a></li>
-                                    <li><a class="dropdown-item" href="#">Este mês</a></li>
-                                    <li><a class="dropdown-item" href="#">Este ano</a></li>
-                                </ul>
-                            </div>
+                            
 
                             <div class="card-body">
                                 <h5 class="card-title">Total Veículos <span>| Todos</span></h5>
@@ -113,12 +102,12 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Categoria</th>
-                                            <th scope="col">Placa</th>
-                                            <th scope="col">Modelo</th>
-                                            <th scope="col">Tempo</th>
-                                            <th scope="col">Informações</th>
+                                            <th scope="col" class="text-center">Nº</th>
+                                            <th scope="col" class="text-center">Categoria</th>
+                                            <th scope="col" class="text-center">Placa</th>
+                                            <th scope="col" class="text-center">Modelo</th>
+                                            <th scope="col" class="text-center">Tempo</th>
+                                            <th scope="col" class="text-center">Informações</th>
                                             
                                         </tr>
                                     </thead>
@@ -126,14 +115,14 @@
                                     <tbody>
                                         @foreach($todosVeiculos as $veiculo)
                                         <tr class="align-middle">
-                                            <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
-                                            <td scope="row"> {{ $veiculo->id }} </td>
-                                            <td> {{ $veiculo->categoria }} </td>
-                                            <td class="text-primary"> {{ $veiculo->placa }} </td>
-                                            <td> {{ $veiculo->modelo }} </td>
-                                            <td><span class="timer" data-entrada="{{ $veiculo->created_at }}" data-saida="{{ $veiculo->saida }}"></span></td>
+                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
+                                            <!--<td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
+                                            <td class="text-center"> {{ $veiculo->categoria }} </td>
+                                            <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
+                                            <td class="text-center"> {{ $veiculo->modelo }} </td>
+                                            <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}" data-saida="{{ $veiculo->saida }}"></span></td>
                                           <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
-                                            <td>
+                                            <td class="text-center">
                                                 <a href="#modalShowHistorico-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                 @include('modals.veiculosModal.showHistorico')                                              
                                             </td>

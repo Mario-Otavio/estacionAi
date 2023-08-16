@@ -8,11 +8,11 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group">                    
-                    <li class="list-group-item"><b>Categoria do veículo:</b> {{$veiculo->categoria}} </li>
-                    <li class="list-group-item"><b>Placa do veículo:</b> {{$veiculo->placa}} </li>
-                    <li class="list-group-item"><b>Marca do veículo:</b> {{$veiculo->marca}} </li>
-                    <li class="list-group-item"><b>Modelo do veículo:</b> {{$veiculo->modelo}} </li>
-                    <li class="list-group-item"><b>Entrada do veículo:</b> {{ date('d/m/Y H:i:s', strtotime($veiculo->created_at)) }} </li>                 
+                    <li class="list-group-item text-start"><b>Categoria do veículo:</b> {{$veiculo->categoria}} </li>
+                    <li class="list-group-item text-start"><b>Placa do veículo:</b> {{$veiculo->placa}} </li>
+                    <li class="list-group-item text-start"><b>Marca do veículo:</b> {{$veiculo->marca}} </li>
+                    <li class="list-group-item text-start"><b>Modelo do veículo:</b> {{$veiculo->modelo}} </li>
+                    <li class="list-group-item text-start"><b>Entrada do veículo:</b> {{ date('d/m/Y H:i:s', strtotime($veiculo->created_at)) }} </li>                 
                     <!-- <li class="list-group-item"><b>Entrada: </b>{{$veiculo->updated_at}}</li> -->
                 </ul> 
             </div>

@@ -35,10 +35,33 @@ class VeiculoController extends Controller
 
     public function listar()
     {       
-        $veiculosTotal = Veiculo::whereNull('saida')->paginate(7); // busca todos os registros do banco
+        $search = request('search');
+        if($search){
+            $veiculos = Veiculo::where([
+                ['placa','like','%'.$search.'%']
+            ])->get();
+        } else {
+            $veiculos = Veiculo::all();          
+            }
+
+        $veiculosTotal = Veiculo::whereNull('saida')->paginate(7); // busca todos os registros do banco  
         $totalVeiculosGaragem = Veiculo::whereNull('saida')->count();
-        
-        return view('veiculos/garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem]);
+        return view('veiculos/garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem, 'search' => $search, 'veiculo' => $veiculos]);
+    }
+
+    public function filtro()
+    {       
+        $search = request('search');
+        if($search){
+            $veiculos = Veiculo::where(function ($query) use ($search) {
+                $query->where('placa', 'like', '%' . $search . '%')
+                      ->orWhere('modelo', 'like', '%' . $search . '%');
+            })->get();
+        } else {
+            $veiculos = Veiculo::all();
+        }
+       
+        return view('veiculos/garagem', ['search' => $search, 'veiculo' => $veiculos]);
     }
 
     public function salvar(VeiculoRequest $request)

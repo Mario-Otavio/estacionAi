@@ -15,19 +15,19 @@
                         <form action="{{route('modal.editar', $veiculo->id)}}" method="POST" enctype="multipart/form-data" style="display: inline;">
                         @csrf
                         @method('PUT')
-                        <div class="col-12">
+                        <div class="col-12 text-start pb-3">
                             <label for="placa" class="form-label">Placa</label>
                             <input type="text" name="placa" class="form-control" value="{{ $veiculo->placa }}" required>
                             <div class="invalid-feedback">Por favor,insira a placa do carro!</div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 text-start pb-3">
                             <label for="marca" class="form-label">Marca</label>
                             <input type="text" name="marca" class="form-control" value="{{ $veiculo->marca }}" required>
                             <div class="invalid-feedback">Por favor, insira a marca do carro!</div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 text-start">
                             <label for="modelo" class="form-label">Modelo</label>
                             <input type="text" name="modelo" class="form-control" value="{{ $veiculo->modelo }}" required>
                             <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>

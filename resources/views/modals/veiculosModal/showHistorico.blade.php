@@ -6,7 +6,7 @@
                 <h5 class="modal-title">Detalhes do veículo <b>{{$veiculo->placa}}</b></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-start">
                 <ul class="list-group">                    
                     <li class="list-group-item"><b>Categoria do veículo:</b> {{$veiculo->categoria}} </li>
                     <li class="list-group-item"><b>Placa do veículo:</b> {{$veiculo->placa}} </li>

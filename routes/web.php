@@ -22,6 +22,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::put('/veiculos/confirmacao/{veiculo}', [VeiculoController::class, 'saidaVeiculo'])->name('modal.confirmacao');
         Route::get('/dashboard', [VeiculoController::class, 'index']);
         Route::get('/garagem', [VeiculoController::class, 'listar']);
+        Route::get('/garagem/filtro/{veiculo}', [VeiculoController::class, 'filtro']);
         Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');        
         Route::get('/historico', [VeiculoController::class, 'todosVeiculos'])->name('veiculo.historico');
         

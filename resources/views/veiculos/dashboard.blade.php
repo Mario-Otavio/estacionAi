@@ -151,25 +151,25 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Categoria</th>
-                                            <th scope="col">Placa</th>                                                                                  
-                                            <th scope="col">Tempo</th>
-                                            <th scope="col">Informações</th>
+                                            <th scope="col" class="text-center">Nº</th>
+                                            <th scope="col" class="text-center">Categoria</th>
+                                            <th scope="col" class="text-center">Placa</th>                                                                                  
+                                            <th scope="col" class="text-center">Tempo</th>
+                                            <th scope="col" class="text-center">Informações</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         @foreach($veiculos as $veiculo)
-                                        <tr class="align-middle">
-                                            <!-- <td scropt="row">{{ $loop->index + 1 }}</td> -->
-                                            <td scope="row"> {{ $veiculo->id }} </td>
+                                        <tr class="align-middle text-center">
+                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
+                                            <!--<td scope="row"> {{ $veiculo->id }} </td> -->
                                             <td> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary"> {{ $veiculo->placa }} </td>
                                             <td><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
                                           <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
-                                            <td>
-                                                <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
+                                            <td class="text-center">
+                                                <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text text-start" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                 @include('modals.veiculosModal.show')
 
                                             </td>
