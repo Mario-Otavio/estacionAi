@@ -35,35 +35,20 @@ class VeiculoController extends Controller
 
     public function listar()
     {       
-        $search = request('search');
-        if($search){
-            $veiculos = Veiculo::where([
-                ['placa','like','%'.$search.'%']
-            ])->get();
-        } else {
-            $veiculos = Veiculo::all();          
-            }
-
-        $veiculosTotal = Veiculo::whereNull('saida')->paginate(7); // busca todos os registros do banco  
-        $totalVeiculosGaragem = Veiculo::whereNull('saida')->count();
-        return view('veiculos/garagem', ['veiculosTotal' => $veiculosTotal, 'totalVeiculosGaragem' => $totalVeiculosGaragem, 'search' => $search, 'veiculo' => $veiculos]);
-    }
-
-    public function filtro()
-    {       
-        $search = request('search');
-        if($search){
-            $veiculos = Veiculo::where(function ($query) use ($search) {
-                $query->where('placa', 'like', '%' . $search . '%')
-                      ->orWhere('modelo', 'like', '%' . $search . '%');
-            })->get();
-        } else {
-            $veiculos = Veiculo::all();
+        $search = request('search'); // Obtém o valor da busca
+    
+        // Se houver uma busca, filtre os veículos, caso contrário, busque todos
+        $query = Veiculo::whereNull('saida');
+        if ($search) {
+            $query->where('placa', 'like', '%' . $search . '%');
         }
-       
-        return view('veiculos/garagem', ['search' => $search, 'veiculo' => $veiculos]);
+        
+        $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro
+        $totalVeiculosGaragem = $query->count(); // Conta os veículos conforme a busca ou sem filtro
+        
+        return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search'));
     }
-
+    
     public function salvar(VeiculoRequest $request)
     {
         Veiculo::create($request->all());

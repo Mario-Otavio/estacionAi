@@ -429,6 +429,30 @@ h6 {
   padding: 0 20px !important;
 }
 
+#btnPesquisar{
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  padding: 16px 30px;
+}
+#btnPesquisar:hover{
+  background-color: #0945a0 !important;
+  border-color: #0945a0 !important;
+  padding: 16px 30px;
+}
+@media screen and (max-width: 414px) {
+  #btnPesquisar{
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    padding: 16px 105px;
+  }
+  #btnPesquisar:hover{
+    background-color: #0945a0 !important;
+    border-color: #0945a0 !important;
+    padding: 16px 105px;
+  }
+
+ }
+
 @media (max-width: 1199px) {
   .header .search-bar {
     position: fixed;

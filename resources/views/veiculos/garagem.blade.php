@@ -90,7 +90,6 @@
 
                         <!-- Customers Card -->
                         <div class="col-xxl-3 col-md-6 col-xl-12">
-
                             <div class="card info-card customers-card">
                                 <div class="card-body">
                                     <h5 class="card-title">Valores</h5>
@@ -107,12 +106,10 @@
 
                                 </div>
                             </div>
-
                         </div><!-- End Customers Card -->
 
                         <!-- Cadastrar Card -->
                         <div class="col-xxl-3 col-xl-12">
-
                             <div class="card info-card sales-card">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
@@ -122,75 +119,84 @@
                                         <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
                                         @include('modals.veiculosModal.cadastro') 
                                         </div>                                   
-                                    </div>                                                                  
-                                    
+                                    </div>                                    
                                 </div>
                             </div>
 
                         </div><!-- End Cadastrar Card -->
 
-                       
+                        <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="row g-2 align-items-center" method="GET" action="">
+                                    <div class="col-lg-10 col-md-9">
+                                        <div class="form-floating">
+                                            <input type="text" name="search" class="form-control" id="floatingInput" placeholder="Digite uma placa">
+                                            <label for="floatingInput">Digite uma placa</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-3">
+                                        <div class="text-center">
+                                            <button type="submit" id="btnPesquisar" class="btn btn-primary">Pesquisar  <i class="bi bi-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- End Search Bar -->
                     
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            <div class="card-body">
+                            <div class="card-body">                                
+                                <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
+                               
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="text-center">Nº</th>
+                                                <th scope="col" class="text-center">Categoria</th>
+                                                <th scope="col" class="text-center">Placa</th>
+                                                <th scope="col" class="text-center">Modelo</th>
+                                                <th scope="col" class="text-center">Tempo</th>
+                                                <th scope="col" class="text-center">Ações</th>
+                                                <th scope="col" class="text-center">Saída</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach($veiculosTotal as $veiculo)
+                                            <tr class="align-middle">
+                                                <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
+                                                <!-- <td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
+                                                <td class="text-center"> {{ $veiculo->categoria }} </td>
+                                                <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
+                                                <td class="text-center"> {{ $veiculo->modelo }} </td>
+                                                <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
+                                            <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
+                                                <td class="text-center">
+                                                    <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
+                                                    @include('modals.veiculosModal.show')
+                                                    <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
+                                                    @include('modals.veiculosModal.update')
+                                                    <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
+                                                    @include('modals.veiculosModal.delete')
+                                                </td>
+                                                <td class="text-center">                                             
+                                                    <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning  text-white" data-bs-toggle="modal"> Saída <i class="bi bi-box-arrow-right"></i></a>
+                                                    @include('modals.veiculosModal.confirmacao')
+                                                </td>
+                                                
+                                            </tr>
+                                            @endforeach
+                                            @include('includes.mensagens')
+                                        </tbody>
+
+                                    </table>
+                                    {{ $veiculosTotal->links('pagination::bootstrap-5') }}
                                 
-                                    <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
-
-                                    <div class="search-bar d-flex justify-content-end" id="pesquisar">
-                                        <form class="search-form d-flex" id="pesquisar" method="GET" action="garagem">
-                                            <input type="text" name="search" placeholder="Pesquisar" title="Enter search keyword">
-                                            <button type="submit" title="Search"><i class="btn bi bi-search"></i></button>
-                                        </form>
-                                    </div><!-- End Search Bar -->
-                              
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="text-center">Nº</th>
-                                            <th scope="col" class="text-center">Categoria</th>
-                                            <th scope="col" class="text-center">Placa</th>
-                                            <th scope="col" class="text-center">Modelo</th>
-                                            <th scope="col" class="text-center">Tempo</th>
-                                            <th scope="col" class="text-center">Ações</th>
-                                            <th scope="col" class="text-center">Saída</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        @foreach($veiculosTotal as $veiculo)
-                                        <tr class="align-middle">
-                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
-                                            <!-- <td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
-                                            <td class="text-center"> {{ $veiculo->categoria }} </td>
-                                            <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
-                                            <td class="text-center"> {{ $veiculo->modelo }} </td>
-                                            <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
-                                          <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
-                                            <td class="text-center">
-                                                <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.show')
-                                                <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.update')
-                                                <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.delete')
-                                            </td>
-                                            <td class="text-center">                                             
-                                                <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning bi bi-box-arrow-right text-white" data-bs-toggle="modal"> Saída</a>
-                                                @include('modals.veiculosModal.confirmacao')
-                                            </td>
-                                            
-                                        </tr>
-                                        @endforeach
-                                        @include('includes.mensagens')
-                                    </tbody>
-
-                                </table>
-                                {{ $veiculosTotal->links('pagination::bootstrap-5') }}
                             </div>
-
                         </div>
                     </div><!-- End Recent Sales -->
                 </div>
