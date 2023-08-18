@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\Printer;
+
 
 class VeiculoController extends Controller
 {
@@ -51,7 +55,27 @@ class VeiculoController extends Controller
     
     public function salvar(VeiculoRequest $request)
     {
-        Veiculo::create($request->all());
+        $veiculo = Veiculo::create($request->all());
+
+        // Dados do veículo para o ticket
+       /* $licensePlate = $veiculo->placa; // Altere para o nome do campo correto
+        $entryTime = now();
+
+        // Renderize a visualização do ticket em HTML
+        $html = view('veiculos.ticket', compact('licensePlate', 'entryTime'))->render();
+
+        // Conecte à impressora (substitua "printer_name" pelo nome da sua impressora)
+        $connector = new WindowsPrintConnector("smb://Mario.TOTVS.COM/Samsung M337x 387x 407x Series [PREST CONTAS]");
+        $printer = new Printer($connector);
+
+        // Envie o HTML renderizado para a impressora
+        $printer->text($html);
+
+        // Feche a conexão com a impressora
+        $printer->cut();
+        $printer->close(); */
+
+        // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')
             ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }    
