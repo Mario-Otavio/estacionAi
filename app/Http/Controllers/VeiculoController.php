@@ -19,7 +19,8 @@ class VeiculoController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function dash(){
+    public function dash()
+    {
         return view('veiculos.dashboard');
     }
 
@@ -27,8 +28,8 @@ class VeiculoController extends Controller
     {
         $veiculos = Veiculo::whereNull('saida')->latest()->take(8)->get(); // busca 8 registros do banco
         $totalVeiculos = Veiculo::whereNull('saida')->count();
-        
-        
+
+
         return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos'));
     }
 
@@ -40,24 +41,44 @@ class VeiculoController extends Controller
     }
 
     public function listar()
-    {       
+    {
         $search = request('search'); // Obtém o valor da busca
-    
+
         // Se houver uma busca, filtre os veículos, caso contrário, busque todos
         $query = Veiculo::whereNull('saida');
         if ($search) {
             $query->where('placa', 'like', '%' . $search . '%');
         }
-        
+
         $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro
         $totalVeiculosGaragem = $query->count(); // Conta os veículos conforme a busca ou sem filtro
-        
+
         return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search'));
     }
-    
+
     public function salvar(VeiculoRequest $request)
     {
-        $veiculo = Veiculo::create($request->all());
+        $placa = $request->input('placa');
+        // Verificar se a placa já existe nos veículos ativos
+        $placaExistenteAtivo = Veiculo::where('placa', $placa)->whereNull('saida')->first();
+        if ($placaExistenteAtivo) {
+            // A placa já existe nos veículos ativos, talvez exibir uma mensagem de aviso
+            return redirect()->route('veiculo.salvar')->with('aviso', 'Esta placa já está ativa no sistema.');
+        }
+        // Verificar se a placa já existe nos veículos no histórico
+        $placaExistenteHistorico = Veiculo::where('placa', $placa)->whereNotNull('saida')->first();
+        if ($placaExistenteHistorico) {
+            // Se a placa estiver no histórico, crie um novo registro para uma nova entrada
+            $novoVeiculo = new Veiculo($request->all());
+            $novoVeiculo->saida = null; // Definir a saída como nula
+            $novoVeiculo->save();
+            // Resto do seu código para impressão e redirecionamento
+            return redirect()->route('veiculo.salvar')->with('sucesso', 'Veículo cadastrado novamente com sucesso!');
+        }
+        // Se não for encontrado nem nos veículos ativos nem no histórico, crie um novo registro
+        $veiculo = new Veiculo($request->all());
+        $veiculo->save();
+
 
         // Dados do veículo para o ticket
         $licensePlate = $veiculo->placa; // Altere para o nome do campo correto
@@ -72,25 +93,25 @@ class VeiculoController extends Controller
         $connector = new NetworkPrintConnector($printerAddress, $printerPort);
         $printer = new Printer($connector);
 
-         // Conecte à impressora local (use o nome da impressora correta)
-         //$printerName = "NomeDaSuaImpressora";
-         //$connector = new WindowsPrintConnector($printerName);
-         //$printer = new Printer($connector);
+        // Conecte à impressora local (use o nome da impressora correta)
+        //$printerName = "NomeDaSuaImpressora";
+        //$connector = new WindowsPrintConnector($printerName);
+        //$printer = new Printer($connector);
 
         // Envie o HTML renderizado para a impressora
         $printer->text($html);
 
         // Feche a conexão com a impressora
         $printer->cut();
-        $printer->close(); 
+        $printer->close();
 
         // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')
             ->with('sucesso', 'Veículo Cadastro com Sucesso!');
-    }    
+    }
 
     public function show(Veiculo $veiculo)
-    {        
+    {
         $veiculoRecuperado = Veiculo::findOrFail($veiculo->id);
         return view('veiculos/veiculo_show', ['veiculo' => $veiculoRecuperado]);
     }
@@ -111,29 +132,28 @@ class VeiculoController extends Controller
     public function destroy(Veiculo $Veiculo)
     {
         $Veiculo->delete();
-        return redirect()->to('/garagem') ->with('sucesso', 'Veículo deletado com Sucesso!');
+        return redirect()->to('/garagem')->with('sucesso', 'Veículo deletado com Sucesso!');
     }
 
     public function saidaVeiculo($id)
-    {        
+    {
         $veiculo = Veiculo::findOrFail($id);
 
         if (!$veiculo) {
             // O carro não foi encontrado
             return redirect()->back()->with('error', 'Veículo não encontrado.');
         }
-        
+
         // Registre o horário de saída do carro
         $veiculo->saida = Carbon::now();
         $veiculo->save();
-        
+
         // Mova o carro para a tabela de histórico
         // Aqui você precisará ter um modelo e uma tabela separada para o histórico
         // Você pode criar um novo modelo chamado HistoricoVeiculo e uma tabela chamada historico_veiculos
         // E então, criar um novo registro na tabela de histórico com os detalhes do carro e a data de saída
-        
+
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
     }
-
 }

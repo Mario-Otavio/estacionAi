@@ -66,66 +66,66 @@
             <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
-                    
-                        <!-- Revenue Card -->
-                        <div class="col-xxl-3 col-md-6 col-xl-12">
-                            <div class="card info-card revenue-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
 
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-car-front-fill"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>
-                                                {{ $totalVeiculosGaragem }}
-                                            </h6>
-                                        </div>
+                    <!-- Revenue Card -->
+                    <div class="col-xxl-3 col-md-6 col-xl-12">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-car-front-fill"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>
+                                            {{ $totalVeiculosGaragem }}
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Revenue Card -->
+
+                    <!-- Customers Card -->
+                    <div class="col-xxl-3 col-md-6 col-xl-12">
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Valores</h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <p class="bi bi-car-front-fill"> R$20,00</p>
+                                        <p class="bi bi-bicycle"> R$10,00</p>
                                     </div>
                                 </div>
 
                             </div>
-                        </div><!-- End Revenue Card -->
+                        </div>
+                    </div><!-- End Customers Card -->
 
-                        <!-- Customers Card -->
-                        <div class="col-xxl-3 col-md-6 col-xl-12">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Valores</h5>
+                    <!-- Cadastrar Card -->
+                    <div class="col-xxl-3 col-xl-12">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Cadastrar Veículo</h5>
 
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-currency-dollar"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <p class="bi bi-car-front-fill"> R$20,00</p>
-                                            <p class="bi bi-bicycle"> R$10,00</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div><!-- End Customers Card -->
-
-                        <!-- Cadastrar Card -->
-                        <div class="col-xxl-3 col-xl-12">
-                            <div class="card info-card sales-card">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Cadastrar Veículo</h5>                             
-
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
                                         <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
-                                        @include('modals.veiculosModal.cadastro') 
-                                        </div>                                   
-                                    </div>                                    
+                                        @include('modals.veiculosModal.cadastro')
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                        </div><!-- End Cadastrar Card -->
+                    </div><!-- End Cadastrar Card -->
 
-                        <div class="col-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <form class="row g-2 align-items-center" method="GET" action="">
@@ -137,65 +137,66 @@
                                     </div>
                                     <div class="col-lg-2 col-md-3">
                                         <div class="text-center">
-                                            <button type="submit" id="btnPesquisar" class="btn btn-primary">Pesquisar  <i class="bi bi-search"></i></button>
+                                            <button type="submit" id="btnPesquisar" class="btn btn-primary">Pesquisar <i class="bi bi-search"></i></button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div><!-- End Search Bar -->
-                    
+
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            <div class="card-body">                                
+                            <div class="card-body">
                                 <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
-                               
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="text-center">Nº</th>
-                                                <th scope="col" class="text-center">Categoria</th>
-                                                <th scope="col" class="text-center">Placa</th>
-                                                <th scope="col" class="text-center">Modelo</th>
-                                                <th scope="col" class="text-center">Tempo</th>
-                                                <th scope="col" class="text-center">Ações</th>
-                                                <th scope="col" class="text-center">Saída</th>
-                                            </tr>
-                                        </thead>
 
-                                        <tbody>
-                                            @foreach($veiculosTotal as $veiculo)
-                                            <tr class="align-middle">
-                                                <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
-                                                <!-- <td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
-                                                <td class="text-center"> {{ $veiculo->categoria }} </td>
-                                                <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
-                                                <td class="text-center"> {{ $veiculo->modelo }} </td>
-                                                <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="text-center">Nº</th>
+                                            <th scope="col" class="text-center">Categoria</th>
+                                            <th scope="col" class="text-center">Placa</th>
+                                            <th scope="col" class="text-center">Modelo</th>
+                                            <th scope="col" class="text-center">Tempo</th>
+                                            <th scope="col" class="text-center">Ações</th>
+                                            <th scope="col" class="text-center">Saída</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach($veiculosTotal as $veiculo)
+                                        <tr class="align-middle">
+                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
+                                            <!-- <td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
+                                            <td class="text-center"> {{ $veiculo->categoria }} </td>
+                                            <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
+                                            <td class="text-center"> {{ $veiculo->modelo }} </td>
+                                            <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
                                             <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
-                                                <td class="text-center">
-                                                    <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
-                                                    @include('modals.veiculosModal.show')
-                                                    <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
-                                                    @include('modals.veiculosModal.update')
-                                                    <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
-                                                    @include('modals.veiculosModal.delete')
-                                                </td>
-                                                <td class="text-center">                                             
-                                                    <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning  text-white" data-bs-toggle="modal"> Saída <i class="bi bi-box-arrow-right"></i></a>
-                                                    @include('modals.veiculosModal.confirmacao')
-                                                </td>
-                                                
-                                            </tr>
-                                            @endforeach
-                                            @include('includes.mensagens')
-                                        </tbody>
+                                            <td class="text-center">
+                                                <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
+                                                @include('modals.veiculosModal.show')
+                                                <a href="#modalEditar-{{$veiculo->id}}" class="btn btn-secondary bi bi-pencil-square" id="btn-grid" data-bs-toggle="modal"></a>
+                                                @include('modals.veiculosModal.update')
+                                                <a href="#modalDelete-{{$veiculo->id}}" class="btn btn-primary modal-trigger bi bi-trash" id="btn-grid" data-bs-toggle="modal"></a>
+                                                @include('modals.veiculosModal.delete')
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning  text-white" data-bs-toggle="modal"> Saída <i class="bi bi-box-arrow-right"></i></a>
+                                                @include('modals.veiculosModal.confirmacao')
+                                            </td>
 
-                                    </table>
-                                    {{ $veiculosTotal->links('pagination::bootstrap-5') }}
-                                
+                                        </tr>
+                                        @endforeach
+                                        @include('includes.msgAviso')
+                                        @include('includes.mensagens')
+                                    </tbody>
+
+                                </table>
+                                {{ $veiculosTotal->links('pagination::bootstrap-5') }}
+
                             </div>
                         </div>
                     </div><!-- End Recent Sales -->
@@ -210,27 +211,27 @@
 
 
 <script>
-function atualizarTimers() {
-    var timers = document.querySelectorAll('.timer');
-    
-    timers.forEach(function(timerElement) {
-        var horarioEntrada = timerElement.getAttribute('data-entrada');
-        var entrada = new Date(horarioEntrada);
-        var agora = new Date();
-        var diferenca = Math.floor((agora - entrada) / 1000); // Diferença em segundos
+    function atualizarTimers() {
+        var timers = document.querySelectorAll('.timer');
 
-        var horas = Math.floor(diferenca / 3600);
-        var minutos = Math.floor((diferenca % 3600) / 60);
-        var segundos = diferenca % 60;
+        timers.forEach(function(timerElement) {
+            var horarioEntrada = timerElement.getAttribute('data-entrada');
+            var entrada = new Date(horarioEntrada);
+            var agora = new Date();
+            var diferenca = Math.floor((agora - entrada) / 1000); // Diferença em segundos
 
-        timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
-                                   minutos.toString().padStart(2, '0') + ':' +
-                                   segundos.toString().padStart(2, '0');
-    });
-}
+            var horas = Math.floor(diferenca / 3600);
+            var minutos = Math.floor((diferenca % 3600) / 60);
+            var segundos = diferenca % 60;
 
-atualizarTimers(); // Atualize os timers imediatamente
-setInterval(atualizarTimers, 1000); // Atualize a cada segundo
+            timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
+                minutos.toString().padStart(2, '0') + ':' +
+                segundos.toString().padStart(2, '0');
+        });
+    }
+
+    atualizarTimers(); // Atualize os timers imediatamente
+    setInterval(atualizarTimers, 1000); // Atualize a cada segundo
 </script>
 
 
