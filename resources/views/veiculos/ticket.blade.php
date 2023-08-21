@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ticket de Estacionamento</title>
+    <title>Ticket de Estacionamento</title>     
 </head>
 <body>
     <div>
@@ -10,8 +10,8 @@
     </div>
     <p>==============================</p>    
     <h1>Ticket de Estacionamento</h1>
-    <p>Placa do Veículo: {{ $licensePlate }}</p>
-    <p>Hora de Entrada: {{ $entryTime }}</p>
+    <p>Placa do Veículo: {!! $licensePlate !!}</p>
+    <p>Hora de Entrada: {!! $entryTime !!}</p>
     <p>==============================</p>
     <p>Obrigado por utilizar nosso estacionamento!</p>
 </body>

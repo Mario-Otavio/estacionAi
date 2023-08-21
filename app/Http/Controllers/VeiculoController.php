@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
+use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 
 
 class VeiculoController extends Controller
@@ -58,22 +60,29 @@ class VeiculoController extends Controller
         $veiculo = Veiculo::create($request->all());
 
         // Dados do veículo para o ticket
-       /* $licensePlate = $veiculo->placa; // Altere para o nome do campo correto
+        $licensePlate = $veiculo->placa; // Altere para o nome do campo correto
         $entryTime = now();
 
         // Renderize a visualização do ticket em HTML
         $html = view('veiculos.ticket', compact('licensePlate', 'entryTime'))->render();
 
-        // Conecte à impressora (substitua "printer_name" pelo nome da sua impressora)
-        $connector = new WindowsPrintConnector("smb://Mario.TOTVS.COM/Samsung M337x 387x 407x Series [PREST CONTAS]");
+        // Conecte à impressora usando o endereço IP
+        $printerAddress = '10.1.1.35'; // Substitua pelo endereço IP da sua impressora
+        $printerPort = 9100; // Porta padrão para impressoras
+        $connector = new NetworkPrintConnector($printerAddress, $printerPort);
         $printer = new Printer($connector);
+
+         // Conecte à impressora local (use o nome da impressora correta)
+         //$printerName = "NomeDaSuaImpressora";
+         //$connector = new WindowsPrintConnector($printerName);
+         //$printer = new Printer($connector);
 
         // Envie o HTML renderizado para a impressora
         $printer->text($html);
 
         // Feche a conexão com a impressora
         $printer->cut();
-        $printer->close(); */
+        $printer->close(); 
 
         // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')

@@ -109,7 +109,7 @@
                                         <p>Por favor, faça seu login!</p>
 
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="email" name="email" class="form-control" placeholder="Nome de usuário" />
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="Email de usuário" />
                                         </div>
 
                                         <div class="form-outline mb-4">
