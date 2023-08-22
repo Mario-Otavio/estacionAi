@@ -24,6 +24,7 @@ class VeiculoController extends Controller
         return view('veiculos.dashboard');
     }
 
+
     public function index()
     {
         $veiculos = Veiculo::whereNull('saida')->latest()->take(8)->get(); // busca 8 registros do banco
@@ -33,12 +34,14 @@ class VeiculoController extends Controller
         return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos'));
     }
 
+
     public function todosVeiculos()
     {
         $todosVeiculos = Veiculo::paginate(10); // ou a quantidade desejada
         $contador = Veiculo::count();
         return view('veiculos.historico', compact('todosVeiculos', 'contador'));
     }
+
 
     public function listar()
     {
@@ -55,6 +58,7 @@ class VeiculoController extends Controller
 
         return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search'));
     }
+
 
     public function salvar(VeiculoRequest $request)
     {
@@ -79,19 +83,35 @@ class VeiculoController extends Controller
         $veiculo = new Veiculo($request->all());
         $veiculo->save();
 
+        // Calcula a diferença de tempo em horas
+        $entrada = Carbon::parse($veiculo->created_at);
+        $agora = Carbon::now();
+        $diferencaHoras = $agora->diffInHours($entrada);
+
+
+        // Recupera a categoria do veículo
+        $categoria = $veiculo->categoria;
+
+        // Calcula o preço com base na categoria e no tempo de permanência
+        $preco = $this->calcularPreco($categoria, $diferencaHoras);
+
+        // Atualiza o preço no registro do veículo
+        $veiculo->preco = $preco;
+        $veiculo->save();
+
 
         // Dados do veículo para o ticket
-        $licensePlate = $veiculo->placa; // Altere para o nome do campo correto
-        $entryTime = now();
+        //$licensePlate = $veiculo->placa; // Altere para o nome do campo correto
+        //$entryTime = now();
 
         // Renderize a visualização do ticket em HTML
-        $html = view('veiculos.ticket', compact('licensePlate', 'entryTime'))->render();
+        //$html = view('veiculos.ticket', compact('licensePlate', 'entryTime'))->render();
 
         // Conecte à impressora usando o endereço IP
-        $printerAddress = '10.1.1.35'; // Substitua pelo endereço IP da sua impressora
-        $printerPort = 9100; // Porta padrão para impressoras
-        $connector = new NetworkPrintConnector($printerAddress, $printerPort);
-        $printer = new Printer($connector);
+        //$printerAddress = '10.1.1.35'; // Substitua pelo endereço IP da sua impressora
+        //$printerPort = 9100; // Porta padrão para impressoras
+        //$connector = new NetworkPrintConnector($printerAddress, $printerPort);
+        //$printer = new Printer($connector);
 
         // Conecte à impressora local (use o nome da impressora correta)
         //$printerName = "NomeDaSuaImpressora";
@@ -99,16 +119,33 @@ class VeiculoController extends Controller
         //$printer = new Printer($connector);
 
         // Envie o HTML renderizado para a impressora
-        $printer->text($html);
+        // $printer->text($html);
 
         // Feche a conexão com a impressora
-        $printer->cut();
-        $printer->close();
+        //$printer->cut();
+        // $printer->close();
 
         // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')
             ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }
+
+
+    protected function calcularPreco($categoria, $tempoPermanenciaHoras)
+    {
+        // Aqui você deve implementar a lógica de cálculo de preços
+        // com base na categoria e no tempo de permanência.
+        // Você pode consultar a tabela de preços ou usar uma fórmula específica.
+        // Retorne o valor calculado.
+
+        // Exemplo: R$10 por hora para carros e R$5 por hora para motos
+        if ($categoria === 'Carro') {
+            return $tempoPermanenciaHoras * 10;
+        } elseif ($categoria === 'Moto') {
+            return $tempoPermanenciaHoras * 5;
+        }
+    }
+
 
     public function show(Veiculo $veiculo)
     {
@@ -116,10 +153,12 @@ class VeiculoController extends Controller
         return view('veiculos/veiculo_show', ['veiculo' => $veiculoRecuperado]);
     }
 
+
     public function edit(Veiculo $Veiculo)
     {
         return view('veiculos/editar_veiculo', ['veiculo' => $Veiculo]);
     }
+
 
     public function update(VeiculoRequest $request, Veiculo $Veiculo)
     {
@@ -129,11 +168,13 @@ class VeiculoController extends Controller
             ->with('sucesso', 'Veículo editado com Sucesso!');
     }
 
+
     public function destroy(Veiculo $Veiculo)
     {
         $Veiculo->delete();
         return redirect()->to('/garagem')->with('sucesso', 'Veículo deletado com Sucesso!');
     }
+
 
     public function saidaVeiculo($id)
     {

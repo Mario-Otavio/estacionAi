@@ -160,6 +160,7 @@
                                             <th scope="col" class="text-center">Placa</th>
                                             <th scope="col" class="text-center">Modelo</th>
                                             <th scope="col" class="text-center">Tempo</th>
+                                            <th scope="col" class="text-center">Preço</th>
                                             <th scope="col" class="text-center">Ações</th>
                                             <th scope="col" class="text-center">Saída</th>
                                         </tr>
@@ -174,6 +175,8 @@
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
                                             <td class="text-center"> {{ $veiculo->modelo }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
+                                            <td class="text-center">R${{ $veiculo->preco }}</td>
+
                                             <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td class="text-center">
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
