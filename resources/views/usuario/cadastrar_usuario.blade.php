@@ -36,7 +36,7 @@
     <main>
         <div class="container">
 
-            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -48,41 +48,49 @@
                                 </a>
                             </div>
 
-                            <div class="card mb-3">
+                            <div class="card">
 
                                 <div class="card-body">
 
-                                    <div class="pb-2">
+                                    <div class="pb-1">
                                         <h5 class="card-title text-center pb-0 fs-4">Cadastre-se!</h5>
-                                        <p class="text-center small">Insira seus dados</p>
+                                        <p class="text-center small">Insira seus dados e do estacionamento</p>
                                     </div>
 
                                     <form action="{{ route('usuario.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
                                         <div class="col-12">
-                                            <label for="nome" class="form-label">Nome</label>
+                                            <label for="nome" class="form-label">Nome completo</label>
                                             <input type="text" name="name" class="form-control" required>
                                             <div class="invalid-feedback">Por favor,insira um nome!</div>
                                         </div>
+
                                         <div class="col-12">
-                                            <label for="empresa" class="form-label">Nome da Empresa</label>
-                                            <div class="input-group has-validation">
-                                             
-                                                <input type="empresa" name="empresa" class="form-control" required>
-                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
-                                            </div>
-                                        </div><div class="col-12">
                                             <label for="telefone" class="form-label">Telefone</label>
                                             <div class="input-group has-validation">
                                                 <input type="telefone" name="telefone" class="form-control" required>
+                                                <div class="invalid-feedback">Por favor, insira um Telefone!</div>
+                                            </div>
+                                        </div>                                      
+
+                                        <div class="col-12">
+                                            <label for="empresa" class="form-label">Nome do estacionamento</label>
+                                            <div class="input-group has-validation">                                             
+                                                <input type="empresa" name="empresa" class="form-control" required>
                                                 <div class="invalid-feedback">Por favor, insira um Email!</div>
                                             </div>
-                                        </div><div class="col-12">
-                                            <label for="endereco" class="form-label">Endereço do estabelecimento </label>
-                                            <div class="input-group has-validation">
-            
-                                                <input type="endereco" name="endereco" class="form-control" required>
-                                                <div class="invalid-feedback">Por favor, insira um Email!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="endereco" class="form-label">Endereço do estacionamento</label>
+                                            <div class="input-group has-validation">            
+                                                <input type="endereco" name="endereco" class="form-control" required>                                               
                                             </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="quantidade_vagas" class="form-label">Quantidade de Vagas</label>
+                                            <input type="number" name="quantidade_vagas" class="form-control" value="1" required>
+                                            <div class="invalid-feedback">Por favor, insira a quantidade de vagas desejada!</div>
                                         </div>
 
                                         <div class="col-12">

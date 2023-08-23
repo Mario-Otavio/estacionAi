@@ -26,11 +26,12 @@ class UsuarioController extends BaseController
             'endereco' => $request->input('endereco'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')), // Usando bcrypt aqui
+            'desired_parking_spaces' => $request->input('quantidade_vagas'), 
         ];
 
         User::create($userData);
         return redirect()->route('login')
-            ->with('success', 'Usuário cadastrado com sucesso!');
+            ->with('sucesso', 'Usuário cadastrado com sucesso!');
     }
 
     public function listar()
@@ -63,5 +64,10 @@ class UsuarioController extends BaseController
     {
         $usuario->delete();
         return redirect()->route('usuario.listar')->with('sucess', 'Usuario deletado com sucesso!');
+    }
+
+    public function occupiedParkingSpaces()
+    {
+        return $this->hasMany(User::class, 'ocupado_by_user_id');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VeiculoRequest;
 use App\Models\Veiculo;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
@@ -61,7 +63,7 @@ class VeiculoController extends Controller
 
 
     public function salvar(VeiculoRequest $request)
-    {
+    {        
         $placa = $request->input('placa');
         // Verificar se a placa já existe nos veículos ativos
         $placaExistenteAtivo = Veiculo::where('placa', $placa)->whereNull('saida')->first();
@@ -79,15 +81,22 @@ class VeiculoController extends Controller
             // Resto do seu código para impressão e redirecionamento
             return redirect()->route('veiculo.salvar')->with('sucesso', 'Veículo cadastrado novamente com sucesso!');
         }
+
+         // Verificar se o número de vagas ocupadas excede o limite definido pelo usuário
+         $usuario = User::findOrFail(auth()->user()->id); // Altere isso para corresponder à obtenção do usuário logado
+         $vagasOcupadas = Veiculo::where('id', $usuario->id)->whereNull('saida')->count(); // Conta os veículos ativos do usuário
+         if ($vagasOcupadas >= $usuario->desired_parking_spaces) {
+             return redirect()->route('veiculo.salvar')->with('aviso', 'Você atingiu o limite de vagas permitido!');
+         }
+
         // Se não for encontrado nem nos veículos ativos nem no histórico, crie um novo registro
         $veiculo = new Veiculo($request->all());
-        $veiculo->save();
+        $veiculo->save();        
 
         // Calcula a diferença de tempo em horas
         $entrada = Carbon::parse($veiculo->created_at);
         $agora = Carbon::now();
         $diferencaHoras = $agora->diffInHours($entrada);
-
 
         // Recupera a categoria do veículo
         $categoria = $veiculo->categoria;
@@ -99,6 +108,9 @@ class VeiculoController extends Controller
         $veiculo->preco = $preco;
         $veiculo->save();
 
+        // Atualiza o status da vaga como ocupada
+        $veiculo->VagasOcupadas = true;
+        $veiculo->save();
 
         // Dados do veículo para o ticket
         //$licensePlate = $veiculo->placa; // Altere para o nome do campo correto
@@ -197,4 +209,23 @@ class VeiculoController extends Controller
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
     }
+
+    public function listaVagaStatus()
+    {
+        $user = Auth::user(); // Obtém o usuário logado
+        $totalVagas = $user->desired_parking_spaces;
+        $vagasOcupadas = Veiculo::where('id', $user->id)->whereNull('saida')->count();
+        return view('/garagem', compact('vagasOcupadas', '$totalVagas'));
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
