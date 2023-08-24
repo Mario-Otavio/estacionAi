@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('veiculos', function (Blueprint $table) {
-            $table->decimal('preco', 8, 2)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->after('id'); // Adicione user_id
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Crie a chave estrangeira
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('veiculos', function (Blueprint $table) {
-            $table->dropColumn('preco');
+            $table->dropForeign(['user_id']); // Remova a chave estrangeira
+            $table->dropColumn('user_id'); // Remova a coluna user_id
         });
     }
 };

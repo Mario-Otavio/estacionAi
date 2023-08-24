@@ -29,6 +29,11 @@ class Veiculo extends Authenticatable
     //Tudo que for enviado pelo post vai ser atualizado
     protected $guarded = [];    
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     /**
      * The attributes that should be cast.
      *

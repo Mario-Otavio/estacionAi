@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VeiculoRequest;
 use App\Models\Veiculo;
 use App\Models\User;
+use App\Models\Preco;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
@@ -82,15 +84,18 @@ class VeiculoController extends Controller
             return redirect()->route('veiculo.salvar')->with('sucesso', 'Veículo cadastrado novamente com sucesso!');
         }
 
+        $usuario = User::findOrFail(auth()->user()->id); // Obtém o usuário logado
+        $totalVagas = $usuario->desired_parking_spaces;
          // Verificar se o número de vagas ocupadas excede o limite definido pelo usuário
-         $usuario = User::findOrFail(auth()->user()->id); // Altere isso para corresponder à obtenção do usuário logado
-         $vagasOcupadas = Veiculo::where('id', $usuario->id)->whereNull('saida')->count(); // Conta os veículos ativos do usuário
-         if ($vagasOcupadas >= $usuario->desired_parking_spaces) {
+         $vagasOcupadas = $usuario->veiculos->whereNull('saida')->count(); // Conta os veículos ativos do usuário
+         if ($vagasOcupadas >= $totalVagas) {
              return redirect()->route('veiculo.salvar')->with('aviso', 'Você atingiu o limite de vagas permitido!');
          }
 
         // Se não for encontrado nem nos veículos ativos nem no histórico, crie um novo registro
         $veiculo = new Veiculo($request->all());
+        // Defina o user_id
+        $veiculo->user_id = auth()->user()->id;
         $veiculo->save();        
 
         // Calcula a diferença de tempo em horas
@@ -101,8 +106,11 @@ class VeiculoController extends Controller
         // Recupera a categoria do veículo
         $categoria = $veiculo->categoria;
 
+        // Busca a tabela de preços para a categoria do veículo
+        $tabelaPrecos = $this->getTabelaPrecos($categoria);
+
         // Calcula o preço com base na categoria e no tempo de permanência
-        $preco = $this->calcularPreco($categoria, $diferencaHoras);
+        $preco = $this->calcularPreco($tabelaPrecos, $diferencaHoras);
 
         // Atualiza o preço no registro do veículo
         $veiculo->preco = $preco;
@@ -110,6 +118,10 @@ class VeiculoController extends Controller
 
         // Atualiza o status da vaga como ocupada
         $veiculo->VagasOcupadas = true;
+        $veiculo->save();
+
+        // Atualiza o status da vaga como ocupada
+        $veiculo->saida = null; // Atribui null à saída
         $veiculo->save();
 
         // Dados do veículo para o ticket
@@ -143,21 +155,22 @@ class VeiculoController extends Controller
     }
 
 
-    protected function calcularPreco($categoria, $tempoPermanenciaHoras)
+    protected function calcularPreco($tabelaPrecos, $tempoPermanenciaHoras)
     {
-        // Aqui você deve implementar a lógica de cálculo de preços
-        // com base na categoria e no tempo de permanência.
-        // Você pode consultar a tabela de preços ou usar uma fórmula específica.
-        // Retorne o valor calculado.
-
-        // Exemplo: R$10 por hora para carros e R$5 por hora para motos
-        if ($categoria === 'Carro') {
-            return $tempoPermanenciaHoras * 10;
-        } elseif ($categoria === 'Moto') {
-            return $tempoPermanenciaHoras * 5;
-        }
+        // Obtenha o preço por hora da tabela de preços
+        $precoPorHora = $tabelaPrecos->preco;
+        
+        // Calcula o preço total com base na quantidade de horas de permanência
+        $precoTotal = $precoPorHora * $tempoPermanenciaHoras;
+        
+        return $precoTotal;   
     }
 
+    protected function getTabelaPrecos($categoria)
+    {   
+        $preco = Preco::where('categoria', $categoria)->first();
+        return $preco;
+    }
 
     public function show(Veiculo $veiculo)
     {
@@ -215,8 +228,10 @@ class VeiculoController extends Controller
         $user = Auth::user(); // Obtém o usuário logado
         $totalVagas = $user->desired_parking_spaces;
         $vagasOcupadas = Veiculo::where('id', $user->id)->whereNull('saida')->count();
-        return view('/garagem', compact('vagasOcupadas', '$totalVagas'));
+        return view('/garagem', compact('vagasOcupadas', 'totalVagas'));
     }
+
+    
 
 
 
