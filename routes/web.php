@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/garagem', [VeiculoController::class, 'listar']);
         Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');        
         Route::get('/historico', [VeiculoController::class, 'todosVeiculos'])->name('veiculo.historico');
+        Route::get('/atualizar-precos', [VeiculoController::class, 'atualizarPrecosEmTempoReal']);
         
 
         //Rotas Usuário

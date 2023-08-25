@@ -176,7 +176,7 @@
                                             <td class="text-center"> {{ $veiculo->modelo }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
                                             <td class="text-center">R${{ $veiculo->preco }}</td>
-
+                                          
                                             <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td class="text-center">
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
@@ -235,6 +235,23 @@
 
     atualizarTimers(); // Atualize os timers imediatamente
     setInterval(atualizarTimers, 1000); // Atualize a cada segundo
+</script>
+
+<script>
+    function atualizarUIComDadosAtualizados() {
+    fetch('/atualizar-precos')
+        .then(response => response.json())
+        .then(veiculos => {
+            // Atualize a interface com os dados dos veículos
+            // por exemplo, atualize tabelas, listas ou outros elementos da UI
+        })
+        .catch(error => {
+            console.error('Erro ao buscar dados atualizados:', error);
+        });
+    }
+
+    // Execute a função de atualização a cada intervalo de tempo desejado
+    setInterval(atualizarUIComDadosAtualizados, 60000); // Atualiza a cada 60 segundos (1 minuto)
 </script>
 
 

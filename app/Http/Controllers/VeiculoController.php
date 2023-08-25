@@ -96,26 +96,8 @@ class VeiculoController extends Controller
         $veiculo = new Veiculo($request->all());
         // Defina o user_id
         $veiculo->user_id = auth()->user()->id;
-        $veiculo->save();        
-
-        // Calcula a diferença de tempo em horas
-        $entrada = Carbon::parse($veiculo->created_at);
-        $agora = Carbon::now();
-        $diferencaHoras = $agora->diffInHours($entrada);
-
-        // Recupera a categoria do veículo
-        $categoria = $veiculo->categoria;
-
-        // Busca a tabela de preços para a categoria do veículo
-        $tabelaPrecos = $this->getTabelaPrecos($categoria);
-
-        // Calcula o preço com base na categoria e no tempo de permanência
-        $preco = $this->calcularPreco($tabelaPrecos, $diferencaHoras);
-
-        // Atualiza o preço no registro do veículo
-        $veiculo->preco = $preco;
         $veiculo->save();
-
+        
         // Atualiza o status da vaga como ocupada
         $veiculo->VagasOcupadas = true;
         $veiculo->save();
@@ -154,22 +136,45 @@ class VeiculoController extends Controller
             ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }
 
+    public function atualizarPrecosEmTempoReal()
+    {
+        $veiculos = Veiculo::whereNull('saida')->get(); // Recupere todos os veículos ativos
 
-    protected function calcularPreco($tabelaPrecos, $tempoPermanenciaHoras)
+        foreach ($veiculos as $veiculo) {
+            $entrada = Carbon::parse($veiculo->created_at);
+            $agora = Carbon::now();
+            $diferencaHoras = $agora->diffInHours($entrada);
+
+            $categoria = $veiculo->categoria;
+            $tabelaPrecos = $this->getTabelaPrecos($categoria);
+            $preco = $this->calcularPreco($tabelaPrecos, $diferencaHoras);
+
+            // Atualize o preço no registro do veículo
+            $veiculo->preco = $preco;
+            $veiculo->save();
+        }
+
+        // Após atualizar os preços, retorne os veículos atualizados em formato JSON
+        return response()->json($veiculos);
+    }
+
+
+    protected function calcularPreco($tabelaPrecos, $diferencaHoras)
     {
         // Obtenha o preço por hora da tabela de preços
-        $precoPorHora = $tabelaPrecos->preco;
-        
+        $precoPorHora = $tabelaPrecos;      
         // Calcula o preço total com base na quantidade de horas de permanência
-        $precoTotal = $precoPorHora * $tempoPermanenciaHoras;
-        
-        return $precoTotal;   
+        $precoTotal = $precoPorHora * $diferencaHoras;
+
+        return $precoTotal;
     }
 
     protected function getTabelaPrecos($categoria)
-    {   
-        $preco = Preco::where('categoria', $categoria)->first();
-        return $preco;
+    {
+        $preco = Preco::where('categoria', $categoria)->first();       
+    
+        return $preco->valor_por_hora;
+        
     }
 
     public function show(Veiculo $veiculo)
