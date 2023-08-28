@@ -99,8 +99,10 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <p class="bi bi-car-front-fill"> R$20,00</p>
-                                        <p class="bi bi-bicycle"> R$10,00</p>
+                                        @foreach ($tabelaPrecos as $preco)
+                                        <p class="bi bi-car-front-fill"> {{ $preco->categoria }}: R${{ number_format($preco->valor_por_hora, 2) }}</p>
+                                        
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -170,13 +172,13 @@
                                         @foreach($veiculosTotal as $veiculo)
                                         <tr class="align-middle">
                                             <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
-                                            <!-- <td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
+                                            <!-- <td scope="row" class="text-center preco-atualizado"> {{ $veiculo->id }} </td> -->
+                                            
                                             <td class="text-center"> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
                                             <td class="text-center"> {{ $veiculo->modelo }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
-                                            <td class="text-center">R${{ $veiculo->preco }}</td>
-                                          
+                                            <td class="text-center preco-atualizado" data-veiculo-id="{{ $veiculo->id }}">R${{ $veiculo->preco }}</td>                                          
                                             <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
                                             <td class="text-center">
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
@@ -242,8 +244,11 @@
     fetch('/atualizar-precos')
         .then(response => response.json())
         .then(veiculos => {
-            // Atualize a interface com os dados dos veículos
-            // por exemplo, atualize tabelas, listas ou outros elementos da UI
+            veiculos.forEach(veiculo => {
+                    const veiculoId = veiculo.id;
+                    const precoElement = document.querySelector(`.preco-atualizado[data-veiculo-id="${veiculoId}"]`);
+                    precoElement.textContent = `R$${veiculo.preco.toFixed(2)}`; // Formate o preço como desejar
+                });
         })
         .catch(error => {
             console.error('Erro ao buscar dados atualizados:', error);

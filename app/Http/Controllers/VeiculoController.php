@@ -59,8 +59,9 @@ class VeiculoController extends Controller
 
         $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro
         $totalVeiculosGaragem = $query->count(); // Conta os veículos conforme a busca ou sem filtro
+        $tabelaPrecos = Preco::all(); // Isso busca todos os preços do banco de dados
 
-        return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search'));
+        return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search', 'tabelaPrecos'));
     }
 
 
@@ -96,6 +97,7 @@ class VeiculoController extends Controller
         $veiculo = new Veiculo($request->all());
         // Defina o user_id
         $veiculo->user_id = auth()->user()->id;
+        
         $veiculo->save();
         
         // Atualiza o status da vaga como ocupada
@@ -143,11 +145,11 @@ class VeiculoController extends Controller
         foreach ($veiculos as $veiculo) {
             $entrada = Carbon::parse($veiculo->created_at);
             $agora = Carbon::now();
-            $diferencaHoras = $agora->diffInHours($entrada);
+            $diferencaMinutos = $agora->diffInMinutes($entrada);
 
             $categoria = $veiculo->categoria;
             $tabelaPrecos = $this->getTabelaPrecos($categoria);
-            $preco = $this->calcularPreco($tabelaPrecos, $diferencaHoras);
+            $preco = $this->calcularPreco($tabelaPrecos, $diferencaMinutos);
 
             // Atualize o preço no registro do veículo
             $veiculo->preco = $preco;
@@ -159,21 +161,27 @@ class VeiculoController extends Controller
     }
 
 
-    protected function calcularPreco($tabelaPrecos, $diferencaHoras)
+    protected function calcularPreco($tabelaPrecos, $diferencaMinutos)
     {
         // Obtenha o preço por hora da tabela de preços
-        $precoPorHora = $tabelaPrecos;      
+        $precoPorMinuto  = $tabelaPrecos / 60;      
         // Calcula o preço total com base na quantidade de horas de permanência
-        $precoTotal = $precoPorHora * $diferencaHoras;
+        $precoTotal = $precoPorMinuto  * $diferencaMinutos;
 
         return $precoTotal;
     }
 
     protected function getTabelaPrecos($categoria)
     {
-        $preco = Preco::where('categoria', $categoria)->first();       
+        $preco = Preco::where('categoria', $categoria)->first();
     
-        return $preco->valor_por_hora;
+        if ($preco) {
+            return $preco->valor_por_hora;
+        } else {
+            // Lide com o caso em que a categoria não foi encontrada na tabela de preços.
+            // Você pode retornar um valor padrão ou lançar uma exceção, dependendo da lógica do seu aplicativo.
+            return 0; // Altere isso para o valor padrão desejado.
+        }
         
     }
 
