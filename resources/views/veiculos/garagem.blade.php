@@ -24,13 +24,6 @@
         </li><!-- End Perfil Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="cadastrar_veiculo">
-                <i class="bi bi-card-list"></i>
-                <span>Cadastrar Veículo</span>
-            </a>
-        </li><!-- End Registrar Veículo Nav -->
-
-        <li class="nav-item">
             <a class="nav-link" href="garagem">
                 <i class="bi bi-car-front"></i>
                 <span>Garagem</span>
@@ -92,7 +85,7 @@
                     <div class="col-xxl-3 col-md-6 col-xl-12">
                         <div class="card info-card customers-card">
                             <div class="card-body">
-                                <h5 class="card-title">Valores</h5>
+                                <h5 class="card-title">Valores <span>| por hora</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -100,8 +93,12 @@
                                     </div>
                                     <div class="ps-3">
                                         @foreach ($tabelaPrecos as $preco)
-                                        <p class="bi bi-car-front-fill"> {{ $preco->categoria }}: R${{ number_format($preco->valor_por_hora, 2) }}</p>
-                                        
+                                        @if ($preco->categoria === 'Carro')
+                                        <p class="bi bi-car-front-fill"> R${{ number_format($preco->valor_por_hora, 2, ',', '.') }}</p>
+                                        @elseif ($preco->categoria === 'Moto')
+                                        <p class="bi bi-bicycle"> R${{ number_format($preco->valor_por_hora, 2, ',', '.') }}</p>
+                                        <!-- Adicione mais condições para outras categorias se necessário -->
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -130,7 +127,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="row g-2 align-items-center" method="GET" action="">
+                                <form class="row g-2 align-items-center mb-0" method="GET" action="">
                                     <div class="col-lg-10 col-md-9">
                                         <div class="form-floating">
                                             <input type="text" name="search" class="form-control" id="floatingInput" placeholder="Digite uma placa">
@@ -160,9 +157,9 @@
                                             <th scope="col" class="text-center">Nº</th>
                                             <th scope="col" class="text-center">Categoria</th>
                                             <th scope="col" class="text-center">Placa</th>
-                                            <th scope="col" class="text-center">Modelo</th>
                                             <th scope="col" class="text-center">Tempo</th>
                                             <th scope="col" class="text-center">Preço</th>
+                                            <th scope="col" class="text-center">Status</th>
                                             <th scope="col" class="text-center">Ações</th>
                                             <th scope="col" class="text-center">Saída</th>
                                         </tr>
@@ -173,13 +170,12 @@
                                         <tr class="align-middle">
                                             <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
                                             <!-- <td scope="row" class="text-center preco-atualizado"> {{ $veiculo->id }} </td> -->
-                                            
+
                                             <td class="text-center"> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
-                                            <td class="text-center"> {{ $veiculo->modelo }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
-                                            <td class="text-center preco-atualizado" data-veiculo-id="{{ $veiculo->id }}">R${{ $veiculo->preco }}</td>                                          
-                                            <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
+                                            <td class="text-center preco-atualizado" data-veiculo-id="{{ $veiculo->id }}">R${{ $veiculo->preco }}</td>
+                                            <td class="text-center"><span class="badge" style="background-color: #fd7e14 !important;">Em aberto</span></td>
                                             <td class="text-center">
                                                 <a href="#modalShow-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
                                                 @include('modals.veiculosModal.show')
@@ -189,7 +185,7 @@
                                                 @include('modals.veiculosModal.delete')
                                             </td>
                                             <td class="text-center">
-                                                <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-warning  text-white" data-bs-toggle="modal"> Saída <i class="bi bi-box-arrow-right"></i></a>
+                                                <a href="#modalConfimacao-{{$veiculo->id}}" class="btn btn-success  text-white" data-bs-toggle="modal"> Saída <i class="bi bi-box-arrow-right"></i></a>
                                                 @include('modals.veiculosModal.confirmacao')
                                             </td>
 
@@ -236,28 +232,35 @@
     }
 
     atualizarTimers(); // Atualize os timers imediatamente
-    setInterval(atualizarTimers, 1000); // Atualize a cada segundo
+    setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
 </script>
 
 <script>
-    function atualizarUIComDadosAtualizados() {
-    fetch('/atualizar-precos')
-        .then(response => response.json())
-        .then(veiculos => {
-            veiculos.forEach(veiculo => {
-                    const veiculoId = veiculo.id;
-                    const precoElement = document.querySelector(`.preco-atualizado[data-veiculo-id="${veiculoId}"]`);
-                    precoElement.textContent = `R$${veiculo.preco.toFixed(2)}`; // Formate o preço como desejar
+    document.addEventListener('DOMContentLoaded', function() {
+        function atualizarUIComDadosAtualizados() {
+            fetch('/atualizar-precos')
+                .then(response => response.json())
+                .then(veiculos => {
+                    veiculos.forEach(veiculo => {
+                        const veiculoId = veiculo.id;
+                        const precoElement = document.querySelector(`.preco-atualizado[data-veiculo-id="${veiculoId}"]`);
+                        precoElement.textContent = `R$${veiculo.preco.toFixed(2)}`; // Formate o preço como desejar
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados atualizados:', error);
                 });
-        })
-        .catch(error => {
-            console.error('Erro ao buscar dados atualizados:', error);
-        });
-    }
+        }
 
-    // Execute a função de atualização a cada intervalo de tempo desejado
-    setInterval(atualizarUIComDadosAtualizados, 60000); // Atualiza a cada 60 segundos (1 minuto)
+        // Execute a função de atualização a cada intervalo de tempo desejado
+        setInterval(atualizarUIComDadosAtualizados, 60000); // Atualiza a cada 60 segundos (1 minuto)
+
+        // Chame a função de atualização inicial
+        atualizarUIComDadosAtualizados();
+    });
 </script>
+
+
 
 
 </body>

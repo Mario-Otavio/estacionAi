@@ -24,13 +24,6 @@
     </li><!-- End Perfil Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="cadastrar_veiculo">
-        <i class="bi bi-card-list"></i>
-        <span>Cadastrar Veículo</span>
-      </a>
-    </li><!-- End Registrar Veículo Nav -->
-
-    <li class="nav-item">
       <a class="nav-link collapsed" href="garagem">
         <i class="bi bi-car-front"></i>
         <span>Garagem</span>
@@ -38,11 +31,11 @@
     </li><!-- End Garagem Nav -->
 
     <li class="nav-item">
-            <a class="nav-link collapsed" href="historico">
-                <i class="bi bi-list-columns-reverse"></i>
-                <span>Histórico</span>
-            </a>
-        </li><!-- End Histórico Nav -->
+      <a class="nav-link collapsed" href="historico">
+        <i class="bi bi-list-columns-reverse"></i>
+        <span>Histórico</span>
+      </a>
+    </li><!-- End Histórico Nav -->
 
   </ul>
 
@@ -69,7 +62,7 @@
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             <img src="assets/imge/team/team-3.jpg" alt="Profile" class="rounded-circle">
-            
+
             <h2></h2>
             <h3><b>{{auth()->user()->name}}</b></h3>
             <h3>{{auth()->user()->empresa}}</h3>
@@ -148,8 +141,8 @@
 
                 <!-- Profile Edit Form -->
                 <form action="{{ route('usuario.update', auth()->user()->id) }}" method="POST">
-                   @csrf
-                   @method('PUT')
+                  @csrf
+                  @method('PUT')
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto de perfil</label>
                     <div class="col-md-8 col-lg-9">

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('preco', function (Blueprint $table) {
             $table->id();
             $table->string('categoria');
-            $table->decimal('preco', 8, 2)->nullable();
+            $table->decimal('valor_por_hora', 8, 2)->nullable();
             $table->timestamps();
         });
     }

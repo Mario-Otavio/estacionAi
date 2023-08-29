@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('modelo');
             $table->timestamps();
             $table->dateTime('saida')->nullable();
+            $table->decimal('preco', 8, 2)->nullable();
         });
     }
 

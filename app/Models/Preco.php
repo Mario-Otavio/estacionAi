@@ -9,13 +9,11 @@ class Preco extends Model
 {
     use HasFactory;
 
-    
+
     protected $table = 'preco'; // Nome da tabela no banco de dados
 
     protected $fillable = [
         'categoria',
-        'preco'
+        'valor_por_hora'
     ];
-
-    
 }

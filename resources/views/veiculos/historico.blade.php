@@ -24,20 +24,13 @@
         </li><!-- End Perfil Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="cadastrar_veiculo">
-                <i class="bi bi-card-list"></i>
-                <span>Cadastrar Veículo</span>
-            </a>
-        </li><!-- End Registrar Veículo Nav -->
-
-        <li class="nav-item">
             <a class="nav-link collapsed" href="garagem">
                 <i class="bi bi-car-front"></i>
                 <span>Garagem</span>
             </a>
         </li><!-- End Garagem Nav -->
 
-        
+
         <li class="nav-item">
             <a class="nav-link" href="historico">
                 <i class="bi bi-list-columns-reverse"></i>
@@ -65,11 +58,11 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
 
                     <!-- Revenue Card -->
-                    <div class="col-xxl-4 col-md-6">
+                    <div class="col-xxl-3 col-md-6 col-xl-12">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
                                 <h5 class="card-title">Total veículos <span>| Todos</span></h5>
@@ -88,13 +81,13 @@
 
                         </div>
                     </div><!-- End Revenue Card -->
-                                      
+
 
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
 
-                            
+
 
                             <div class="card-body">
                                 <h5 class="card-title">Total Veículos <span>| Todos</span></h5>
@@ -107,27 +100,30 @@
                                             <th scope="col" class="text-center">Placa</th>
                                             <th scope="col" class="text-center">Modelo</th>
                                             <th scope="col" class="text-center">Tempo</th>
+                                            <th scope="col" class="text-center">Preço</th>
+                                            <th scope="col" class="text-center">Status</th>
                                             <th scope="col" class="text-center">Informações</th>
-                                            
+
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         @foreach($todosVeiculos as $veiculo)
                                         <tr class="align-middle">
-                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td> 
+                                            <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
                                             <!--<td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
                                             <td class="text-center"> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
                                             <td class="text-center"> {{ $veiculo->modelo }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}" data-saida="{{ $veiculo->saida }}"></span></td>
-                                          <!--  <td><span class="badge bg-success">Aprovado</span></td> -->
+                                            <td class="text-center">R${{ $veiculo->preco }}</td>
+                                            <td class="text-center"><span class="badge bg-success">Pago</span></td>
                                             <td class="text-center">
                                                 <a href="#modalShowHistorico-{{$veiculo->id}}" class="btn btn-info bi bi-file-text" id="btn-grid-info" data-bs-toggle="modal"></a>
-                                                @include('modals.veiculosModal.showHistorico')                                              
+                                                @include('modals.veiculosModal.showHistorico')
                                             </td>
-                                           
-                                            
+
+
                                         </tr>
                                         @endforeach
                                         @include('includes.mensagens')
@@ -150,13 +146,13 @@
 
 
 <script>
-function atualizarTimers() {
+    function atualizarTimers() {
         var timers = document.querySelectorAll('.timer');
 
         timers.forEach(function(timerElement) {
             var horarioEntrada = timerElement.getAttribute('data-entrada');
             var horarioSaida = timerElement.getAttribute('data-saida');
-            
+
             if (horarioSaida) { // Verifica se o carro saiu
                 var entrada = new Date(horarioEntrada);
                 var saida = new Date(horarioSaida);
@@ -167,8 +163,8 @@ function atualizarTimers() {
                 var segundos = diferenca % 60;
 
                 timerElement.textContent = horas.toString().padStart(2, '0') + ':' +
-                                        minutos.toString().padStart(2, '0') + ':' +
-                                        segundos.toString().padStart(2, '0');
+                    minutos.toString().padStart(2, '0') + ':' +
+                    segundos.toString().padStart(2, '0');
             } else {
                 // Neste caso, não atualize o timer, mantendo o valor travado.
             }
@@ -179,8 +175,6 @@ function atualizarTimers() {
         atualizarTimers(); // Inicia a atualização dos timers quando a página é carregada
         setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
     });
-
-
 </script>
 
 

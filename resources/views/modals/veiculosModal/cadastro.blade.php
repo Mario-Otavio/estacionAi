@@ -8,42 +8,61 @@
                 <h5 class="modal-title">Cadastrar Veículo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">               
+            <div class="modal-body">
 
-                
-                    <div class="pb-2">                        
-                        <p class="text-center text-body-secondary">Insira dados do veículo</p>
+
+                <div class="pb-2">
+                    <p class="text-center text-body-secondary">Insira dados do veículo</p>
+                </div>
+
+                <form action="{{ route('veiculo.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
+
+                    <div class="col-12">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <select id="inputState" name="categoria" class="form-select" required>
+                            <option selected>Carro</option>
+                            <option>Moto</option>
+                        </select>
                     </div>
 
-                    <form action="{{ route('veiculo.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                        <label for="placa" class="form-label">Placa</label>
+                        <input type="text" name="placa" class="form-control" required>
+                        <div class="invalid-feedback">Por favor,insira a placa do carro!</div>
+                    </div>
 
-                        <div class="col-12">
-                            <label for="categoria" class="form-label">Categoria</label>
-                            <select id="inputState" name="categoria" class="form-select" required>
-                                <option selected>Carro</option>
-                                <option>Moto</option>
-                            </select>
-                        </div>
+                    <div class="col-12">
+                        <label for="marca" class="form-label">Marca</label>
+                        <select id="inputState" name="marca" class="form-select" required>
+                            <option>Ford</option>
+                            <option>Honda</option>
+                            <option>Hyundai</option>
+                            <option>Volkswagen</option>
+                            <option>Mitsubishi</option>
+                            <option>Porsche</option>
+                            <option>BMW</option>
+                            <option>Toyota</option>
+                            <option>Mercedes-Benz</option>
+                            <option>Tesla</option>
+                            <option>Fiat</option>
+                            <option>Yamaha</option>
+                            <option>Chevrolet</option>
+                            <option>Audi</option>
+                            <option>Caoa Chery</option>
+                            <option>Jeep</option>
+                            <option>Renault</option>
+                            <option>Nissan</option>
+                            <option>Peugeot</option>
+                        </select>
+                    </div>
 
-                        <div class="col-12">
-                            <label for="placa" class="form-label">Placa</label>
-                            <input type="text" name="placa" class="form-control" required>
-                            <div class="invalid-feedback">Por favor,insira a placa do carro!</div>
-                        </div>
+                    <div class="col-12 pb-3">
+                        <label for="modelo" class="form-label">Modelo</label>
+                        <input type="text" name="modelo" class="form-control" required>
+                        <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
+                    </div>
 
-                        <div class="col-12">
-                            <label for="marca" class="form-label">Marca</label>
-                            <input type="text" name="marca" class="form-control" required>
-                            <div class="invalid-feedback">Por favor, insira a marca do carro!</div>
-                        </div>
 
-                        <div class="col-12 pb-3">
-                            <label for="modelo" class="form-label">Modelo</label>
-                            <input type="text" name="modelo" class="form-control" required>
-                            <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
-                        </div>
-
-                
 
             </div>
             <div class="modal-footer">
@@ -54,9 +73,9 @@
                 </form>
             </div>
             @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p> {{ $message }} </p>
-                </div>
+            <div class="alert alert-success">
+                <p> {{ $message }} </p>
+            </div>
             @endif
 
         </div>

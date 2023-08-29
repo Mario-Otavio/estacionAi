@@ -22,10 +22,11 @@ Route::group(['middleware' => ['web']], function () {
         Route::put('/veiculos/confirmacao/{veiculo}', [VeiculoController::class, 'saidaVeiculo'])->name('modal.confirmacao');
         Route::get('/dashboard', [VeiculoController::class, 'index']);
         Route::get('/garagem', [VeiculoController::class, 'listar']);
-        Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');        
+        Route::post('/garagem', [VeiculoController::class, 'salvar'])->name('veiculo.salvar');
         Route::get('/historico', [VeiculoController::class, 'todosVeiculos'])->name('veiculo.historico');
         Route::get('/atualizar-precos', [VeiculoController::class, 'atualizarPrecosEmTempoReal']);
-        
+
+
 
         //Rotas Usuário
         Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
@@ -45,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
 
     //Rota Cadastro de usuário
     Route::get('/cadastrar_usuario', function () {
-         return view('usuario/cadastrar_usuario');
+        return view('usuario/cadastrar_usuario');
     })->name("cadastrar.usuario");
 
     Route::post('/cadastrar_usuario', [UsuarioController::class, 'salvar'])->name('usuario.salvar');
