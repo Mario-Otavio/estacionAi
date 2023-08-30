@@ -24,6 +24,13 @@
         </li><!-- End Perfil Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="precificacao">
+            <i class="bi bi-cash-stack"></i>
+                <span>Precificação</span>
+            </a>
+        </li><!-- End Precificação Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="garagem">
                 <i class="bi bi-car-front"></i>
                 <span>Garagem</span>
@@ -176,8 +183,3 @@
         setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
     });
 </script>
-
-
-</body>
-
-</html>

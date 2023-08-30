@@ -12,16 +12,23 @@
                 <i class="bi bi-grid"></i>
                 <span>Painel</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li><!-- End Painel Nav -->
 
         <li class="nav-heading">Paginas</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="perfil">
+            <a class="nav-link collapsed" href="precificacao">
                 <i class="bi bi-person"></i>
                 <span>Perfil</span>
             </a>
         </li><!-- End Perfil Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="perfil">
+            <i class="bi bi-cash-stack"></i>
+                <span>Precificação</span>
+            </a>
+        </li><!-- End Precificação Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="garagem">

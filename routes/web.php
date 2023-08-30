@@ -26,12 +26,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/atualizar-precos', [VeiculoController::class, 'atualizarPrecosEmTempoReal']);
     Route::put('/saida-veiculo/{id}', [VeiculoController::class, 'saidaVeiculo'])->name('veiculo.saida');
 
+    //Rostas Precificação
+    Route::get('/precificacao', [VeiculoController::class, 'mostrarFormPrecificacao'])->name('categorias.precificar');
+    Route::post('/precificacao', [VeiculoController::class, 'precificarCategorias'])->name('veiculos.precificacao');
 
     //Rotas Usuário
     Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
     Route::put('/perfil/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
-
-
 
     //Rota Cadastro de veículo
     Route::get('/cadastrar_veiculo', function () {

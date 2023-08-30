@@ -197,6 +197,7 @@ class VeiculoController extends Controller
 
     public function edit(Veiculo $Veiculo)
     {
+        //$categorias = Categoria::all(); // Recupere todas as categorias
         return view('veiculos/editar_veiculo', ['veiculo' => $Veiculo]);
     }
 
@@ -254,5 +255,43 @@ class VeiculoController extends Controller
         ]);
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
+        
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function mostrarFormPrecificacao()
+    {
+        $precos = Preco::all();   
+        $veiculo = Veiculo::all();
+        $categoria_id =  $precos->pluck('categoria', 'id')->all();
+        return view('veiculos.precificacao', compact('veiculo', 'precos', 'categoria_id'));
+    }
+
+    public function precificarCategorias(Request $request)
+    {
+        $categoriaCarro = $request->input('categoria_carro');
+        $valorCarro = $request->input('valor_carro');
+        $categoriaMoto = $request->input('categoria_moto');
+        $valorMoto = $request->input('valor_moto');
+
+        // Aqui você pode salvar esses valores na tabela de preços, por exemplo
+        // Certifique-se de ter um modelo e migração para a tabela de preços
+
+        return redirect()->route('veiculos.precificacao')->with('sucesso', 'Preço salvo com sucesso!');
+    }
+    
+    public function editarValores(Request $request)
+    {       
+        $valores = $request->input('valores');
+
+        foreach ($valores as $precoId => $valor) {
+            $preco = Preco::find($precoId);
+            if ($preco) {
+                $preco->valor_por_hora = $valor;
+                $preco->save();
+            }
+        }
+
+        return redirect()->route('veiculos.precificacao',)->with('sucesso', 'Valor da categoria atualizada com sucesso!');
+    }
+
 }
