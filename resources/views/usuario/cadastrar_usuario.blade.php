@@ -39,7 +39,7 @@
             <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <div class="col-lg-7 col-md-12 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="/" class="logo d-flex align-items-center w-auto">
@@ -58,58 +58,65 @@
                                     </div>
 
                                     <form action="{{ route('usuario.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
-                                        <div class="col-12">
+                                        @csrf
+                                        <div class="col-md-7 col-sm-12">
                                             <label for="nome" class="form-label">Nome completo</label>
-                                            <input type="text" name="name" class="form-control" required>
+                                            <input type="text" name="name" class="form-control">
                                             <div class="invalid-feedback">Por favor,insira um nome!</div>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-md-5">
                                             <label for="telefone" class="form-label">Telefone</label>
                                             <div class="input-group has-validation">
-                                                <input type="telefone" name="telefone" class="form-control" required>
+                                                <input type="telefone" name="telefone" class="form-control">
                                                 <div class="invalid-feedback">Por favor, insira um Telefone!</div>
                                             </div>
-                                        </div>                                      
+                                        </div>
 
-                                        <div class="col-12">
+                                        <div class="col-md-7 col-sm-12">
                                             <label for="empresa" class="form-label">Nome do estacionamento</label>
-                                            <div class="input-group has-validation">                                             
-                                                <input type="empresa" name="empresa" class="form-control" required>
+                                            <div class="input-group has-validation">
+                                                <input type="empresa" name="empresa" class="form-control">
                                                 <div class="invalid-feedback">Por favor, insira um Email!</div>
                                             </div>
+                                        </div>
+
+                                        <div class="col-md-5 col-sm-12">
+                                            <label for="quantidade_vagas" class="form-label">Quantidade de Vagas</label>
+                                            <input type="number" name="quantidade_vagas" class="form-control">
+                                            <div class="invalid-feedback">@error('quantidade_vagas') {{ $message }} @enderror</div>
                                         </div>
 
                                         <div class="col-12">
                                             <label for="endereco" class="form-label">Endereço do estacionamento</label>
-                                            <div class="input-group has-validation">            
-                                                <input type="endereco" name="endereco" class="form-control" required>                                               
+                                            <div class="input-group has-validation">
+                                                <input type="endereco" name="endereco" class="form-control">
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <label for="quantidade_vagas" class="form-label">Quantidade de Vagas</label>
-                                            <input type="number" name="quantidade_vagas" class="form-control" value="1" required>
-                                            <div class="invalid-feedback">Por favor, insira a quantidade de vagas desejada!</div>
-                                        </div>
 
-                                        <div class="col-12">
+
+                                        <div class="col-md-12">
                                             <label for="email" class="form-label">Endereço de email</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="email" name="email" class="form-control" required>
+                                                <input type="email" name="email" class="form-control">
                                                 <div class="invalid-feedback">Por favor, insira um Email!</div>
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-md-6 col-sm-12">
                                             <label for="senha" class="form-label">Senha</label>
-                                            <input type="password" name="password" class="form-control" required>
-                                            <div class="invalid-feedback">Por favor, insira o modelo do carro!</div>
+                                            <input type="password" name="password" class="form-control">
+                                            <div class="invalid-feedback">@error('password') {{ $message }} @enderror</div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <label for="senha_confirmation" class="form-label">Confirme a senha</label>
+                                            <input type="password" name="password_confirmation" class="form-control">
                                         </div>
 
                                         <div class="col-12 pb-2">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                             <button class="btn btn-primary w-100" type="submit">Cadastrar</button>
                                         </div>
                                         @if ($message = Session::get('success'))

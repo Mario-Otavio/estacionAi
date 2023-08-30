@@ -64,7 +64,7 @@
                     <div class="col-xxl-3 col-md-6 col-xl-12">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Total veículos <span>| Hoje</span></h5>
+                                <h5 class="card-title">Total veículos <span>| Ativos</span></h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

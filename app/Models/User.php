@@ -24,6 +24,7 @@ class User extends Authenticatable
         'endereco',
         'email',
         'password',
+        'desired_parking_spaces',
     ];
 
     public function veiculos()

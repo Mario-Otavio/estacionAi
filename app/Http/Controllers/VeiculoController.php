@@ -6,6 +6,7 @@ use App\Http\Requests\VeiculoRequest;
 use App\Models\Veiculo;
 use App\Models\User;
 use App\Models\Preco;
+use App\Models\Pagamento;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -216,7 +217,7 @@ class VeiculoController extends Controller
     }
 
 
-    public function saidaVeiculo($id)
+    public function saidaVeiculo(Request $request, $id)
     {
         $veiculo = Veiculo::findOrFail($id);
 
@@ -229,11 +230,28 @@ class VeiculoController extends Controller
         $veiculo->saida = Carbon::now();
         $veiculo->save();
 
-        // Mova o carro para a tabela de histórico
-        // Aqui você precisará ter um modelo e uma tabela separada para o histórico
-        // Você pode criar um novo modelo chamado HistoricoVeiculo e uma tabela chamada historico_veiculos
-        // E então, criar um novo registro na tabela de histórico com os detalhes do carro e a data de saída
+        // Cálculo do valor de pagamento
+        $entrada = Carbon::parse($veiculo->created_at);
+        $saida = Carbon::parse($veiculo->saida);
+        $diferencaMinutos = $saida->diffInMinutes($entrada);
 
+        $categoria = $veiculo->categoria; // Certifique-se de substituir pela lógica correta para obter a categoria
+        $tabelaPrecos = $this->getTabelaPrecos($categoria);
+        $valorPagamento = $this->calcularPreco($tabelaPrecos, $diferencaMinutos);
+
+        // Validação do campo forma_pagamento
+        $request->validate([
+            'forma_pagamento' => 'required', // Certifique-se de que o campo seja obrigatório
+        ]);
+
+        // Registrar o pagamento
+        $formaPagamento = $request->input('forma_pagamento');
+
+        Pagamento::create([
+            'veiculo_id' => $veiculo->id,
+            'forma_pagamento' => $formaPagamento,
+            'valor' => $valorPagamento,
+        ]);
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
     }

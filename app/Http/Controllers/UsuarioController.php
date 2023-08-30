@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsuarioController extends BaseController
 {
@@ -19,14 +20,30 @@ class UsuarioController extends BaseController
     }
     public function salvar(UsuarioRequest $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'empresa' => 'required',
+            'telefone' => 'required',
+            'endereco' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+            'quantidade_vagas' => 'required|integer|min:1', // Validação para quantidade_vagas
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $userData = [
             'name' => $request->input('name'),
             'empresa' => $request->input('empresa'),
             'telefone' => $request->input('telefone'),
             'endereco' => $request->input('endereco'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')), // Usando bcrypt aqui
-            'desired_parking_spaces' => $request->input('quantidade_vagas'), 
+            'password' => Hash::make($request->input('password')),
+            'desired_parking_spaces' => $request->input('quantidade_vagas'),
         ];
 
         User::create($userData);

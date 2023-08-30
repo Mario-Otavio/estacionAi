@@ -110,7 +110,7 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cash-stack"></i>
+                                        <i class="bi bi-cash-coin"></i>
                                     </div>
                                     <div class="ps-3">
                                         <h6 class=""> R$ 2000,00</h6>
@@ -144,19 +144,6 @@
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filtro</h6>
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">Hoje</a></li>
-                                    <li><a class="dropdown-item" href="#">Este mês</a></li>
-                                    <li><a class="dropdown-item" href="#">Este ano</a></li>
-                                </ul>
-                            </div>
 
                             <div class="card-body">
                                 <h5 class="card-title">Registros recentes <span>| últimos 8</span></h5>
