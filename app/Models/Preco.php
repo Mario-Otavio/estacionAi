@@ -16,4 +16,9 @@ class Preco extends Model
         'categoria',
         'valor_por_hora'
     ];
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
 }

@@ -255,12 +255,11 @@ class VeiculoController extends Controller
         ]);
         // Por fim, redirecione de volta para a página de garagem
         return redirect()->to('/garagem')->with('sucesso', 'Saída da garagem concluída com sucesso!');
-        
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function mostrarFormPrecificacao()
     {
-        $precos = Preco::all();   
+        $precos = Preco::all();
         $veiculo = Veiculo::all();
         $categoria_id =  $precos->pluck('categoria', 'id')->all();
         return view('veiculos.precificacao', compact('veiculo', 'precos', 'categoria_id'));
@@ -278,10 +277,10 @@ class VeiculoController extends Controller
 
         return redirect()->route('veiculos.precificacao')->with('sucesso', 'Preço salvo com sucesso!');
     }
-    
+
     public function editarValores(Request $request)
-    {       
-        $valores = $request->input('valores');
+    {
+        $valores = $request->input('valor');
 
         foreach ($valores as $precoId => $valor) {
             $preco = Preco::find($precoId);
@@ -293,5 +292,4 @@ class VeiculoController extends Controller
 
         return redirect()->route('veiculos.precificacao',)->with('sucesso', 'Valor da categoria atualizada com sucesso!');
     }
-
 }

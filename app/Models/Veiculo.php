@@ -23,15 +23,20 @@ class Veiculo extends Authenticatable
         'categoria',
         'placa',
         'marca',
-        'modelo',   
-        'saida',     
+        'modelo',
+        'saida',
     ];
     //Tudo que for enviado pelo post vai ser atualizado
-    protected $guarded = [];    
+    protected $guarded = [];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Preco::class, 'categoria_id');
     }
 
     /**

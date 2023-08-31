@@ -25,7 +25,7 @@
 
         <li class="nav-item">
             <a class="nav-link" href="precificacao">
-            <i class="bi bi-cash-stack"></i>
+                <i class="bi bi-cash-stack"></i>
                 <span>Precificação</span>
             </a>
         </li><!-- End Precificação Nav -->
@@ -67,7 +67,7 @@
 
                 <div class="card">
                     <div class="card-body pt-3"><!-- Bordered Tabs -->
-                        
+
                         <ul class="nav nav-tabs nav-tabs-bordered">
                             <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Precificar Categorias</button>
@@ -75,7 +75,7 @@
 
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar Preços</button>
-                            </li>   
+                            </li>
                         </ul>
 
                         <div class="tab-content pt-2">
@@ -89,11 +89,11 @@
                                     <div class="mb-3">
                                         <label for="valor_carro" class="form-label">Valor por hora</label>
                                         <input type="number" name="valor_carro" class="form-control">
-                                    </div>                                    
+                                    </div>
                                     <button type="submit" class="btn btn-primary col-12">Salvar</button>
-                                </form>  
+                                </form>
                             </div>
-                        
+
 
                             <div class="tab-pane fade profile-edit" id="profile-edit">
 
@@ -102,23 +102,22 @@
                                     <div class="mb-3">
                                         <label for="categoria_carro" class="form-label">Selecione a categoria</label>
                                         <select name="categoria" class="form-select">
-                                        @foreach($precos as $preco)
-                                            <option value="{{ $preco->id }}">
-                                                {{ $categoria_id == $preco->id ? 'selected' : '' }}>
-                                                {{ $preco->categoria }}                                                
+                                            @foreach($precos as $preco)
+                                            <option value="{{ $preco->id }}" {{ $categoria_id == $preco->id ? 'selected' : '' }}>
+                                                {{ $preco->categoria }}
                                             </option>
-                                        @endforeach
-                                </select>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="valor_carro" class="form-label">Editar valor</label>
-                                        <input type="number" name="valores" class="form-control" value="{{ $precos->where('id', $categoria_id)->first()->valor_por_hora }}">
-                                    </div>                                
+                                        <input type="number" name="valor" class="form-control" value="{{ old('valor', $precos->first()->valor_por_hora) }}">
+                                    </div>
                                     <button type="submit" class="btn btn-primary col-12">Salvar Alterações</button>
-                                </form>               
+                                </form>
 
-                            </div>    
-                        </div>                    
+                            </div>
+                        </div>
                     </div><!-- End Bordered Tabs -->
                 </div>
             </div>
@@ -126,3 +125,44 @@
     </section>
 
 </main><!-- End #main -->
+@php
+$precosJson = json_encode($precos);
+@endphp
+
+
+<!-- ... (outros códigos HTML) ... -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoriaSelect = document.getElementById('categoria');
+        const valorInput = document.getElementById('valor');
+        const precos = {!! $precosJson !!};
+
+        // Função para atualizar o valor com base na categoria selecionada
+        function atualizarValor(categoriaId) {
+            const selectedPreco = precos.find(preco => preco.id === categoriaId);
+
+            if (selectedPreco) {
+                valorInput.value = selectedPreco.valor_por_hora;
+            } else {
+                valorInput.value = ''; // Limpa o valor se nenhuma categoria correspondente encontrada
+            }
+        }
+
+        // Evento de carregamento da página
+        const selectedCategoriaId = parseInt(categoriaSelect.value);
+        atualizarValor(selectedCategoriaId);
+
+        // Evento de mudança da categoria
+        categoriaSelect.addEventListener('change', function() {
+            const selectedCategoriaId = parseInt(this.value);
+            atualizarValor(selectedCategoriaId);
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
