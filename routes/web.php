@@ -27,9 +27,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/saida-veiculo/{id}', [VeiculoController::class, 'saidaVeiculo'])->name('veiculo.saida');
 
     //Rostas Precificação
-    Route::get('/precificacao', [VeiculoController::class, 'mostrarFormPrecificacao'])->name('categorias.precificar');
-    Route::post('/precificacao', [VeiculoController::class, 'precificarCategorias'])->name('veiculos.precificacao');
-
+    Route::get('/precificacao', [VeiculoController::class, 'mostrarFormPrecificacao'])->name('veiculos.precificacao');
+    Route::post('/precificacao', [VeiculoController::class, 'addPrecificarCategorias'])->name('veiculos.addPrecificarCategorias');
+    Route::put('/veiculos/precificacao', [VeiculoController::class, 'editarValores'])->name('veiculos.editarValores');
+    Route::delete('/veiculos/precificacao/{preco}', [VeiculoController::class, 'deletarCategorias'])->name('veiculos.deletarCategorias');
+    
     //Rotas Usuário
     Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
     Route::put('/perfil/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');
