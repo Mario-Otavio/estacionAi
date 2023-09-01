@@ -137,9 +137,13 @@ class VeiculoController extends Controller
         //$printer->cut();
         // $printer->close();
 
+        // Recupera todas as categorias da tabela "preco"
+        $categorias = \App\Models\Preco::all();
+
         // Redirecione com uma mensagem de sucesso
-        return redirect()->route('veiculo.salvar', compact('precos'))
-            ->with('sucesso', 'Veículo Cadastro com Sucesso!');
+        return redirect()->route('/garagem')
+            ->with(['sucesso' => 'Veículo Cadastro com Sucesso!'])
+            ->with('categorias', $categorias);
     }
 
     public function atualizarPrecosEmTempoReal()
@@ -283,28 +287,28 @@ class VeiculoController extends Controller
     public function editarValores(Request $request)
     {
         // Valida os dados da solicitação
-    $request->validate([
-        'categoria' => 'required|exists:preco,id',
-        'valor' => 'required|numeric|min:0'
-    ]);
+        $request->validate([
+            'categoria' => 'required|exists:preco,id',
+            'valor' => 'required|numeric|min:0'
+        ]);
 
-    // Encontra a categoria selecionada
-    $preco = Preco::find($request->input('categoria'));
-    
-    // Atualiza o preço da categoria selecionada
-    $preco->valor_por_hora = $request->input('valor');    
-    $preco->save();
-    
-    // Redireciona de volta para o formulário com uma mensagem de sucesso
-    return redirect()->route('veiculos.precificacao')->with('sucesso', 'Preço atualizado com sucesso!');
+        // Encontra a categoria selecionada
+        $preco = Preco::find($request->input('categoria'));
+
+        // Atualiza o preço da categoria selecionada
+        $preco->valor_por_hora = $request->input('valor');
+        $preco->save();
+
+        // Redireciona de volta para o formulário com uma mensagem de sucesso
+        return redirect()->route('veiculos.precificacao')->with('sucesso', 'Preço atualizado com sucesso!');
     }
 
     public function deletarCategorias(Preco $preco)
     {
-    // Delete the specified Preco record
-    $preco->delete();
+        // Delete the specified Preco record
+        $preco->delete();
 
-    // Redirect back to the form with a success message
-    return redirect()->route('veiculos.precificacao')->with('sucesso', 'Categoria deletada com sucesso!');
+        // Redirect back to the form with a success message
+        return redirect()->route('veiculos.precificacao')->with('sucesso', 'Categoria deletada com sucesso!');
     }
 }

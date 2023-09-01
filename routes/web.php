@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/precificacao', [VeiculoController::class, 'addPrecificarCategorias'])->name('veiculos.addPrecificarCategorias');
     Route::put('/veiculos/precificacao', [VeiculoController::class, 'editarValores'])->name('veiculos.editarValores');
     Route::delete('/veiculos/precificacao/{preco}', [VeiculoController::class, 'deletarCategorias'])->name('veiculos.deletarCategorias');
-    
+
     //Rotas Usuário
     Route::get('/perfil', [UsuarioController::class, 'listar'])->name('usuario.listar');
     Route::put('/perfil/{usuario}', [UsuarioController::class, 'update'])->name('usuario.update');

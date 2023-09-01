@@ -18,10 +18,10 @@
                 <form action="{{ route('veiculo.salvar') }}" method="POST" class="row g-3 needs-validation" novalidate>
 
                     <div class="col-12">
-                        <label for="categoria" class="form-label">Categoria</label>
+                        <label for="categoria" class="form-label">Selecione uma categoria</label>
                         <select id="inputState" name="categoria" class="form-select" required>
-                            <option selected>Carro</option>
-                            <option>Moto</option>
+                            <option value="" selected>Categorias</option>
+                            
                         </select>
                     </div>
 
@@ -53,6 +53,19 @@
                             <option>Renault</option>
                             <option>Nissan</option>
                             <option>Peugeot</option>
+                            <option>Dafra</option>
+                            <option>Kawasaki</option>
+                            <option>Ducati</option>
+                            <option>Harley-Davidson</option>
+                            <option>Haojue</option>
+                            <option>Citroen</option>
+                            <option>Kia</option>
+                            <option>Land Hover</option>
+                            <option>Mini</option>
+                            <option>Mitsubishi</option>
+                            <option>Suzuki</option>
+                            <option>Volvo</option>
+                            <option>Lamborguini</option>
                         </select>
                     </div>
 

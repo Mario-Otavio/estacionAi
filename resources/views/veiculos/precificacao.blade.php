@@ -63,7 +63,7 @@
 
     <section class="section dashboard">
         <div class="row justify-content-center">
-            
+
             <div class="col-xl-6">
                 <br><br><br>
 
@@ -90,21 +90,21 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="categoria_carro" class="form-label">Categoria do Veículo</label>
-                                        <input type="text" name="categoria_carro" class="form-control">
+                                        <input type="text" name="categoria_carro" id="campo_input" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label for="valor_carro" class="form-label">Valor por hora</label>
                                         <input type="number" name="valor_carro" class="form-control">
                                     </div>
-                                    <button type="submit" class="btn btn-primary col-12">Salvar</button>                                    
+                                    <button type="submit" class="btn btn-primary col-12">Salvar</button>
                                 </form>
                                 @include('includes.mensagens')
-                            </div>                           
+                            </div>
 
 
                             <div class="tab-pane fade profile-edit" id="profile-edit">
                                 <form class="pt-3" action="{{ route('veiculos.editarValores') }}" method="POST">
-                                    @csrf                                    
+                                    @csrf
                                     @method('PUT')
                                     <div class="mb-3">
                                         <label for="categoria_carro" class="form-label">Selecione a categoria</label>
@@ -119,7 +119,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="valor_carro" class="form-label">Editar valor</label>                                      
+                                        <label for="valor_carro" class="form-label">Editar valor</label>
                                         <input type="number" name="valor" class="form-control" value="{{ old('valor', $precos->isEmpty() ? '' : $precos->first()->valor_por_hora) }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary col-12">Salvar Alteração</button>
@@ -132,18 +132,18 @@
                                 <div class="mb-3">
                                     <label class="form-label">Selecione uma categoria</label>
                                     <select id="category-select" class="form-select">
-                                    @foreach ($precos as $preco)
+                                        @foreach ($precos as $preco)
                                         <option value="{{ $preco->id }}">{{ $preco->categoria }}</option>
-                                    @endforeach
+                                        @endforeach
                                     </select>
                                 </div>
 
-                                <!-- Delete button -->                                
-                                <button href="#modalDeleteCategorias-{{$preco->id}}" id="delete-button" class="btn btn-primary col-12" data-bs-toggle="modal">Deletar</button>  
+                                <!-- Delete button -->
+                                <button href="#modalDeleteCategorias-{{$preco->id}}" id="delete-button" class="btn btn-primary col-12" data-bs-toggle="modal">Deletar</button>
                                 @foreach ($precos as $preco)
-                                @include('modals.veiculosModal.deleteCategoria')  
-                                @endforeach   
-                 
+                                @include('modals.veiculosModal.deleteCategoria')
+                                @endforeach
+
                             </div>
 
                         </div>
@@ -151,7 +151,7 @@
                 </div>
             </div>
         </div>
-    </section>    
+    </section>
 
 </main><!-- End #main -->
 
@@ -159,28 +159,36 @@
 $precosJson = json_encode($precos);
 @endphp
 
-<script> 
+<script>
     document.addEventListener('DOMContentLoaded', function() {
-    const categoriaSelect = document.querySelector('[name="categoria"]');
-    const valorInput = document.querySelector('[name="valor"]');
-    const precos = {!! $precosJson !!};
+        const categoriaSelect = document.querySelector('[name="categoria"]');
+        const valorInput = document.querySelector('[name="valor"]');
+        const precos = {
+            !!$precosJson!!
+        };
 
-    // Função para atualizar o valor com base na categoria selecionada
-    function atualizarValor(categoriaId) {
-        const selectedPreco = precos.find(preco => preco.id == categoriaId);
-        if (selectedPreco) {
-            valorInput.value = selectedPreco.valor_por_hora;
+        // Função para atualizar o valor com base na categoria selecionada
+        function atualizarValor(categoriaId) {
+            const selectedPreco = precos.find(preco => preco.id == categoriaId);
+            if (selectedPreco) {
+                valorInput.value = selectedPreco.valor_por_hora;
+            }
         }
-    }
 
-    // Adiciona um event listener ao elemento "categoria" select
-    categoriaSelect.addEventListener('change', function() {
-        atualizarValor(this.value);
+        // Adiciona um event listener ao elemento "categoria" select
+        categoriaSelect.addEventListener('change', function() {
+            atualizarValor(this.value);
+        });
     });
-});
 </script>
 
+<script>
+    // Obtém o elemento de entrada
+    var campoInput = document.getElementById('campo_input');
 
-
-
-
+    // Adiciona um evento de escuta para o evento 'input'
+    campoInput.addEventListener('input', function() {
+        // Converte o valor do campo para minúsculas e atualiza o valor do campo
+        this.value = this.value.toLowerCase();
+    });
+</script>

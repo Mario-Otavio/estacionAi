@@ -25,7 +25,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="precificacao">
-            <i class="bi bi-cash-stack"></i>
+                <i class="bi bi-cash-stack"></i>
                 <span>Precificação</span>
             </a>
         </li><!-- End Precificação Nav -->
@@ -100,9 +100,9 @@
                                     </div>
                                     <div class="ps-3">
                                         @foreach ($tabelaPrecos as $preco)
-                                        @if ($preco->categoria === 'Carro')
+                                        @if ($preco->categoria === 'carro')
                                         <p class="bi bi-car-front-fill"> R${{ number_format($preco->valor_por_hora, 2, ',', '.') }}</p>
-                                        @elseif ($preco->categoria === 'Moto')
+                                        @elseif ($preco->categoria === 'moto')
                                         <p class="bi bi-bicycle"> R${{ number_format($preco->valor_por_hora, 2, ',', '.') }}</p>
                                         <!-- Adicione mais condições para outras categorias se necessário -->
                                         @endif
