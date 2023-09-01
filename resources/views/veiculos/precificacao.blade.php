@@ -99,12 +99,10 @@
                                     <button type="submit" class="btn btn-primary col-12">Salvar</button>                                    
                                 </form>
                                 @include('includes.mensagens')
-                            </div>
-                           
+                            </div>                           
 
 
                             <div class="tab-pane fade profile-edit" id="profile-edit">
-
                                 <form class="pt-3" action="{{ route('veiculos.editarValores') }}" method="POST">
                                     @csrf                                    
                                     @method('PUT')
@@ -126,7 +124,6 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary col-12">Salvar Alteração</button>
                                 </form>
-
                             </div>
 
 
@@ -141,29 +138,26 @@
                                     </select>
                                 </div>
 
-                                <!-- Delete button -->
-                                @foreach ($precos as $preco)
+                                <!-- Delete button -->                                
                                 <button href="#modalDeleteCategorias-{{$preco->id}}" id="delete-button" class="btn btn-primary col-12" data-bs-toggle="modal">Deletar</button>  
+                                @foreach ($precos as $preco)
                                 @include('modals.veiculosModal.deleteCategoria')  
-                                @endforeach                               
+                                @endforeach   
+                 
                             </div>
-
 
                         </div>
                     </div><!-- End Bordered Tabs -->
                 </div>
             </div>
         </div>
-    </section>
-    
+    </section>    
 
 </main><!-- End #main -->
+
 @php
 $precosJson = json_encode($precos);
 @endphp
-
-
-<!-- ... (outros códigos HTML) ... -->
 
 <script> 
     document.addEventListener('DOMContentLoaded', function() {

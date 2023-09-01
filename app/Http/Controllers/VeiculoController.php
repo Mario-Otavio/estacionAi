@@ -138,7 +138,7 @@ class VeiculoController extends Controller
         // $printer->close();
 
         // Redirecione com uma mensagem de sucesso
-        return redirect()->route('veiculo.salvar')
+        return redirect()->route('veiculo.salvar', compact('precos'))
             ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }
 
