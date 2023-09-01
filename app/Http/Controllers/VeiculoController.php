@@ -141,9 +141,11 @@ class VeiculoController extends Controller
         $categorias = \App\Models\Preco::all();
 
         // Redirecione com uma mensagem de sucesso
-        return redirect()->route('/garagem')
-            ->with(['sucesso' => 'Veículo Cadastro com Sucesso!'])
-            ->with('categorias', $categorias);
+        return redirect()->route('veiculo.salvar')
+        ->with([
+            'categorias' => $categorias,
+            'sucesso' => 'Veículo Cadastro com Sucesso!'
+        ]);      
     }
 
     public function atualizarPrecosEmTempoReal()

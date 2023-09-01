@@ -21,7 +21,9 @@
                         <label for="categoria" class="form-label">Selecione uma categoria</label>
                         <select id="inputState" name="categoria" class="form-select" required>
                             <option value="" selected>Categorias</option>
-                            
+                            @foreach($categorias as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
+                            @endforeach
                         </select>
                     </div>
 
