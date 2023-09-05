@@ -8,7 +8,7 @@
 
     <!-- Main CSS  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/estilo2.css') }}">
-    <title>@yield('content')</title>
+    <title>@yield('title')</title>
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -114,17 +114,8 @@
 
 
 
-
-
-
-
-
-    <!-- CONTEÚDO -->
-
-
-
-
-
+<!-- CONTEÚDO -->
+    @yield('conteudo')
 
 
 
@@ -150,9 +141,10 @@
     <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/main.js') }}"></script>  
 
 </body>
 

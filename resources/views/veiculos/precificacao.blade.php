@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Precificação')
-@section('content')
+@section('conteudo')
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -68,7 +68,7 @@
                 <br><br><br>
 
                 <div class="card">
-                    <div class="card-body"><!-- Bordered Tabs -->
+                    <div class="card-body pb-0"><!-- Bordered Tabs -->
 
                         <ul class="nav nav-tabs nav-tabs-bordered">
                             <li class="nav-item">
@@ -125,10 +125,9 @@
                                     <button type="submit" class="btn btn-primary col-12">Salvar Alteração</button>
                                 </form>
                             </div>
+                         
 
-
-
-                            <div class="tab-pane fade" id="delecao">
+                            <div class="tab-pane fade pt-3" id="delecao">
                                 <div class="mb-3">
                                     <label class="form-label">Selecione uma categoria</label>
                                     <select id="category-select" class="form-select">
@@ -136,14 +135,14 @@
                                         <option value="{{ $preco->id }}">{{ $preco->categoria }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-
+                                </div>                                
                                 <!-- Delete button -->
-                                <button href="#modalDeleteCategorias-{{$preco->id}}" id="delete-button" class="btn btn-primary col-12" data-bs-toggle="modal">Deletar</button>
+                                @if (count($precos) > 0)
+                                <button href="#modalDeleteCategorias-{{$preco->id}}" id="delete-button" class="btn btn-primary col-12 mb-3" data-bs-toggle="modal" >Deletar</button>
                                 @foreach ($precos as $preco)
                                 @include('modals.veiculosModal.deleteCategoria')
                                 @endforeach
-
+                                @endif
                             </div>
 
                         </div>
@@ -155,6 +154,8 @@
 
 </main><!-- End #main -->
 
+@endsection
+
 @php
 $precosJson = json_encode($precos);
 @endphp
@@ -163,9 +164,7 @@ $precosJson = json_encode($precos);
     document.addEventListener('DOMContentLoaded', function() {
         const categoriaSelect = document.querySelector('[name="categoria"]');
         const valorInput = document.querySelector('[name="valor"]');
-        const precos = {
-            !!$precosJson!!
-        };
+        const precos = {!! $precosJson !!};
 
         // Função para atualizar o valor com base na categoria selecionada
         function atualizarValor(categoriaId) {
@@ -192,3 +191,19 @@ $precosJson = json_encode($precos);
         this.value = this.value.toLowerCase();
     });
 </script>
+
+<script>
+    // Get references to the category select and delete button elements
+    const categorySelect = document.querySelector('#category-select');
+    const deleteButton = document.querySelector('#delete-button');
+
+    // Update the href attribute of the delete button when the selected category changes
+    categorySelect.addEventListener('change', () => {
+        const selectedCategoryId = categorySelect.value;
+        deleteButton.setAttribute('href', `#modalDeleteCategorias-${selectedCategoryId}`);
+    });
+
+    // Trigger the change event on the category select to set the initial href value of the delete button
+    categorySelect.dispatchEvent(new Event('change'));
+</script>
+

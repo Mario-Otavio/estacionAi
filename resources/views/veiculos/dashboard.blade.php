@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Dashboard')
-@section('content')
+@section('conteudo')
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar collapse-horizontal">
@@ -17,15 +17,15 @@
         <li class="nav-heading">Paginas</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="precificacao">
+            <a class="nav-link collapsed" href="perfil">
                 <i class="bi bi-person"></i>
                 <span>Perfil</span>
             </a>
         </li><!-- End Perfil Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="perfil">
-            <i class="bi bi-cash-stack"></i>
+            <a class="nav-link collapsed" href="precificacao">
+                <i class="bi bi-cash-stack"></i>
                 <span>Precificação</span>
             </a>
         </li><!-- End Precificação Nav -->
@@ -149,7 +149,7 @@
                     </div><!-- End mensalistas Card -->
 
                     <!-- Recent Sales -->
-                    <div class="col-12">
+                    <div class="col-xxl-8 col-xl-12">
                         <div class="card recent-sales overflow-auto">
 
                             <div class="card-body">
@@ -190,6 +190,20 @@
 
                         </div>
                     </div><!-- End Recent Sales -->
+
+                    <!-- Website Traffic -->
+                    <div class="col-xxl-4 col-xl-12">
+                        <div class="card">
+
+                            <div class="card-body pb-0">
+                                <h5 class="card-title">Website Traffic <span>| Hoje</span></h5>
+
+                                <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+
+                            </div>
+                        </div>
+                    </div><!-- End Website Traffic -->
+
                 </div>
 
             </div><!-- End Left side columns -->
@@ -197,7 +211,8 @@
     </section>
 
 </main><!-- End #main -->
-<br><br><br>
+
+@endsection
 
 
 <script>
@@ -223,3 +238,63 @@
     atualizarTimers(); // Atualize os timers imediatamente
     setInterval(atualizarTimers, 1000); // Atualize a cada segundo
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        var trafficChart = echarts.init(document.querySelector("#trafficChart"));
+
+        // Use os dados passados do controlador
+        var catLabel = @json($catLabel);
+        var catTotal = @json($catTotal);
+
+        // Formatando os dados como objetos esperados pelo ECharts
+        var data = catLabel.map(function(label, index) {
+            return {
+                value: catTotal[index],
+                name: label
+            };
+        });
+
+        // Configuração do gráfico
+        var chartOptions = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [{
+                name: 'Quantidade',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 18,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: data
+            }]
+        };
+
+        // Inicialize o gráfico com os dados
+        trafficChart.setOption(chartOptions);
+    });
+</script>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

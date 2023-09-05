@@ -40,7 +40,25 @@ class VeiculoController extends Controller
         $vagasOcupadas = Veiculo::where('user_id', $user->id)->whereNull('saida')->count();
         $vagasLivres = $totalVagas - $vagasOcupadas;
 
-        return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos', 'totalVagas', 'vagasOcupadas', 'vagasLivres'));
+        // gráfico pizza
+        // Busque os dados do gráfico
+        $catData = Preco::all();
+
+        // Inicialize os arrays para os rótulos (categorias) e os totais
+        $catCategoria = [];
+        $catTotal = [];
+
+        // Preencha os arrays com os dados
+        foreach ($catData as $cat) {
+            $catCategoria[] = $cat->categoria;
+            $catTotal[] = Veiculo::where('id', $cat->id)->count();
+        }
+
+        // Converta os arrays em JSON para passá-los para a view
+        $catLabel = json_encode($catCategoria);
+        $catTotal = json_encode($catTotal);
+
+        return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos', 'totalVagas', 'vagasOcupadas', 'vagasLivres', 'catLabel', 'catTotal'));
     }
 
 
@@ -65,8 +83,8 @@ class VeiculoController extends Controller
         $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro
         $totalVeiculosGaragem = $query->count(); // Conta os veículos conforme a busca ou sem filtro
         $tabelaPrecos = Preco::all(); // Isso busca todos os preços do banco de dados
-
-        return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search', 'tabelaPrecos'));
+        $categorias = Preco::all();
+        return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search', 'tabelaPrecos', 'categorias'));
     }
 
 
@@ -138,14 +156,11 @@ class VeiculoController extends Controller
         // $printer->close();
 
         // Recupera todas as categorias da tabela "preco"
-        $categorias = \App\Models\Preco::all();
+        $categorias = Preco::all();
 
         // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')
-        ->with([
-            'categorias' => $categorias,
-            'sucesso' => 'Veículo Cadastro com Sucesso!'
-        ]);      
+            ->with('sucesso', 'Veículo Cadastro com Sucesso!');
     }
 
     public function atualizarPrecosEmTempoReal()
@@ -311,6 +326,6 @@ class VeiculoController extends Controller
         $preco->delete();
 
         // Redirect back to the form with a success message
-        return redirect()->route('veiculos.precificacao')->with('sucesso', 'Categoria deletada com sucesso!');
+        return redirect()->back()->with('sucesso', 'Categoria deletada com sucesso!');
     }
 }

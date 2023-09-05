@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Histórico')
-@section('content')
+@section('conteudo')
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -149,8 +149,8 @@
     </section>
 
 </main><!-- End #main -->
-<br><br><br>
 
+@endsection
 
 <script>
     function atualizarTimers() {
@@ -183,3 +183,4 @@
         setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
     });
 </script>
+

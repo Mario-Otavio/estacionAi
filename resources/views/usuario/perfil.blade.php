@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Perfil')
-@section('content')
+@section('conteudo')
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -248,3 +248,5 @@
 
 </main><!-- End #main -->
 <br><br><br><br>
+
+@endsection

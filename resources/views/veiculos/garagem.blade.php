@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Garagem')
-@section('content')
+@section('conteudo')
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -123,7 +123,7 @@
                                 <div class="d-flex align-items-center justify-content-center">
                                     <div class="rounded-circle d-flex align-items-center justify-content-center">
                                         <a href="#modalCadastro" class="bi bi-plus-circle-fill" id="btnCadastrar" data-bs-toggle="modal"></a>
-                                        @include('modals.veiculosModal.cadastro',  ['categorias' => $categorias])
+                                        @include('modals.veiculosModal.cadastro', ['categorias' => $categorias])
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +215,8 @@
     </section>
 
 </main><!-- End #main -->
-<br><br><br>
 
+@endsection
 
 <script>
     function atualizarTimers() {
@@ -266,3 +266,4 @@
         atualizarUIComDadosAtualizados();
     });
 </script>
+
