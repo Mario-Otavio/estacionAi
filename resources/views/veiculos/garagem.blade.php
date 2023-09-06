@@ -156,7 +156,7 @@
                         <div class="card recent-sales overflow-auto">
 
                             <div class="card-body">
-                                <h5 class="card-title">Total Veículos <span>| hoje</span></h5>
+                                <h5 class="card-title">Tabela Veículos <span>| Ativos</span></h5>
 
                                 <table class="table table-hover">
                                     <thead>
@@ -176,8 +176,6 @@
                                         @foreach($veiculosTotal as $veiculo)
                                         <tr class="align-middle">
                                             <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
-                                            <!-- <td scope="row" class="text-center preco-atualizado"> {{ $veiculo->id }} </td> -->
-
                                             <td class="text-center"> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
                                             <td class="text-center"><span class="timer" data-entrada="{{ $veiculo->created_at }}"></span></td>
@@ -204,7 +202,6 @@
 
                                 </table>
                                 {{ $veiculosTotal->links('pagination::bootstrap-5') }}
-
                             </div>
                         </div>
                     </div><!-- End Recent Sales -->
@@ -241,29 +238,3 @@
     atualizarTimers(); // Atualize os timers imediatamente
     setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
 </script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function atualizarUIComDadosAtualizados() {
-            fetch('/atualizar-precos')
-                .then(response => response.json())
-                .then(veiculos => {
-                    veiculos.forEach(veiculo => {
-                        const veiculoId = veiculo.id;
-                        const precoElement = document.querySelector(`.preco-atualizado[data-veiculo-id="${veiculoId}"]`);
-                        precoElement.textContent = `R$${veiculo.preco.toFixed(2)}`; // Formate o preço como desejar
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar dados atualizados:', error);
-                });
-        }
-
-        // Execute a função de atualização a cada intervalo de tempo desejado
-        setInterval(atualizarUIComDadosAtualizados, 60000); // Atualiza a cada 60 segundos (1 minuto)
-
-        // Chame a função de atualização inicial
-        atualizarUIComDadosAtualizados();
-    });
-</script>
-

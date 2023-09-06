@@ -153,7 +153,7 @@
                         <div class="card recent-sales overflow-auto">
 
                             <div class="card-body">
-                                <h5 class="card-title">Registros recentes <span>| últimos 8</span></h5>
+                                <h5 class="card-title">Registros recentes <span>| últimos 7</span></h5>
 
                                 <table class="table table-hover">
                                     <thead>
@@ -195,10 +195,11 @@
                     <div class="col-xxl-4 col-xl-12">
                         <div class="card">
 
-                            <div class="card-body pb-0">
-                                <h5 class="card-title">Website Traffic <span>| Hoje</span></h5>
-
-                                <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                            <div class="card-body">
+                                <div class="card-header bg-white">
+                                    <h5 class="card-title text-center">Gráfico de veículos<span> | Ativos</span></h5>
+                                </div>
+                                <div class="pt-3 pb-3"><canvas id="myChart"></canvas></div>
 
                             </div>
                         </div>
@@ -212,8 +213,34 @@
 
 </main><!-- End #main -->
 
-@endsection
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{!! $catLabel !!}],
+      datasets: [{
+        label: 'Quantidade',
+        data: [{{ $catTotal }}],
+        backgroundColor: [
+      'rgb(54, 162, 235)',
+      'rgb(220, 53, 53)',      
+    ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {        
+      }
+    }
+  });
+</script>
+
+@endsection
 
 <script>
     function atualizarTimers() {
@@ -239,62 +266,7 @@
     setInterval(atualizarTimers, 1000); // Atualize a cada segundo
 </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        var trafficChart = echarts.init(document.querySelector("#trafficChart"));
-
-        // Use os dados passados do controlador
-        var catLabel = @json($catLabel);
-        var catTotal = @json($catTotal);
-
-        // Formatando os dados como objetos esperados pelo ECharts
-        var data = catLabel.map(function(label, index) {
-            return {
-                value: catTotal[index],
-                name: label
-            };
-        });
-
-        // Configuração do gráfico
-        var chartOptions = {
-            tooltip: {
-                trigger: 'item'
-            },
-            legend: {
-                top: '5%',
-                left: 'center'
-            },
-            series: [{
-                name: 'Quantidade',
-                type: 'pie',
-                radius: ['40%', '70%'],
-                avoidLabelOverlap: false,
-                label: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: 18,
-                        fontWeight: 'bold'
-                    }
-                },
-                labelLine: {
-                    show: false
-                },
-                data: data
-            }]
-        };
-
-        // Inicialize o gráfico com os dados
-        trafficChart.setOption(chartOptions);
-    });
-</script>
 
 
 
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

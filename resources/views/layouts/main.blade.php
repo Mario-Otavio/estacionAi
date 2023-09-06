@@ -114,7 +114,7 @@
 
 
 
-<!-- CONTEÚDO -->
+    <!-- CONTEÚDO -->
     @yield('conteudo')
 
 
@@ -130,6 +130,52 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
+    <!-- Atualizador de preços -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Função para atualizar a UI com os dados atualizados
+            function atualizarUIComDadosAtualizados() {
+                fetch('/atualizar-precos')
+                    .then(response => response.json())
+                    .then(veiculos => {
+                        veiculos.forEach(veiculo => {
+                            const veiculoId = veiculo.id;
+                            const precoElement = document.querySelector(`.preco-atualizado[data-veiculo-id="${veiculoId}"]`);
+                            precoElement.textContent = `R$${veiculo.preco.toFixed(2)}`;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar dados atualizados:', error);
+                    });
+            }
+
+
+            // Função para obter e definir o valor do contador a partir de um cookie
+            function getContador() {
+                const contador = parseInt(document.cookie.replace(/(?:(?:^|.*;\s*)contador\s*=\s*([^;]*).*$)|^.*$/, "$1"), 10);
+                return isNaN(contador) ? 0 : contador;
+            }
+
+            function setContador(contador) {
+                document.cookie = `contador=${contador}; max-age=3600`; // O cookie expirará em 1 hora (3600 segundos)
+            }
+
+            // Execute a função de atualização a cada intervalo de tempo desejado
+            setInterval(() => {
+                const contador = getContador();
+                setContador(contador + 1);
+                atualizarUIComDadosAtualizados();
+            }, 60000); // Atualiza a cada 60 segundos (1 minuto)
+
+            // Chame a função de atualização inicial
+            const contadorInicial = getContador();
+            setContador(contadorInicial + 1);
+            atualizarUIComDadosAtualizados();
+
+        });
+    </script>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -141,10 +187,12 @@
     <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    
+
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>  
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
 
 </body>
 

@@ -32,7 +32,7 @@ class VeiculoController extends Controller
 
     public function index()
     {
-        $veiculos = Veiculo::whereNull('saida')->latest()->take(8)->get(); // busca 8 registros do banco
+        $veiculos = Veiculo::whereNull('saida')->latest()->take(7)->get(); // busca os 7 ultimos registros no banco
         $totalVeiculos = Veiculo::whereNull('saida')->count();
 
         $user = Auth::user();
@@ -41,22 +41,14 @@ class VeiculoController extends Controller
         $vagasLivres = $totalVagas - $vagasOcupadas;
 
         // gráfico pizza
-        // Busque os dados do gráfico
         $catData = Preco::all();
-
-        // Inicialize os arrays para os rótulos (categorias) e os totais
-        $catCategoria = [];
-        $catTotal = [];
-
-        // Preencha os arrays com os dados
         foreach ($catData as $cat) {
-            $catCategoria[] = $cat->categoria;
-            $catTotal[] = Veiculo::where('id', $cat->id)->count();
+            $catCategoria[] = "'" . $cat->categoria . "'";
+            $catTotal[] = Veiculo::where('categoria', $cat->categoria)->whereNull('saida')->count();
         }
-
-        // Converta os arrays em JSON para passá-los para a view
-        $catLabel = json_encode($catCategoria);
-        $catTotal = json_encode($catTotal);
+        // formatar 
+        $catLabel = implode(',', $catCategoria);
+        $catTotal = implode(',', $catTotal);
 
         return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos', 'totalVagas', 'vagasOcupadas', 'vagasLivres', 'catLabel', 'catTotal'));
     }
@@ -64,7 +56,7 @@ class VeiculoController extends Controller
 
     public function todosVeiculos()
     {
-        $todosVeiculos = Veiculo::paginate(10); // ou a quantidade desejada
+        $todosVeiculos = Veiculo::paginate(7); // ou a quantidade desejada
         $contador = Veiculo::count();
         return view('veiculos.historico', compact('todosVeiculos', 'contador'));
     }
@@ -80,8 +72,8 @@ class VeiculoController extends Controller
             $query->where('placa', 'like', '%' . $search . '%');
         }
 
-        $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro
-        $totalVeiculosGaragem = $query->count(); // Conta os veículos conforme a busca ou sem filtro
+        $veiculosTotal = $query->paginate(7); // Busca os veículos conforme a busca ou sem filtro        
+        $totalVeiculosGaragem = Veiculo::whereNull('saida')->count();// Conta todos os veículos sem aplicar o filtro
         $tabelaPrecos = Preco::all(); // Isso busca todos os preços do banco de dados
         $categorias = Preco::all();
         return view('veiculos.garagem', compact('veiculosTotal', 'totalVeiculosGaragem', 'search', 'tabelaPrecos', 'categorias'));
@@ -155,8 +147,6 @@ class VeiculoController extends Controller
         //$printer->cut();
         // $printer->close();
 
-        // Recupera todas as categorias da tabela "preco"
-        $categorias = Preco::all();
 
         // Redirecione com uma mensagem de sucesso
         return redirect()->route('veiculo.salvar')

@@ -25,7 +25,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="precificacao">
-            <i class="bi bi-cash-stack"></i>
+                <i class="bi bi-cash-stack"></i>
                 <span>Precificação</span>
             </a>
         </li><!-- End Precificação Nav -->
@@ -89,12 +89,9 @@
                         </div>
                     </div><!-- End Revenue Card -->
 
-
                     <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-
-
 
                             <div class="card-body">
                                 <h5 class="card-title">Total Veículos <span>| Todos</span></h5>
@@ -110,7 +107,6 @@
                                             <th scope="col" class="text-center">Preço</th>
                                             <th scope="col" class="text-center">Status</th>
                                             <th scope="col" class="text-center">Informações</th>
-
                                         </tr>
                                     </thead>
 
@@ -118,7 +114,6 @@
                                         @foreach($todosVeiculos as $veiculo)
                                         <tr class="align-middle">
                                             <td scropt="row" class="text-center">{{ $loop->index + 1 }}</td>
-                                            <!--<td scope="row" class="text-center"> {{ $veiculo->id }} </td> -->
                                             <td class="text-center"> {{ $veiculo->categoria }} </td>
                                             <td class="text-primary text-center"> {{ $veiculo->placa }} </td>
                                             <td class="text-center"> {{ $veiculo->modelo }} </td>
@@ -183,4 +178,3 @@
         setInterval(atualizarTimers, 1000); // Atualiza a cada segundo
     });
 </script>
-
