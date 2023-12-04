@@ -31,27 +31,35 @@ class VeiculoController extends Controller
 
 
     public function index()
-    {
-        $veiculos = Veiculo::whereNull('saida')->latest()->take(7)->get(); // busca os 7 ultimos registros no banco
-        $totalVeiculos = Veiculo::whereNull('saida')->count();
+{
+    $veiculos = Veiculo::whereNull('saida')->latest()->take(7)->get(); // busca os 7 ultimos registros no banco
+    $totalVeiculos = Veiculo::whereNull('saida')->count();
 
-        $user = Auth::user();
-        $totalVagas = $user->desired_parking_spaces;
-        $vagasOcupadas = Veiculo::where('user_id', $user->id)->whereNull('saida')->count();
-        $vagasLivres = $totalVagas - $vagasOcupadas;
+    $user = Auth::user();
+    $totalVagas = $user->desired_parking_spaces;
+    $vagasOcupadas = Veiculo::where('user_id', $user->id)->whereNull('saida')->count();
+    $vagasLivres = $totalVagas - $vagasOcupadas;
 
-        // gráfico pizza
-        $catData = Preco::all();
+    // gráfico pizza
+    $catData = Preco::all();
+    $catCategoria = [];
+    $catTotal = [];
+
+    if ($catData->isNotEmpty()) {
         foreach ($catData as $cat) {
             $catCategoria[] = "'" . $cat->categoria . "'";
             $catTotal[] = Veiculo::where('categoria', $cat->categoria)->whereNull('saida')->count();
         }
-        // formatar 
-        $catLabel = implode(',', $catCategoria);
-        $catTotal = implode(',', $catTotal);
-
-        return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos', 'totalVagas', 'vagasOcupadas', 'vagasLivres', 'catLabel', 'catTotal'));
+    } else {
+        // Lidar com o caso em que não há dados na tabela Preco
+        // Defina valores padrão ou trate de outra forma, conforme necessário
     }
+    // formatar 
+    $catLabel = implode(',', $catCategoria);
+    $catTotal = implode(',', $catTotal);
+
+    return view('veiculos.dashboard', compact('veiculos', 'totalVeiculos', 'totalVagas', 'vagasOcupadas', 'vagasLivres', 'catLabel', 'catTotal'));
+}
 
 
     public function todosVeiculos()
